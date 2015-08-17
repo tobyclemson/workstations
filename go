@@ -33,7 +33,12 @@ else
 fi
 
 echo "-> Adding repository as babushka source..."
-babushka sources --add workstations https://github.com/tobyclemson/workstations
+if ! babushka sources --list | grep workstations > /dev/null; then
+    babushka sources --add workstations https://github.com/tobyclemson/workstations
+fi
+
+echo "-> Ensuring babushka sources are up to date..."
+babushka sources --update
 
 echo "-> Running default dep 'workstations:laptop'..."
 babushka workstations:laptop

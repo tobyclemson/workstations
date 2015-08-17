@@ -1,5 +1,5 @@
 ack
-antlr
+antlr:antlr4
 fish
 direnv
 dpkg

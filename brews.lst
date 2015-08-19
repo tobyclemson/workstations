@@ -1,5 +1,6 @@
 ack
 antlr:antlr4
+awscli
 fish
 direnv
 dpkg

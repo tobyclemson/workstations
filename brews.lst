@@ -1,6 +1,6 @@
 ack
 antlr:antlr4
-awscli
+awscli:aws
 emacs
 fish
 direnv

@@ -3,7 +3,6 @@ antlr:antlr4
 fish
 direnv
 dpkg
-emacs
 encfs
 git
 git-crypt

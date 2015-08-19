@@ -3,7 +3,6 @@ antlr:antlr4
 fish
 direnv
 dpkg
-git
 git-crypt
 jq
 rbenv

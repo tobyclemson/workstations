@@ -4,7 +4,6 @@ fish
 direnv
 dpkg
 git-crypt
-jq
 rbenv
 rpm
 ruby-build

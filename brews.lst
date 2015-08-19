@@ -1,6 +1,7 @@
 ack
 antlr:antlr4
 awscli
+emacs
 fish
 direnv
 dpkg

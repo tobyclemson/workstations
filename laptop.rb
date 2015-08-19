@@ -1,6 +1,11 @@
 parse = ->(line) {
   name, provide_name = line.strip.split(':')
-  [name, ->(type) { dep "#{name}.#{type}" do provides provide_name if provide_name end }]
+  dep_builder = ->(type) do
+    dep "#{name}.#{type}" do
+      provides provide_name if provide_name
+    end
+  end
+  [name, dep_builder]
 }
 
 brews = File.readlines(File.expand_path '../brews.lst', __FILE__).map(&parse)

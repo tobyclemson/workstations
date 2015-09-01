@@ -13,3 +13,4 @@ rpm
 ruby-build
 tree
 wget
+homebrew/fuse/encfs:encfs

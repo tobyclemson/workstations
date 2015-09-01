@@ -9,7 +9,7 @@ parse = ->(line) {
   [name, dep_builder]
 }
 
-taps = File.readlines(File.expand_path '../taps.lst', __FILE__)
+taps = File.readlines(File.expand_path '../taps.lst', __FILE__).map { |tap| tap.strip }
 brews = File.readlines(File.expand_path '../brews.lst', __FILE__).map(&parse)
 casks = File.readlines(File.expand_path '../casks.lst', __FILE__).map(&parse)
 

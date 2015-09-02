@@ -20,4 +20,6 @@ dep 'laptop' do
   taps.each { |tap| requires "homebrew tap".with(tap) }
   brews.each { |name, _| requires "#{name}.managed" }
   casks.each { |name, _| requires "#{name}.cask" }
+
+  requires 'system preferences'
 end

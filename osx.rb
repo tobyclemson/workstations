@@ -211,7 +211,7 @@ dep 'capslock to ctrl' do
         {
         HIDKeyboardModifierMappingDst = 2;
         HIDKeyboardModifierMappingSrc = 0;
-        }
+    }
 )}
   }
 

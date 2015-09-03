@@ -22,5 +22,5 @@ dep 'laptop' do
   casks.each { |name, _| requires "#{name}.cask" }
 
   requires 'all settings'
-  requires 'computer name'.with('Falkor', 'falcor')
+  requires 'computer name'.with('falkor')
 end

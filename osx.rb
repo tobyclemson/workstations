@@ -232,6 +232,9 @@ dep "user library visibility" do
 end
 
 dep 'computer name', :computer_name, :local_hostname, :for => :osx do
+  computer_name.ask("OS X Computer Name").default(shell('scutil --get ComputerName'))
+  local_hostname.ask("OS X Local Hostname").default(computer_name.to_s.downcase.gsub(' ', '-'))
+  
   met? {
     shell('scutil --get ComputerName') == computer_name &&
       shell('scutil --get HostName') == computer_name &&

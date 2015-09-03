@@ -1,63 +1,197 @@
-dep 'full disk encryption' do
+dep 'full disk encryption', :for => :osx do
   met? {
-    shell?("sudo fdesetup status").include? "On"
+    shell?('sudo fdesetup status').include? 'On'
   }
 
   meet {
-    shell("sudo fdesetup enable -user `whoami`")
+    shell('sudo fdesetup enable -user `whoami`')
   }
 end
 
-dep 'full keyboard access', :between, :template => 'plist', :for => :osx do
-  def target
-    current = Integer(fetch(domain, 'AppleKeyboardUIMode'))
-    case between.to_s.to_sym
-    when :textboxes_and_lists then current & 0xfd
-    when :all_controls then current | 0x02
-    else current
-    end
-  end
-
+dep 'full keyboard access.defaults', :for => :osx do
   domain 'NSGlobalDomain'
-  values 'AppleKeyboardUIMode' => target
-  types 'AppleKeyboardUIMode' => 'integer'
+  key 'AppleKeyboardUIMode'
+  value 3
 end
 
-dep 'dock magnification' do
-  met? {
-    shell?("defaults read com.apple.dock magnification") &&
-      shell("defaults read com.apple.dock magnification").to_i == 0
-  }
-
-  meet {
-    shell("defaults write com.apple.dock magnification -integer 0")
-    shell("killall -HUP Dock")
-  }
+dep 'dock magnification.defaults', :for => :osx do
+  domain 'com.apple.dock'
+  key 'magnification'
+  value 0
 end
 
-dep 'dock hiding' do
-  met? {
-    shell?("defaults read com.apple.dock autohide") &&
-      shell("defaults read com.apple.dock autohide") == "1"
-  }
-
-  meet {
-    shell("defaults write com.apple.dock autohide -bool true")
-    shell("killall -HUP Dock")
-  }
+dep 'dock hiding.defaults', :for => :osx do
+  domain 'com.apple.dock'
+  key 'autohide'
+  value true
 end
 
-dep 'dashboard widgets' do
-  met? {
-    cmd = "defaults read com.apple.dashboard mcx-disabled"
-    shell?(cmd) &&
-      shell(cmd).to_i == 1
-  }
+dep 'dock icons translucent for hidden applications.defaults' do
+  domain 'com.apple.dock'
+  key 'showhidden'
+  value true
+end
 
-  meet {
-    shell('defaults write com.apple.dashboard mcx-disabled -boolean YES')
-    shell("killall -HUP Dock")
-  }
+dep 'dock icon size.defaults' do
+  domain 'com.apple.dock'
+  key 'tilesize'
+  value 38
+end
+
+dep 'dashboard widgets.defaults', :for => :osx do
+  domain 'com.apple.dashboard'
+  key 'mcx-disabled'
+  value true
+end
+
+dep 'password on wake required.defaults', :for => :osx do
+  domain 'com.apple.screensaver'
+  key 'askForPassword'
+  value 1
+end
+
+dep 'password on wake delay.defaults', :for => :osx do
+  domain 'com.apple.screensaver'
+  key 'askForPasswordDelay'
+  value 0
+end
+
+dep 'network .DS_Store.defaults', :for => :osx do
+  domain 'com.apple.desktopservices'
+  key 'DSDontWriteNetworkStores'
+  value true
+end
+
+dep 'key repeat rate.defaults' do
+  domain 'NSGlobalDomain'
+  key 'KeyRepeat'
+  value 0
+end
+
+dep 'key repeat delay.defaults' do
+  domain 'NSGlobalDomain'
+  key 'InitialKeyRepeat'
+  value 10
+end
+
+dep 'expanded save panel.defaults' do
+  domain 'NSGlobalDomain'
+  key 'NSNavPanelExpandedStateForSaveMode'
+  value true
+end
+
+dep 'expanded print panel.defaults' do
+  domain 'NSGlobalDomain'
+  key 'PMPrintingExpandedStateForPrint'
+  value true
+end
+
+dep 'no launch warnings.defaults' do
+  domain 'com.apple.LaunchServices'
+  key 'LSQuarantine'
+  value false
+end
+
+dep 'press and hold.defaults' do
+  domain 'NSGlobalDomain'
+  key 'ApplePressAndHoldEnabled'
+  value false
+end
+
+dep 'auto-correct.defaults' do
+  domain 'NSGlobalDomain'
+  key 'NSAutomaticSpellingCorrectionEnabled'
+  value false
+end
+
+dep 'smart quotes.defaults' do
+  domain 'NSGlobalDomain'
+  key 'NSAutomaticQuoteSubstitutionEnabled'
+  value false
+end
+
+dep 'smart dashes.defaults' do
+  domain 'NSGlobalDomain'
+  key 'NSAutomaticDashSubstitutionEnabled'
+  value false
+end
+
+dep 'window resize speed.defaults' do
+  domain 'NSGlobalDomain'
+  key 'NSWindowResizeTime'
+  value 0.001
+end
+
+dep 'screencapture location.defaults' do
+  domain 'com.apple.screencapture'
+  key 'location'
+  value '~/Pictures'
+end
+
+dep 'quicklook copy.defaults' do
+  domain 'com.apple.finder'
+  key 'QLEnableTextSelection'
+  value true
+end
+
+dep 'volume change feedback.defaults' do
+  domain 'NSGlobalDomain'
+  key 'com.apple.sound.beep.feedback'
+  value false
+end
+
+dep 'full path in window titles.defaults' do
+  domain 'com.apple.finder'
+  key '_FXShowPosixPathInTitle'
+  value true
+end
+
+dep 'file extension change warning.defaults' do
+  domain 'com.apple.finder'
+  key 'FXEnableExtensionChangeWarning'
+  value false
+end
+
+dep 'trash security.defaults', :for => :osx do
+  domain 'com.apple.finder'
+  key 'EmptyTrashSecurely'
+  value true
+end
+
+dep 'trash empty warning.defaults' do
+  domain 'com.apple.finder'
+  key 'WarnOnEmptyTrash'
+  value false
+end
+
+dep 'file extension vsibility.defaults' do
+  domain 'NSGlobalDomain'
+  key 'AppleShowAllExtensions'
+  value true
+end
+
+dep 'finder status bar.defaults' do
+  domain 'com.apple.finder'
+  key 'ShowStatusBar'
+  value true
+end
+
+dep 'finder path bar.defaults' do
+  domain 'com.apple.finder'
+  key 'ShowPathbar'
+  value true
+end
+
+dep 'finder view.defaults' do
+  domain 'com.apple.finder'
+  key 'FXPreferredViewStyle'
+  value 'clmv'
+end
+
+dep 'time machine autobackup.defaults' do
+  domain 'com.apple.TimeMachine'
+  key 'AutoBackup'
+  value false
 end
 
 dep 'capslock to ctrl' do
@@ -77,7 +211,7 @@ dep 'capslock to ctrl' do
         {
         HIDKeyboardModifierMappingDst = 2;
         HIDKeyboardModifierMappingSrc = 0;
-    }
+        }
 )}
   }
 
@@ -87,58 +221,45 @@ dep 'capslock to ctrl' do
   }
 end
 
-dep 'password on wake', :required, :delay, :template => 'plist', :for => :osx do
-  domain 'com.apple.screensaver'
-
-  _values = {'askForPassword' => (required.current_value != false) ? 1 : 0}
-  _values['askForPasswordDelay'] = Integer(delay.to_s) if delay.set?
-  values _values
-
-  types 'askForPassword' => 'int', 'askForPasswordDelay' => 'int'
-end
-
-dep 'network .DS_Store', :allow, :template => 'plist', :for => :osx do
-  def value
-    case allow.current_value
-    when false, 'false' then false
-    else true
-    end
-  end
-
-  domain 'com.apple.desktopservices'
-  values 'DSDontWriteNetworkStores' => !value
-  checks 'DSDontWriteNetworkStores' => (value ? '0' : '1')
-  types 'DSDontWriteNetworkStores' => 'boolean'
-end
-
-dep 'trash security', :mode, :template => 'plist', :for => :osx do
-  mode.ask "Which mode should be used to empty trash"
-  mode.choose %w[fast secure]
-  mode.default "secure"
-
-  # Retrieves the value to use for the setting
-  def value
-    case mode.to_s.to_sym
-    when :fast then 'false'
-    when :secure then 'true'
-    end
-  end
-
-  domain 'com.apple.finder'
-  values 'EmptyTrashSecurely' => value
-  checks 'EmptyTrashSecurely' => (value == 'true' ? 1 : 0)
-  types 'EmptyTrashSecurely' => 'boolean'
-end
-
 dep 'system preferences' do
-  requires 'full keyboard access'.with(:all_controls)
   requires 'full disk encryption'
-  requires 'dock magnification'
-  requires 'dock hiding'
-  requires 'dashboard widgets'
+  requires 'full keyboard access.defaults'
+  requires 'dock magnification.defaults'
+  requires 'dock hiding.defaults'
+  requires 'dock icons translucent for hidden applications.defaults'
+  requires 'dock icon size.defaults'
+  requires 'dashboard widgets.defaults'
+  requires 'password on wake required.defaults'
+  requires 'password on wake delay.defaults'
+  requires 'network .DS_Store.defaults'
+  requires 'key repeat rate.defaults'
+  requires 'key repeat delay.defaults'
+  requires 'expanded save panel.defaults'
+  requires 'expanded print panel.defaults'
+  requires 'no launch warnings.defaults'
+  requires 'press and hold.defaults'
+  requires 'auto-correct.defaults'
+  requires 'smart quotes.defaults'
+  requires 'smart dashes.defaults'
+  requires 'window resize speed.defaults'
+  requires 'screencapture location.defaults'
+  requires 'quicklook copy.defaults'
+  requires 'volume change feedback.defaults'
+  requires 'full path in window titles.defaults'
+  requires 'file extension change warning.defaults'
+  requires 'trash security.defaults'
+  requires 'trash empty warning.defaults'
+  requires 'file extension vsibility.defaults'
+  requires 'finder status bar.defaults'
+  requires 'finder path bar.defaults'
+  requires 'finder view.defaults'
+  requires 'time machine autobackup.defaults'
   requires 'capslock to ctrl'
-  requires 'password on wake'.with(true, 5)
-  requires 'network .DS_Store'.with(false)
-  requires 'trash security'.with(:secure)
-
+  requires 'system preferences'
+  
+  after {
+    shell 'killall -HUP Dock'
+    shell 'killall -HUP Finder'
+    shell 'killall -HUP SystemUIServer'
+  }
 end

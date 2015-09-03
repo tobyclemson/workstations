@@ -12,13 +12,15 @@ meta "power" do
     :ac => "-c",
     :battery => "-b"
   }
-  
+
   template {
-    command = "pmset -g custom" +
-              " | awk '/#{name_for[type]}/,0 { if (/^ /) print; if (!/#{name_for[type]}/ && !/^ /) exit }'" +
-              " | grep ' #{property} '" +
-              " | awk  '{ print $2 }'"
-    
+    def command
+      "pmset -g custom" +
+        " | awk '/#{name_for[type]}/,0 { if (/^ /) print; if (!/#{name_for[type]}/ && !/^ /) exit }'" +
+        " | grep ' #{property} '" +
+        " | awk  '{ print $2 }'"
+    end
+
     met? {
       shell?(command) && shell(command) == value
     }

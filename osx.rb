@@ -231,6 +231,21 @@ dep "user library visibility" do
   }
 end
 
+dep 'computer name', :computer_name, :local_hostname, :for => :osx do
+  met? {
+    shell('scutil --get ComputerName') == computer_name &&
+      shell('scutil --get HostName') == computer_name &&
+      shell('scutil --get LocalHostName') == local_hostname &&
+      shell('defaults read /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName') == local_hostname
+  }
+  meet {
+    sudo "scutil --set ComputerName '#{computer_name}'"
+    sudo "scutil --set HostName '#{computer_name}'"
+    sudo "scutil --set LocalHostName '#{local_hostname}'"
+    sudo "defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string '#{local_hostname}'"
+  }
+end
+
 dep 'osx settings' do
   requires 'full disk encryption'
   requires 'full keyboard access.defaults'

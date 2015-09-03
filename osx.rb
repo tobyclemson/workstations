@@ -223,7 +223,7 @@ end
 
 dep "user library visibility" do
   met? {
-    shell("! ls -lO ~/ | grep -s 'hidden.*Library'")
+    shell?("! ls -lO ~/ | grep -s 'Library' | grep -s 'hidden'")
   }
 
   meet {

@@ -77,7 +77,7 @@ dep 'capslock to ctrl' do
         {
         HIDKeyboardModifierMappingDst = 2;
         HIDKeyboardModifierMappingSrc = 0;
-        }
+    }
 )}
   }
 
@@ -140,4 +140,5 @@ dep 'system preferences' do
   requires 'password on wake'.with(true, 5)
   requires 'network .DS_Store'.with(false)
   requires 'trash security'.with(:secure)
+
 end

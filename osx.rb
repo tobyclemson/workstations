@@ -249,6 +249,34 @@ dep 'computer name', :computer_name, :local_hostname, :for => :osx do
   }
 end
 
+dep "ac sleep delay" do
+  type = "AC Power"
+  property = "sleep"
+  command = "pmset -g custom" +
+            " | awk '/#{type}/,0 { if (/^ /) print; if (!/#{type}/ && !/^ /) exit }'" +
+            " | grep ' #{property} '" +
+            " | awk  '{ print $2 }'"
+  
+  met? {
+    shell?(command) && shell(command) == 0
+  }
+
+  meet {
+    shell "sudo /usr/bin/pmset -c sleep 0"
+  }
+end
+
+dep "power settings" do
+  requires 'ac sleep delay'
+  # meet {
+  #   shell "sudo /usr/bin/pmset -c displaysleep 10"
+  #   shell "sudo /usr/bin/pmset -c disksleep 10"
+  #   # wake on network access
+  #   shell "sudo /usr/bin/pmset -c womp 1"
+  #   shell "sudo /usr/bin/pmset -c lidwake 1"
+  # }
+end
+
 dep 'osx settings' do
   requires 'full disk encryption'
   requires 'full keyboard access.defaults'
@@ -313,4 +341,5 @@ dep 'all settings' do
   requires 'finder settings'
   requires 'dock settings'
   requires 'quicklook settings'
+  requires 'power settings'
 end

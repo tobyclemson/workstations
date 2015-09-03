@@ -258,7 +258,7 @@ dep "ac sleep delay" do
             " | awk  '{ print $2 }'"
   
   met? {
-    shell?(command) && shell(command) == 0
+    shell?(command) && shell(command) == "0"
   }
 
   meet {

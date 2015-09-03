@@ -21,5 +21,5 @@ dep 'laptop' do
   brews.each { |name, _| requires "#{name}.managed" }
   casks.each { |name, _| requires "#{name}.cask" }
 
-  requires 'system preferences'
+  requires 'all settings'
 end

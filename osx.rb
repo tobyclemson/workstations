@@ -164,7 +164,7 @@ dep 'trash empty warning.defaults' do
   value false
 end
 
-dep 'file extension vsibility.defaults' do
+dep 'file extension visibility.defaults' do
   domain 'NSGlobalDomain'
   key 'AppleShowAllExtensions'
   value true
@@ -231,44 +231,68 @@ dep "user library visibility" do
   }
 end
 
-dep 'system preferences' do
+dep 'osx settings' do
   requires 'full disk encryption'
   requires 'full keyboard access.defaults'
-  requires 'dock magnification.defaults'
-  requires 'dock hiding.defaults'
-  requires 'dock icons translucent for hidden applications.defaults'
-  requires 'dock icon size.defaults'
-  requires 'dashboard widgets.defaults'
-  requires 'password on wake required.defaults'
-  requires 'password on wake delay.defaults'
-  requires 'network .DS_Store.defaults'
   requires 'key repeat rate.defaults'
   requires 'key repeat delay.defaults'
   requires 'expanded save panel.defaults'
   requires 'expanded print panel.defaults'
-  requires 'no launch warnings.defaults'
   requires 'press and hold.defaults'
   requires 'auto-correct.defaults'
   requires 'smart quotes.defaults'
   requires 'smart dashes.defaults'
   requires 'window resize speed.defaults'
-  requires 'screencapture location.defaults'
-  requires 'quicklook copy.defaults'
   requires 'volume change feedback.defaults'
+  requires 'file extension visibility.defaults'
+  requires 'capslock to ctrl'
+  requires 'user library visibility'
+  requires 'password on wake required.defaults'
+  requires 'password on wake delay.defaults'
+  requires 'dashboard widgets.defaults'
+  requires 'network .DS_Store.defaults'
+  requires 'no launch warnings.defaults'
+  requires 'screencapture location.defaults'
+  requires 'time machine autobackup.defaults'
+
+  after {
+    shell 'killall -HUP Dock'
+    shell 'killall -HUP SystemUIServer'
+  }
+end
+
+dep 'finder settings' do
   requires 'full path in window titles.defaults'
   requires 'file extension change warning.defaults'
   requires 'trash security.defaults'
   requires 'trash empty warning.defaults'
-  requires 'file extension vsibility.defaults'
   requires 'finder status bar.defaults'
   requires 'finder path bar.defaults'
   requires 'finder view.defaults'
-  requires 'time machine autobackup.defaults'
-  requires 'capslock to ctrl'
-  
+
+  after {
+    shell 'killall -HUP Finder'
+  }
+end
+
+dep 'dock settings' do
+  requires 'dock magnification.defaults'
+  requires 'dock hiding.defaults'
+  requires 'dock icons translucent for hidden applications.defaults'
+  requires 'dock icon size.defaults'
+
   after {
     shell 'killall -HUP Dock'
-    shell 'killall -HUP Finder'
-    shell 'killall -HUP SystemUIServer'
   }
+end
+
+dep 'quicklook settings' do
+  requires 'quicklook copy.defaults'
+end
+
+dep 'all settings' do
+  requires 'osx settings'
+  requires 'finder settings'
+  requires 'dock settings'
+  requires 'quicklook settings'
 end

@@ -125,7 +125,7 @@ end
 dep 'screencapture location.defaults' do
   domain 'com.apple.screencapture'
   key 'location'
-  value '~/Pictures'
+  value shell('cd ~/Pictures; pwd')
 end
 
 dep 'quicklook copy.defaults' do

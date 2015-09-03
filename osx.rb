@@ -255,7 +255,6 @@ dep 'system preferences' do
   requires 'finder view.defaults'
   requires 'time machine autobackup.defaults'
   requires 'capslock to ctrl'
-  requires 'system preferences'
   
   after {
     shell 'killall -HUP Dock'

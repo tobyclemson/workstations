@@ -221,6 +221,16 @@ dep 'capslock to ctrl' do
   }
 end
 
+dep "user library visibility" do
+  met? {
+    shell("! ls -lO ~/ | grep -s 'hidden.*Library'")
+  }
+
+  meet {
+    shell "chflags nohidden ~/Library"
+  }
+end
+
 dep 'system preferences' do
   requires 'full disk encryption'
   requires 'full keyboard access.defaults'

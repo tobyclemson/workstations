@@ -24,4 +24,6 @@ dep 'laptop' do
   requires 'all settings'
   requires 'quicklook plugins'
   requires 'computer name'.with('falkor', 'falkor')
+
+  requires 'compulsion'
 end

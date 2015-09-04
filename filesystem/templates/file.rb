@@ -4,15 +4,13 @@ meta "file" do
   accepts_value_for :target
 
   template {
-
-    met? { target.p.exist? }
+    met? {
+      target.p.exist? &&
+        shell("md5 #{target}") == shell("md5 #{source}")
+    }
 
     meet {
-      Babushka::Resource.extract(source) { |archive|
-        Dir.glob("**/*#{name}").select {|file|
-          log_shell "Copying #{file} to #{target}", "cp -R #{file} #{target}"
-        }
-      }
+      shell("cp -R #{source} #{target}")
     }
   }
 end

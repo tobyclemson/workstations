@@ -27,4 +27,5 @@ dep 'laptop' do
 
   requires 'compulsion'
   requires 'zsh'
+  requires 'alfred'
 end

@@ -6,7 +6,7 @@ meta "file" do
   template {
     met? {
       target.p.exist? &&
-        shell("md5 #{target}") == shell("md5 #{source}")
+        shell("md5 -q #{target}") == shell("md5 -q #{source}")
     }
 
     meet {

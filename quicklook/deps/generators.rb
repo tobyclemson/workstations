@@ -16,4 +16,8 @@ dep 'quicklook plugins' do
   requires 'betterzipql.cask'
   requires 'qlimagesize.cask'
   requires 'suspicious-package.cask'
+
+  after {
+    log_shell "Resetting Quicklook server", "qlmanage -r"
+  }
 end

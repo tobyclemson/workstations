@@ -17,6 +17,6 @@ dep 'compulsion', :for => :osx do
 
   meet {
     log_shell "Installing Compulsion.bundle",
-              "cp -R #{__FILE__.p.parent}/../files/Compulsion.bundle ~/Library/Application\ Support/SIMBL/Plugins/"
+              "cp -R #{__FILE__.p.parent}/../files/Compulsion.bundle ~/Library/Application\\ Support/SIMBL/Plugins/"
   }
 end

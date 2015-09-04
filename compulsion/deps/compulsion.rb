@@ -1,10 +1,10 @@
 dep 'easysimbl.cask', :for => :osx
 
 dep 'user simbl directory', :for => :osx do
-  user_simbl_plugins_directory = '~/Library/Application\ Support/SIMBL/Plugins'
+  user_simbl_plugins_directory = '~/Library/Application Support/SIMBL/Plugins'
   
   met? { user_simbl_plugins_directory.p.dir? }
-  meet { log_shell "Creating #{user_simbl_plugins_directory}", "mkdir -p #{user_simbl_plugins_directory}" }
+  meet { log_shell "Creating #{user_simbl_plugins_directory}", "mkdir -p '#{user_simbl_plugins_directory}'" }
 end
 
 dep 'compulsion', :for => :osx do
@@ -12,7 +12,7 @@ dep 'compulsion', :for => :osx do
            'user simbl directory'
 
   met? {
-    "~/Library/Application\ Support/SIMBL/Plugins/Compulsion.bundle".p.dir?
+    "~/Library/Application Support/SIMBL/Plugins/Compulsion.bundle".p.dir?
   }
 
   meet {

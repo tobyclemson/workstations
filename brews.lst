@@ -9,7 +9,7 @@ fish
 git
 git-crypt
 jq
-macvim
+macvim:mvim
 openssl
 rbenv
 rpm

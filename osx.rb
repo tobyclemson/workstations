@@ -297,12 +297,6 @@ dep 'battery disk sleep delay.power', :for => :osx do
   value '5'
 end
 
-dep 'battery wake on network access.power', :for => :osx do
-  type :battery
-  property 'womp'
-  value '1'
-end
-
 dep 'battery wake on lid open.power', :for => :osx do
   type :battery
   property 'lidwake'
@@ -318,7 +312,6 @@ dep "power settings" do
   requires 'battery computer sleep delay.power'
   requires 'battery display sleep delay.power'
   requires 'battery disk sleep delay.power'
-  requires 'battery wake on network access.power'
   requires 'battery wake on lid open.power'
 end
 

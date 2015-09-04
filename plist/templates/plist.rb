@@ -2,14 +2,8 @@ meta :plist do
   accepts_value_for :target
 
   template {
-    requires 'plist exists'.with(target: target)
-    
-    met? {
-      
-    }
-
-    meet {
-      
+    setup {
+      requires 'plist exists'.with(target: target)
     }
   }
 end

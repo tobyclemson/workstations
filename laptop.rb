@@ -22,5 +22,6 @@ dep 'laptop' do
   casks.each { |name, _| requires "#{name}.cask" }
 
   requires 'all settings'
+  requires 'quicklook plugins'
   requires 'computer name'.with('falkor', 'falkor')
 end

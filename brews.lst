@@ -9,10 +9,12 @@ fish
 git
 git-crypt
 jq
+macvim
 openssl
 rbenv
 rpm
 ruby-build
 tmux
 tree
+vim
 wget

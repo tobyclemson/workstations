@@ -26,4 +26,5 @@ dep 'laptop' do
   requires 'computer name'.with('falkor', 'falkor')
 
   requires 'compulsion'
+  requires 'zsh'
 end

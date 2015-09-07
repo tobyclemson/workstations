@@ -4,7 +4,7 @@ awscli:aws
 direnv
 dpkg
 emacs
-encfs
+encfs:encfs:osxfuse.cask
 fish
 git
 git-crypt

@@ -1,9 +1,10 @@
 parse = ->(line) {
-  name, provide_name = line.strip.split(':')
+  name, provide_name, require_name = line.strip.split(':')
   
   dep_builder = ->(type) do
     dep "#{name}.#{type}" do
       provides provide_name if provide_name
+      requires require_name if require_name
     end
   end
   [name, dep_builder]

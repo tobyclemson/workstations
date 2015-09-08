@@ -14,6 +14,7 @@ dep 'plist exists', :target do
   }
 
   meet {
+    shell("mkdir -p `cd \"#{target}\"; pwd`")
     shell("cp #{__FILE__.p.parent}/../files/empty.plist `cd \"#{target}\"; pwd`")
   }
 end

@@ -1,7 +1,7 @@
 dep 'alfred license file.plist' do
   requires 'alfred.cask'
   
-  target "$HOME/Library/Application Support/Alfred 2/license.plist"
+  target "~/Library/Application Support/Alfred 2/license.plist"
 end
 
 dep 'alfred' do

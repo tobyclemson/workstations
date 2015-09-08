@@ -17,7 +17,7 @@ dep 'zshenv fixed' do
 end
 
 dep 'oh my zsh.repo' do
-  source 'git://github.com/robbyrussell/oh-my-zsh.git'
+  source 'https://github.com/robbyrussell/oh-my-zsh.git'
   path '~/.oh-my-zsh'
 end
 

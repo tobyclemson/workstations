@@ -57,6 +57,6 @@ dep 'plist exists', :target do
 
   meet {
     shell("mkdir -p \"#{target.p.dirname}\"")
-    shell("cp #{__FILE__.p.parent}/../files/empty.plist \"#{target.p.realpath}\"")
+    shell("cp #{__FILE__.p.parent}/../files/empty.plist \"#{target.p.cleanpath}\"")
   }
 end

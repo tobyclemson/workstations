@@ -1,5 +1,10 @@
 dep 'alfred license file.plist' do
   requires 'alfred.cask'
+  requires 'gpgtools.cask'
+
+  def license_code
+    GpgHelper.decrypt('alfred/files/license.gpg')
+  end
   
   target "~/Library/Application Support/Alfred 2/license.plist"
   entries [
@@ -11,7 +16,7 @@ dep 'alfred license file.plist' do
     {
       :path => ":'code'",
       :type => 'string',
-      :value => 'code'
+      :value => license_code
     }
   ]
 end

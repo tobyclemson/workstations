@@ -31,6 +31,7 @@ dep 'laptop' do
   requires '1password'
   requires 'alfred'
   requires 'compulsion'
+  requires 'dropbox'
   requires 'emacs'
   requires 'intellij'
   requires 'omnigraffle'

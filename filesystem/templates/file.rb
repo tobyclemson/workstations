@@ -14,6 +14,7 @@ meta "file" do
     }
 
     meet {
+      shell("mkdir -p \"#{target.p.dirname}\"")
       shell("cat > '#{target.p.cleanpath}'", input: resolved_content)
     }
   }

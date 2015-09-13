@@ -10,7 +10,7 @@ dep 'dropbox credentials' do
   }
 
   meet {
-    shell("read \"Log in to Dropbox. Hit return when complete.\"")
+    shell("echo 'Log in to Dropbox. Hit return when complete.'; read")
   }
 end
 

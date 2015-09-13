@@ -31,8 +31,8 @@ meta :plist do
       "#{plistbuddy} -c \"Delete #{path}\" \"#{resolve(target)}\""
     end
 
-    def entry_checksum path, target, as_xml = false
-      "#{plistbuddy} #{as_xml ? '-x ': ''}-c \"Print #{path}\" \"#{resolve(target)}\" | md5"
+    def entry_checksum path, target, as_xml: false
+      "#{plistbuddy} #{as_xml ? '-x ' : ''}-c \"Print #{path}\" \"#{resolve(target)}\" | md5"
     end
 
     def value_checksum value
@@ -47,19 +47,25 @@ meta :plist do
       "bash -c \"[ \\\"$(#{left})\\\" == \\\"$(#{right})\\\" ]\""
     end
 
+    def is_hash_entry entry
+      (entry[:type] == 'hash-entry')
+    end
+
     def actual_path_for entry
-      (entry[:type] == 'hash-entry') ?
+       is_hash_entry(entry) ?
         "#{entry[:hash_path]}#{entry[:key_path]}" :
         entry[:path]
     end
 
     def actual_checksum_for entry
-      entry_checksum(actual_path_for(entry), target, (entry[:type] == 'hash-entry'))
+      is_hash_entry(entry) ?
+        entry_checksum(actual_path_for(entry), target, as_xml: true) :
+        entry_checksum(actual_path_for(entry), target, as_xml: false)
     end
 
     def expected_checksum_for entry
-      (entry[:type] == 'hash-entry') ?
-        entry_checksum(entry[:key_path], entry[:file], true) :
+      is_hash_entry(entry) ?
+        entry_checksum(entry[:key_path], entry[:file], as_xml: true) :
         value_checksum(entry[:value])
     end
 
@@ -72,15 +78,19 @@ meta :plist do
 
     meet {
       entries.each do |entry|
-        if entry[:type] == 'hash-entry'
+        if is_hash_entry(entry)
           unless shell?(check_exists(actual_path_for(entry), target)) &&
                  shell?(check_equal(actual_checksum_for(entry), expected_checksum_for(entry)))
             shell(delete_entry(actual_path_for(entry), target))
             shell(merge_entry(entry[:hash_path], entry[:file], target))
           end
         else
-          shell(add_entry(entry[:path], entry[:type], target)) unless shell?(check_exists(entry[:path], target))
-          shell(set_entry(entry[:path], entry[:value], target)) unless shell?(check_equal(actual, expected))
+          unless shell?(check_exists(entry[:path], target))
+            shell(add_entry(entry[:path], entry[:type], target))
+          end
+          unless shell?(check_equal(actual_checksum_for(entry), expected_checksum_for(entry)))
+            shell(set_entry(entry[:path], entry[:value], target))
+          end
         end
       end
     }

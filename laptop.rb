@@ -36,5 +36,6 @@ dep 'laptop' do
   requires 'intellij'
   requires 'omnigraffle'
   requires 'sizeup'
+  requires 'terminal'
   requires 'zsh'
 end

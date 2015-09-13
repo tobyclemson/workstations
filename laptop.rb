@@ -1,6 +1,6 @@
 parse = ->(line) {
   name, provide_name, require_name = line.strip.split(':')
-  
+
   dep_builder = ->(type) do
     dep "#{name}.#{type}" do
       provides provide_name if provide_name
@@ -30,4 +30,5 @@ dep 'laptop' do
   requires 'zsh'
   requires 'alfred'
   requires 'emacs'
+  requires 'intellij'
 end

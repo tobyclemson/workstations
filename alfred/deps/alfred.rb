@@ -21,7 +21,14 @@ dep 'alfred license file.plist' do
   ]
 end
 
+dep 'alfred.loginitem' do
+  name "Alfred 2"
+  hidden false
+  path shell("readlink '#{'~/Applications/Alfred 2.app'.p.cleanpath}'")
+end
+
 dep 'alfred' do
   requires 'alfred.cask'
   requires 'alfred license file.plist'
+  requires 'alfred.loginitem'
 end

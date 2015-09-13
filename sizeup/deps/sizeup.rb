@@ -10,19 +10,14 @@ dep 'sizeup license.file' do
   target '~/Library/Application Support/SizeUp/SizeUp.sizeuplicense'
 end
 
-dep 'sizeup start at login', :for => :osx do
-  met? {
-    shell("osascript -e 'tell application \"System Events\" to get every login item whose name is \"SizeUp\"'") =~ /SizeUp/
-  }
-
-  meet {
-    shell("osascript -e 'tell application \"System Events\" to make login item at end with properties {path:\"/opt/homebrew-cask/Caskroom/sizeup/latest/SizeUp.app\", hidden:false, name:\"SizeUp\"}'
-")
-  }
+dep 'sizeup.loginitem' do
+  name "SizeUp"
+  hidden false
+  path "/opt/homebrew-cask/Caskroom/sizeup/latest/SizeUp.app"
 end
 
 dep 'sizeup' do
   requires 'sizeup.cask'
   requires 'sizeup license.file'
-  requires 'sizeup start at login'
+  requires 'sizeup.loginitem'
 end

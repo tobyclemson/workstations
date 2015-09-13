@@ -10,11 +10,11 @@ meta "file" do
   template {
     met? {
       target.p.exist? &&
-        shell("md5 -q #{target}") == shell("md5", input: resolved_content)
+        shell("md5 -q '#{target.p.cleanpath}'") == shell("md5", input: resolved_content)
     }
 
     meet {
-      shell("cat > #{target}", input: resolved_content)
+      shell("cat > '#{target.p.cleanpath}'", input: resolved_content)
     }
   }
 end

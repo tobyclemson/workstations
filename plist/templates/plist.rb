@@ -38,8 +38,8 @@ meta :plist do
       "#{plistbuddy} -c \"Delete #{path}\" \"#{resolve(target)}\""
     end
 
-    def entry_checksum path, target
-      "#{plistbuddy} -c \"Print #{path}\" \"#{resolve(target)}\" | md5"
+    def entry_checksum path, target, as_xml = false
+      "#{plistbuddy} #{as_xml ? '-x ': ''}-c \"Print #{path}\" \"#{resolve(target)}\" | md5"
     end
 
     def value_checksum value
@@ -56,9 +56,9 @@ meta :plist do
 
     met? {
       entries.all? do |entry|
-        left_command = entry_checksum(check_path(entry), target)
+        left_command = entry_checksum(check_path(entry), target, (entry[:type] == 'hash-entry'))
         right_command = (entry[:type] == 'hash-entry') ?
-                          entry_checksum(entry[:key_path], entry[:file]) :
+                          entry_checksum(entry[:key_path], entry[:file], true) :
                           value_checksum(entry[:value])
 
         shell?(check_exists(check_path(entry), target)) &&
@@ -68,9 +68,9 @@ meta :plist do
 
     meet {
       entries.each do |entry|
-        left_command = entry_checksum(check_path(entry), target)
+        left_command = entry_checksum(check_path(entry), target, (entry[:type] == 'hash-entry'))
         right_command = (entry[:type] == 'hash-entry') ?
-                          entry_checksum(entry[:key_path], entry[:file]) :
+                          entry_checksum(entry[:key_path], entry[:file], true) :
                           value_checksum(entry[:value])
 
         if entry[:type] == 'hash-entry'

@@ -14,7 +14,6 @@ dep 'name.gitconfig' do
 end
 
 dep 'github ssh access', :github_username, :github_password do
-  requires 'computer name'
   requires 'ssh key'
 
   def github_api
@@ -40,7 +39,7 @@ dep 'github ssh access', :github_username, :github_password do
     auth = "#{github_username}:#{github_password}"
     args = "{\"title\": \"#{hostname}\", \"key\": \"#{public_key}\"}"
 
-    shell "curl -u '#{auth}' -d '#{args}' #{github_api}/user/keys"
+    shell "curl -X POST -u '#{auth}' -d '#{args}' #{github_api}/user/keys"
   }
 end
 

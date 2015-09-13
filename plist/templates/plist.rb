@@ -11,13 +11,6 @@ meta :plist do
       target.p.cleanpath
     end
 
-    def check_path entry
-      case entry[:type]
-      when 'hash-entry' then "#{entry[:hash_path]}#{entry[:key_path]}"
-      else entry[:path]
-      end
-    end
-
     def plistbuddy
       '/usr/libexec/PlistBuddy'
     end
@@ -50,38 +43,44 @@ meta :plist do
       "#{plistbuddy} -c \"Print #{path}\" \"#{resolve(target)}\" 2>&1 | grep -vq 'Does Not Exist'"
     end
 
-    def check_equal left_command, right_command
-      "bash -c \"[ \\\"$(#{left_command})\\\" == \\\"$(#{right_command})\\\" ]\""
+    def check_equal left, right
+      "bash -c \"[ \\\"$(#{left})\\\" == \\\"$(#{right})\\\" ]\""
+    end
+
+    def actual_path_for entry
+      (entry[:type] == 'hash-entry') ?
+        "#{entry[:hash_path]}#{entry[:key_path]}" :
+        entry[:path]
+    end
+
+    def actual_checksum_for entry
+      entry_checksum(actual_path_for(entry), target, (entry[:type] == 'hash-entry'))
+    end
+
+    def expected_checksum_for entry
+      (entry[:type] == 'hash-entry') ?
+        entry_checksum(entry[:key_path], entry[:file], true) :
+        value_checksum(entry[:value])
     end
 
     met? {
       entries.all? do |entry|
-        left_command = entry_checksum(check_path(entry), target, (entry[:type] == 'hash-entry'))
-        right_command = (entry[:type] == 'hash-entry') ?
-                          entry_checksum(entry[:key_path], entry[:file], true) :
-                          value_checksum(entry[:value])
-
-        shell?(check_exists(check_path(entry), target)) &&
-          shell?(check_equal(left_command, right_command))
+        shell?(check_exists(actual_path_for(entry), target)) &&
+          shell?(check_equal(actual_checksum_for(entry), expected_checksum_for(entry)))
       end
     }
 
     meet {
       entries.each do |entry|
-        left_command = entry_checksum(check_path(entry), target, (entry[:type] == 'hash-entry'))
-        right_command = (entry[:type] == 'hash-entry') ?
-                          entry_checksum(entry[:key_path], entry[:file], true) :
-                          value_checksum(entry[:value])
-
         if entry[:type] == 'hash-entry'
-          unless shell?(check_exists(check_path(entry), target)) &&
-                 shell?(check_equal(left_command, right_command))
-            shell(delete_entry(check_path(entry), target))
+          unless shell?(check_exists(actual_path_for(entry), target)) &&
+                 shell?(check_equal(actual_checksum_for(entry), expected_checksum_for(entry)))
+            shell(delete_entry(actual_path_for(entry), target))
             shell(merge_entry(entry[:hash_path], entry[:file], target))
           end
         else
           shell(add_entry(entry[:path], entry[:type], target)) unless shell?(check_exists(entry[:path], target))
-          shell(set_entry(entry[:path], entry[:value], target)) unless shell?(check_equal(left_command, right_command))
+          shell(set_entry(entry[:path], entry[:value], target)) unless shell?(check_equal(actual, expected))
         end
       end
     }

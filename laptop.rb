@@ -26,6 +26,8 @@ dep 'laptop' do
   requires 'quicklook plugins'
   requires 'computer name'.with('falkor', 'falkor')
 
+  requires 'git config'
+
   requires '1password'
   requires 'alfred'
   requires 'compulsion'

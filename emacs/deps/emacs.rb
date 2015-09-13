@@ -13,6 +13,8 @@ dep 'prelude' do
 end
 
 dep 'prelude-personal.repo' do
+  requires 'git config'
+
   source 'git@github.com:tobyclemson/prelude-personal'
   path '~/.prelude-personal'
 end

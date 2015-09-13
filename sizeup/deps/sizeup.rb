@@ -12,7 +12,7 @@ end
 
 dep 'sizeup start at login', :for => :osx do
   met? {
-    shell("osascript -e 'tell application \"System Events\" to get every login item whose name is \"SizeUp\"'") =~ "SizeUp"
+    shell("osascript -e 'tell application \"System Events\" to get every login item whose name is \"SizeUp\"'") =~ /SizeUp/
   }
 
   meet {

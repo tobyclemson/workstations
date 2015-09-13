@@ -5,7 +5,7 @@ dep 'alfred license file.plist' do
   def license_code
     GpgHelper.decrypt('alfred/files/license.gpg')
   end
-  
+
   target "~/Library/Application Support/Alfred 2/license.plist"
   entries [
     {

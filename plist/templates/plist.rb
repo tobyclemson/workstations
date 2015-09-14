@@ -81,7 +81,7 @@ meta :plist do
         if is_hash_entry(entry)
           unless shell?(check_exists(actual_path_for(entry), target)) &&
                  shell?(check_equal(actual_checksum_for(entry), expected_checksum_for(entry)))
-            shell(delete_entry(actual_path_for(entry), target))
+            shell(delete_entry(actual_path_for(entry), target)) if shell?(check_exists(actual_path_for(entry), target))
             shell(merge_entry(entry[:hash_path], entry[:file], target))
           end
         else

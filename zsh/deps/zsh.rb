@@ -1,7 +1,11 @@
-dep 'zsh as shell', :username do
+dep 'zsh.shell' do
+  requires 'zsh.managed'
+end
+
+dep 'zsh as default shell', :username do
   username.default!(shell('whoami'))
 
-  requires 'zsh.managed', 'zshenv fixed'
+  requires 'zsh.managed', 'zshenv fixed', 'zsh.shell'
 
   met? { shell("sudo su - '#{username}' -c 'echo $SHELL'") == which('zsh') }
   meet { sudo("chsh -s '#{which('zsh')}' #{username}") }
@@ -34,7 +38,7 @@ dep 'default zsh theme.file' do
 end
 
 dep 'zsh' do
-  requires 'zsh as shell'
+  requires 'zsh as default shell'
   requires 'oh my zsh.repo'
   requires 'zshrc.file'
   requires 'default zsh theme.file'

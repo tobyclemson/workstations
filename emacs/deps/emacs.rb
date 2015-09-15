@@ -12,7 +12,7 @@ dep 'prelude' do
   }
 end
 
-dep 'prelude-personal.repo' do
+dep 'prelude-personal-installed.repo' do
   requires 'git config'
 
   source 'git@github.com:tobyclemson/prelude-personal'
@@ -89,6 +89,6 @@ dep 'emacs' do
   requires 'emacs.managed'
   requires 'emacs.cask'
   requires 'prelude'
-  requires 'prelude-personal.repo'
+  requires 'prelude-personal-installed.repo'
   requires 'prelude-personal-links'
 end

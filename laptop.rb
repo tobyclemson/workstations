@@ -22,12 +22,13 @@ dep 'laptop' do
   brews.each { |name, _| requires "#{name}.managed" }
   casks.each { |name, _| requires "#{name}.cask" }
 
+  requires 'git config'
+
   requires 'all settings'
   requires 'all fonts'
+  requires 'all projects'
   requires 'quicklook plugins'
   requires 'computer name'.with('falkor', 'falkor')
-
-  requires 'git config'
 
   requires '1password'
   requires 'alfred'

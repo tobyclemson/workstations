@@ -1,15 +1,11 @@
-dep 'karabiner repeat wait' do
-  requires 'karabiner.cask'
+dep 'karabiner repeat wait.karabinersetting' do
+  setting 'repeat.wait'
+  value '10'
+end
 
-  karabiner = '/Applications/Karabiner.app/Contents/Library/bin/karabiner'
-
-  met? {
-    shell("#{karabiner} changed | grep repeat.wait | cut -d '=' -f 2") == '10'
-  }
-
-  meet {
-    shell("#{karabiner} set repeat.wait 10")
-  }
+dep 'karabiner repeat initial wait.karabinersetting' do
+  setting 'repeat.initial_wait'
+  value '50'
 end
 
 dep 'karabiner.loginitem' do
@@ -23,5 +19,6 @@ end
 dep 'karabiner' do
   requires 'karabiner.cask'
   requires 'karabiner.loginitem'
-  requires 'karabiner repeat wait'
+  requires 'karabiner repeat wait.karabinersetting'
+  requires 'karabiner repeat initial wait.karabinersetting'
 end

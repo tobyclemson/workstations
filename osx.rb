@@ -431,6 +431,10 @@ dep 'hot corner settings' do
   requires 'bottom right no modifier.defaults'
   requires 'bottom left sleep hot corner.defaults'
   requires 'bottom left no modifier.defaults'
+
+  after {
+    shell 'killall -HUP Dock'
+  }
 end
 
 dep 'all settings' do

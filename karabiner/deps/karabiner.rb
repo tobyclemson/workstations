@@ -8,6 +8,11 @@ dep 'karabiner repeat initial wait.karabinersetting' do
   value '50'
 end
 
+dep 'karabiner remap uk keyboard to sane layout.karabinertoggle' do
+  setting 'remap.uk_saneuklayout'
+  enabled true
+end
+
 dep 'karabiner.loginitem' do
   requires 'karabiner.cask'
 
@@ -21,4 +26,5 @@ dep 'karabiner' do
   requires 'karabiner.loginitem'
   requires 'karabiner repeat wait.karabinersetting'
   requires 'karabiner repeat initial wait.karabinersetting'
+  requires 'karabiner remap uk keyboard to sane layout.karabinertoggle'
 end

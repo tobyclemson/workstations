@@ -194,6 +194,54 @@ dep 'time machine autobackup.defaults' do
   value false
 end
 
+dep 'top right application windows hot corner.defaults' do
+  domain 'com.apple.dock'
+  key 'wvous-tr-corner'
+  value 3
+end
+
+dep 'top right no modifier.defaults' do
+  domain 'com.apple.dock'
+  key 'wvous-tr-modifier'
+  value 0
+end
+
+dep 'top left mission control hot corner.defaults' do
+  domain 'com.apple.dock'
+  key 'wvous-tl-corner'
+  value 2
+end
+
+dep 'top left no modifier.defaults' do
+  domain 'com.apple.dock'
+  key 'wvous-tl-modifier'
+  value 0
+end
+
+dep 'bottom right desktop hot corner.defaults' do
+  domain 'com.apple.dock'
+  key 'wvous-br-corner'
+  value 4
+end
+
+dep 'bottom right no modifier.defaults' do
+  domain 'com.apple.dock'
+  key 'wvous-br-modifier'
+  value 0
+end
+
+dep 'bottom left sleep hot corner.defaults' do
+  domain 'com.apple.dock'
+  key 'wvous-bl-corner'
+  value 10
+end
+
+dep 'bottom left no modifier.defaults' do
+  domain 'com.apple.dock'
+  key 'wvous-bl-modifier'
+  value 0
+end
+
 dep 'capslock to ctrl' do
   def vendor_and_product_id
     keyboard_info = shell("ioreg -n IOHIDKeyboard -r")
@@ -234,7 +282,7 @@ end
 dep 'computer name', :computer_name, :local_hostname, :for => :osx do
   computer_name.ask("OS X Computer Name").default(shell('scutil --get ComputerName'))
   local_hostname.ask("OS X Local Hostname").default(computer_name.to_s.downcase.gsub(' ', '-'))
-  
+
   met? {
     shell('scutil --get ComputerName') == computer_name &&
       shell('scutil --get HostName') == computer_name &&
@@ -374,10 +422,22 @@ dep 'quicklook settings' do
   requires 'quicklook copy.defaults'
 end
 
+dep 'hot corner settings' do
+  requires 'top right application windows hot corner.defaults'
+  requires 'top right no modifier.defaults'
+  requires 'top left mission control hot corner.defaults'
+  requires 'top left no modifier.defaults'
+  requires 'bottom right desktop hot corner.defaults'
+  requires 'bottom right no modifier.defaults'
+  requires 'bottom left sleep hot corner.defaults'
+  requires 'bottom left no modifier.defaults'
+end
+
 dep 'all settings' do
   requires 'osx settings'
   requires 'finder settings'
   requires 'dock settings'
   requires 'quicklook settings'
   requires 'power settings'
+  requires 'hot corner settings'
 end

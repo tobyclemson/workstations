@@ -13,7 +13,7 @@ dep 'karabiner.loginitem' do
 
   name "Karabiner"
   hidden false
-  path shell("/Applications/Karabiner.app")
+  path "/Applications/Karabiner.app"
 end
 
 dep 'karabiner' do

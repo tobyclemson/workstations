@@ -305,13 +305,13 @@ end
 
 dep 'ac display sleep delay.power', :for => :osx do
   type :ac
-  property 'sleep'
+  property 'displaysleep'
   value '10'
 end
 
 dep 'ac disk sleep delay.power', :for => :osx do
   type :ac
-  property 'sleep'
+  property 'disksleep'
   value '10'
 end
 
@@ -335,13 +335,13 @@ end
 
 dep 'battery display sleep delay.power', :for => :osx do
   type :battery
-  property 'sleep'
+  property 'displaysleep'
   value '5'
 end
 
 dep 'battery disk sleep delay.power', :for => :osx do
   type :battery
-  property 'sleep'
+  property 'disksleep'
   value '5'
 end
 

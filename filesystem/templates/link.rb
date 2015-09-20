@@ -1,6 +1,7 @@
 meta "link" do
   accepts_value_for :source
   accepts_value_for :target
+  accepts_value_for :use_sudo
 
   template {
     met? {
@@ -8,7 +9,7 @@ meta "link" do
     }
 
     meet {
-      shell("ln -s \"#{target.p.cleanpath}\" \"#{source.p.cleanpath}\"")
+      shell("ln -s \"#{target.p.cleanpath}\" \"#{source.p.cleanpath}\"", :sudo => use_sudo)
     }
   }
 end

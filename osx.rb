@@ -74,6 +74,30 @@ dep 'key repeat delay.defaults' do
   value 10
 end
 
+dep 'external trackpad tap to click.defaults' do
+  domain 'com.apple.driver.AppleBluetoothMultitouch.trackpad'
+  key 'Clicking'
+  value true
+end
+
+dep 'internal trackpad local tap to click.defaults' do
+  domain 'NSGlobalDomain'
+  current_host true
+  key 'com.apple.mouse.tapBehavior'
+  value 1
+end
+
+dep 'internal trackpad global tap to click.defaults' do
+  domain 'NSGlobalDomain'
+  key 'com.apple.mouse.tapBehavior'
+  value 1
+end
+
+dep 'internal trackpad tap to click defaults' do
+  requires 'internal trackpad local tap to click.defaults'
+  requires 'internal trackpad global tap to click.defaults'
+end
+
 dep 'expanded save panel.defaults' do
   domain 'NSGlobalDomain'
   key 'NSNavPanelExpandedStateForSaveMode'
@@ -98,7 +122,7 @@ dep 'expanded new print panel.defaults' do
   value true
 end
 
-dep 'no launch warnings.defaults' do
+dep 'launch warnings.defaults' do
   domain 'com.apple.LaunchServices'
   key 'LSQuarantine'
   value false
@@ -545,31 +569,36 @@ dep "power settings" do
   requires 'battery wake on lid open.power'
 end
 
+dep "input device settings" do
+  requires 'key repeat rate.defaults'
+  requires 'key repeat delay.defaults'
+  requires 'press and hold.defaults'
+  requires 'capslock to ctrl'
+  requires 'internal trackpad tap to click defaults'
+  requires 'external trackpad tap to click.defaults'
+end
+
 dep 'osx settings' do
   requires 'full disk encryption'
   requires 'full keyboard access.defaults'
-  requires 'key repeat rate.defaults'
-  requires 'key repeat delay.defaults'
   requires 'expanded save panel.defaults'
   requires 'expanded new save panel.defaults'
   requires 'expanded print panel.defaults'
   requires 'expanded new print panel.defaults'
   requires 'printer app completion action.defaults'
   requires 'software update check.defaults'
-  requires 'press and hold.defaults'
   requires 'auto-correct.defaults'
   requires 'smart quotes.defaults'
   requires 'smart dashes.defaults'
   requires 'window resize speed.defaults'
   requires 'volume change feedback.defaults'
   requires 'file extension visibility.defaults'
-  requires 'capslock to ctrl'
   requires 'user library visibility'
   requires 'password on wake required.defaults'
   requires 'password on wake delay.defaults'
   requires 'dashboard widgets.defaults'
   requires 'network .DS_Store.defaults'
-  requires 'no launch warnings.defaults'
+  requires 'launch warnings.defaults'
   requires 'screencapture location.defaults'
   requires 'time machine autobackup.defaults'
 
@@ -625,6 +654,7 @@ end
 
 dep 'all settings' do
   requires 'osx settings'
+  requires 'input device settings'
   requires 'finder settings'
   requires 'dock settings'
   requires 'quicklook settings'

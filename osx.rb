@@ -399,7 +399,7 @@ dep 'screensaver token removal action.defaults', :for => :osx do
 end
 
 dep 'screensaver path.plist', :for => :osx do
-  path shell("ls ~/Library/Preferences/ByHost/com.apple.screensaver.*")
+  target shell("ls ~/Library/Preferences/ByHost/com.apple.screensaver.*")
   entries [
     {
       :path => ":'moduleDict':'path'",
@@ -410,7 +410,7 @@ dep 'screensaver path.plist', :for => :osx do
 end
 
 dep 'screensaver type.plist', :for => :osx do
-  path shell("ls ~/Library/Preferences/ByHost/com.apple.screensaver.*")
+  target shell("ls ~/Library/Preferences/ByHost/com.apple.screensaver.*")
   entries [
     {
       :path => ":'moduleDict':'type'",

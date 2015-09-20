@@ -547,6 +547,15 @@ dep 'wallpaper.link', :for => :osx do
   }
 end
 
+dep 'user picture', :for => :osx do
+  met? {
+    shell('dscl . read /Users/`whoami` Picture').include?("/Library/User Pictures/Fun/Chalk.tif")
+  }
+  meet {
+    shell('dscl . create /Users/`whoami` Picture \"/Library/User Pictures/Fun/Chalk.tif\"', :sudo => true)
+  }
+end
+
 dep 'menuitems.defaults', :for => :osx do
   domain 'com.apple.systemuiserver'
   key 'menuExtras'
@@ -561,8 +570,9 @@ dep 'menuitems.defaults', :for => :osx do
   ]
 end
 
-dep 'wallpaper settings' do
+dep 'personalisation settings' do
   requires 'wallpaper.link'
+  requires 'user picture'
 end
 
 dep 'screensaver settings' do
@@ -704,5 +714,5 @@ dep 'all settings' do
   requires 'menuitem settings'
   requires 'hot corner settings'
   requires 'screensaver settings'
-  requires 'wallpaper settings'
+  requires 'personalisation settings'
 end

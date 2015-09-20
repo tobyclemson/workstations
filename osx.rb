@@ -469,7 +469,7 @@ dep 'screensaver settings' do
   requires 'screensaver prefs version.defaults'
   requires 'screensaver idle time.defaults'
   requires 'screensaver show clock.defaults'
-  requires 'screensaver token removal action.defaults.defaults'
+  requires 'screensaver token removal action.defaults'
   requires 'screensaver path.plist'
   requires 'screensaver type.plist'
   requires 'screensaver style.defaults'

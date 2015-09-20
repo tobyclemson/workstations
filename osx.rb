@@ -80,9 +80,21 @@ dep 'expanded save panel.defaults' do
   value true
 end
 
+dep 'expanded new save panel.defaults' do
+  domain 'NSGlobalDomain'
+  key 'NSNavPanelExpandedStateForSaveMode2'
+  value true
+end
+
 dep 'expanded print panel.defaults' do
   domain 'NSGlobalDomain'
   key 'PMPrintingExpandedStateForPrint'
+  value true
+end
+
+dep 'expanded new print panel.defaults' do
+  domain 'NSGlobalDomain'
+  key 'PMPrintingExpandedStateForPrint2'
   value true
 end
 
@@ -90,6 +102,18 @@ dep 'no launch warnings.defaults' do
   domain 'com.apple.LaunchServices'
   key 'LSQuarantine'
   value false
+end
+
+dep 'quit printer app once complete.defaults' do
+  domain 'com.apple.print.PrintingPrefs'
+  key 'Quit When Finished'
+  value true
+end
+
+dep 'daily software update checks.defaults' do
+  domain 'com.apple.SoftwareUpdate'
+  key 'ScheduleFrequency'
+  value 1
 end
 
 dep 'press and hold.defaults' do
@@ -527,7 +551,11 @@ dep 'osx settings' do
   requires 'key repeat rate.defaults'
   requires 'key repeat delay.defaults'
   requires 'expanded save panel.defaults'
+  requires 'expanded new save panel.defaults'
   requires 'expanded print panel.defaults'
+  requires 'expanded new print panel.defaults'
+  requires 'quit printer app once complete.defaults'
+  requires 'daily software update checks.defaults'
   requires 'press and hold.defaults'
   requires 'auto-correct.defaults'
   requires 'smart quotes.defaults'

@@ -357,7 +357,7 @@ dep 'screensaver ask for password.defaults', :for => osx do
   value true
 end
 
-dep 'screensaver ask for password delay.defaults', :for => osx do
+dep 'screensaver ask for password delay.defaults', :for => :osx do
   domain 'com.apple.screensaver'
   key 'askForPasswordDelay'
   value 0

@@ -361,8 +361,7 @@ dep 'menuitems.defaults', :for => :osx do
     "/System/Library/CoreServices/Menu Extras/Volume.menu",
     "/System/Library/CoreServices/Menu Extras/AirPort.menu",
     "/System/Library/CoreServices/Menu Extras/Battery.menu",
-    "/System/Library/CoreServices/Menu Extras/Clock.menu",
-    "/System/Library/CoreServices/Menu Extras/User.menu"
+    "/System/Library/CoreServices/Menu Extras/Clock.menu"
   ]
 end
 

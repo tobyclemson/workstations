@@ -13,6 +13,16 @@ dep 'karabiner remap uk keyboard to sane layout.karabinertoggle' do
   enabled true
 end
 
+dep 'karabiner remap Fn-FN to functional.karabinertoggle' do
+  setting 'remap.fnF1_F12_to_functional'
+  enabled true
+end
+
+dep 'karabiner remap FN to plain FN.karabinertoggle' do
+  setting 'remap.functional2fn_2008'
+  enabled true
+end
+
 dep 'karabiner.loginitem' do
   requires 'karabiner.cask'
 

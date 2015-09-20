@@ -6,6 +6,8 @@ meta "defaults" do
   template {
     def read_value
       case value
+      when Array
+        ["(\n", value.map { |e| "    #{e}" }.join(",\n"), "\n", ")\n"].flatten.join
       when true
         "1"
       when false
@@ -16,6 +18,7 @@ meta "defaults" do
     end
 
     def type
+      return "array" if value.is_a? Array
       return "bool"  if [true, false].include? value
       return "int"   if value.is_a? Integer
       return "float" if value.is_a? Float
@@ -23,7 +26,12 @@ meta "defaults" do
     end
 
     def write_value
-      value.to_s.include?(" ") ? "'#{value.to_s}'" : value.to_s
+      case value
+      when Array
+        "'(#{value.join(',')})'"
+      else
+        value.to_s.include?(" ") ? "'#{value.to_s}'" : value.to_s
+      end
     end
 
     met? { `defaults read #{domain} #{key}`.strip == read_value }

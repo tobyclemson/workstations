@@ -351,47 +351,23 @@ dep 'battery wake on lid open.power', :for => :osx do
   value '1'
 end
 
-dep 'bluetooth.menuitem', :for => :osx do
-  menuitem "/System/Library/CoreServices/Menu Extras/Bluetooth.menu"
-end
-
-dep 'airport.menuitem', :for => :osx do
-  menuitem "/System/Library/CoreServices/Menu Extras/AirPort.menu"
-end
-
-dep 'battery.menuitem', :for => :osx do
-  menuitem "/System/Library/CoreServices/Menu Extras/Battery.menu"
-end
-
-dep 'clock.menuitem', :for => :osx do
-  menuitem "/System/Library/CoreServices/Menu Extras/Clock.menu"
-end
-
-dep 'timemachine.menuitem', :for => :osx do
-  menuitem "/System/Library/CoreServices/Menu Extras/TimeMachine.menu"
-end
-
-dep 'user.menuitem', :for => :osx do
-  menuitem "/System/Library/CoreServices/Menu Extras/User.menu"
-end
-
-dep 'volume.menuitem', :for => :osx do
-  menuitem "/System/Library/CoreServices/Menu Extras/Volume.menu"
-end
-
-dep 'keychain.menuitem', :for => :osx do
-  menuitem "/Applications/Utilities/Keychain Access.app/Contents/Resources/Keychain.menu"
+dep 'menuitems.defaults', :for => :osx do
+  domain 'com.apple.systemuiserver'
+  key 'menuExtras'
+  value [
+    "/Applications/Utilities/Keychain Access.app/Contents/Resources/Keychain.menu",
+    "/System/Library/CoreServices/Menu Extras/TimeMachine.menu",
+    "/System/Library/CoreServices/Menu Extras/Bluetooth.menu",
+    "/System/Library/CoreServices/Menu Extras/Volume.menu",
+    "/System/Library/CoreServices/Menu Extras/AirPort.menu",
+    "/System/Library/CoreServices/Menu Extras/Battery.menu",
+    "/System/Library/CoreServices/Menu Extras/Clock.menu",
+    "/System/Library/CoreServices/Menu Extras/User.menu"
+  ]
 end
 
 dep "menuitem settings" do
-  requires 'bluetooth.menuitem'
-  requires 'airport.menuitem'
-  requires 'battery.menuitem'
-  requires 'clock.menuitem'
-  requires 'timemachine.menuitem'
-  requires 'user.menuitem'
-  requires 'volume.menuitem'
-  requires 'keychain.menuitem'
+  requires 'menuitems.defaults'
 
   after {
     shell 'killall -HUP SystemUIServer'

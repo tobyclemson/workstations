@@ -392,6 +392,10 @@ dep "menuitem settings" do
   requires 'user.menuitem'
   requires 'volume.menuitem'
   requires 'keychain.menuitem'
+
+  after {
+    shell 'killall -HUP SystemUIServer'
+  }
 end
 
 dep "power settings" do

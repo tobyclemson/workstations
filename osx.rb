@@ -1,6 +1,6 @@
 dep 'full disk encryption', :for => :osx do
   met? {
-    shell?('sudo fdesetup status').include? 'On'
+    shell?('fdesetup status').include? 'On'
   }
 
   meet {

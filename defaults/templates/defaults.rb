@@ -1,7 +1,7 @@
 meta "defaults" do
   accepts_value_for :domain
   accepts_value_for :key
-  accepts_value_for :value
+  accepts_list_for :value
 
   template {
     def read_value

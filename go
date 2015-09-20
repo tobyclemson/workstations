@@ -21,7 +21,7 @@ if [ -w "$INSTALL_ROOT" ]; then
 else
     echo "--> $INSTALL_ROOT is not writable, changing group to 'admin' and making writable by group..."
     sudo chgrp -R admin "$INSTALL_ROOT"
-    sudo chmod g+rwx "$INSTALL_ROOT"
+    sudo chmod -R g+rwx "$INSTALL_ROOT"
 fi
 
 echo "-> Checking for babushka..."

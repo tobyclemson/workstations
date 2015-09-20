@@ -104,13 +104,13 @@ dep 'no launch warnings.defaults' do
   value false
 end
 
-dep 'quit printer app once complete.defaults' do
+dep 'printer app completion action.defaults' do
   domain 'com.apple.print.PrintingPrefs'
   key 'Quit When Finished'
   value true
 end
 
-dep 'daily software update checks.defaults' do
+dep 'software update check.defaults' do
   domain 'com.apple.SoftwareUpdate'
   key 'ScheduleFrequency'
   value 1
@@ -554,8 +554,8 @@ dep 'osx settings' do
   requires 'expanded new save panel.defaults'
   requires 'expanded print panel.defaults'
   requires 'expanded new print panel.defaults'
-  requires 'quit printer app once complete.defaults'
-  requires 'daily software update checks.defaults'
+  requires 'printer app completion action.defaults'
+  requires 'software update check.defaults'
   requires 'press and hold.defaults'
   requires 'auto-correct.defaults'
   requires 'smart quotes.defaults'

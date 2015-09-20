@@ -351,6 +351,103 @@ dep 'battery wake on lid open.power', :for => :osx do
   value '1'
 end
 
+dep 'screensaver ask for password.defaults', :for => osx do
+  domain 'com.apple.screensaver'
+  key 'askForPassword'
+  value true
+end
+
+dep 'screensaver ask for password delay.defaults', :for => osx do
+  domain 'com.apple.screensaver'
+  key 'askForPasswordDelay'
+  value 0
+end
+
+dep 'screensaver clean exit.defaults', :for => :osx do
+  domain 'com.apple.screensaver'
+  current_host true
+  key 'CleanExit'
+  value 'YES'
+end
+
+dep 'screensaver prefs version.defaults', :for => :osx do
+  domain 'com.apple.screensaver'
+  current_host true
+  key 'PrefsVersion'
+  value 100
+end
+
+dep 'screensaver idle time.defaults', :for => :osx do
+  domain 'com.apple.screensaver'
+  current_host true
+  key 'idleTime'
+  value 300
+end
+
+dep 'screensaver show clock.defaults', :for => :osx do
+  domain 'com.apple.screensaver'
+  current_host true
+  key 'ShowClock'
+  value false
+end
+
+dep 'screensaver token removal action.defaults', :for => :osx do
+  domain 'com.apple.screensaver'
+  current_host true
+  key 'tokenRemovalAction'
+  value 0
+end
+
+dep 'screensaver path.plist', :for => :osx do
+  path shell("ls ~/Library/Preferences/ByHost/com.apple.screensaver.*")
+  entries [
+    {
+      :path => ":'moduleDict':'path'",
+      :type => 'string',
+      :value => '/System/Library/Frameworks/ScreenSaver.framework/Resources/iLifeSlideshows.saver'
+    }
+  ]
+end
+
+dep 'screensaver type.plist', :for => :osx do
+  path shell("ls ~/Library/Preferences/ByHost/com.apple.screensaver.*")
+  entries [
+    {
+      :path => ":'moduleDict':'type'",
+      :type => 'int',
+      :value => 0
+    }
+  ]
+end
+
+dep 'screensaver style.defaults', :for => :osx do
+  domain 'com.apple.ScreenSaver.iLifeSlideshows'
+  current_host true
+  key 'styleKey'
+  value 'Classic'
+end
+
+dep 'screensaver images.defaults', :for => :osx do
+  domain 'com.apple.ScreenSaverPhotoChooser'
+  current_host true
+  key 'SelectedFolderPath'
+  value '/Library/Screen Savers/Default Collections/3-Cosmos'
+end
+
+dep 'screensaver source.defaults', :for => :osx do
+  domain 'com.apple.ScreenSaverPhotoChooser'
+  current_host true
+  key 'SelectedSource'
+  value 3
+end
+
+dep 'screensaver shuffle.defaults', :for => :osx do
+  domain 'com.apple.ScreenSaverPhotoChooser'
+  current_host true
+  key 'ShufflesPhotos'
+  value true
+end
+
 dep 'menuitems.defaults', :for => :osx do
   domain 'com.apple.systemuiserver'
   key 'menuExtras'
@@ -363,6 +460,26 @@ dep 'menuitems.defaults', :for => :osx do
     "/System/Library/CoreServices/Menu Extras/Battery.menu",
     "/System/Library/CoreServices/Menu Extras/Clock.menu"
   ]
+end
+
+dep 'screensaver settings' do
+  requires 'screensaver ask for password.defaults'
+  requires 'screensaver ask for password delay.defaults'
+  requires 'screensaver clean exit.defaults'
+  requires 'screensaver prefs version.defaults'
+  requires 'screensaver idle time.defaults'
+  requires 'screensaver show clock.defaults'
+  requires 'screensaver token removal action.defaults.defaults'
+  requires 'screensaver path.plist'
+  requires 'screensaver type.plist'
+  requires 'screensaver style.defaults'
+  requires 'screensaver images.defaults'
+  requires 'screensaver source.defaults'
+  requires 'screensaver shuffle.defaults'
+
+  after {
+    shell('killall cfprefsd')
+  }
 end
 
 dep "menuitem settings" do
@@ -467,4 +584,5 @@ dep 'all settings' do
   requires 'power settings'
   requires 'menuitem settings'
   requires 'hot corner settings'
+  requires 'screensaver settings'
 end

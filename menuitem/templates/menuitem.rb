@@ -3,7 +3,7 @@ meta "menuitem" do
 
   template {
     met? {
-      shell("defaults read com.apple.systemuiserver menuExtras | grep \"#{menuitem}\"")
+      shell?("defaults read com.apple.systemuiserver menuExtras | grep \"#{menuitem}\"")
     }
 
     meet {

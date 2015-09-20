@@ -354,7 +354,7 @@ end
 dep 'menuitems.defaults', :for => :osx do
   domain 'com.apple.systemuiserver'
   key 'menuExtras'
-  value [
+  values [
     "/Applications/Utilities/Keychain Access.app/Contents/Resources/Keychain.menu",
     "/System/Library/CoreServices/Menu Extras/TimeMachine.menu",
     "/System/Library/CoreServices/Menu Extras/Bluetooth.menu",

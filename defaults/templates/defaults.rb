@@ -43,12 +43,12 @@ meta "defaults" do
     end
 
     met? {
-      `defaults #{current_host_switch} read #{domain} #{key}`.strip == read_value
+      `defaults #{current_host_switch} read #{domain} '#{key}'`.strip == read_value
     }
     meet {
       log_shell(
         "Setting #{domain} #{key} to #{write_value}",
-        "defaults #{current_host_switch} write #{domain} #{key} -#{type} #{write_value}"
+        "defaults #{current_host_switch} write #{domain} '#{key}' -#{type} #{write_value}"
       )
     }
   }

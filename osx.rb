@@ -351,7 +351,7 @@ dep 'battery wake on lid open.power', :for => :osx do
   value '1'
 end
 
-dep 'screensaver ask for password.defaults', :for => osx do
+dep 'screensaver ask for password.defaults', :for => :osx do
   domain 'com.apple.screensaver'
   key 'askForPassword'
   value true

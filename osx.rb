@@ -236,6 +236,42 @@ dep 'finder view.defaults' do
   value 'clmv'
 end
 
+dep 'finder target.defaults' do
+  domain 'com.apple.finder'
+  key 'NewWindowTarget'
+  value 'PfDe'
+end
+
+dep 'finder target path.defaults' do
+  domain 'com.apple.finder'
+  key 'NewWindowTargetPath'
+  value "file:///Users/#{shell("whoami")}/Desktop/"
+end
+
+dep 'finder external drives on desktop.defaults' do
+  domain 'com.apple.finder'
+  key 'ShowExternalHardDrivesOnDesktop'
+  value true
+end
+
+dep 'finder hard drives on desktop.defaults' do
+  domain 'com.apple.finder'
+  key 'ShowHardDrivesOnDesktop'
+  value true
+end
+
+dep 'finder mounted servers on desktop.defaults' do
+  domain 'com.apple.finder'
+  key 'ShowMountedServersOnDesktop'
+  value true
+end
+
+dep 'finder removable media on desktop.defaults' do
+  domain 'com.apple.finder'
+  key 'ShowRemovableMediaOnDesktop'
+  value true
+end
+
 dep 'time machine autobackup.defaults' do
   domain 'com.apple.TimeMachine'
   key 'AutoBackup'
@@ -616,6 +652,12 @@ dep 'finder settings' do
   requires 'finder status bar.defaults'
   requires 'finder path bar.defaults'
   requires 'finder view.defaults'
+  requires 'finder target.defaults'
+  requires 'finder target path.defaults'
+  requires 'finder external drives on desktop.defaults'
+  requires 'finder hard drives on desktop.defaults'
+  requires 'finder mounted servers on desktop.defaults'
+  requires 'finder removable media on desktop.defaults'
 
   after {
     shell 'killall -HUP Finder'

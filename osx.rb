@@ -572,7 +572,7 @@ end
 
 dep 'personalisation settings' do
   requires 'wallpaper.link'
-  requires 'user picture'
+  # requires 'user picture'
 end
 
 dep 'screensaver settings' do

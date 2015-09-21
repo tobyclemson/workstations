@@ -1,4 +1,5 @@
 ack
+ansible
 antlr:antlr4
 awscli:aws
 direnv

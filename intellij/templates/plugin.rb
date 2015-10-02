@@ -5,7 +5,6 @@ meta "intellijplugin" do
 
   template {
     requires_when_unmet 'curl.managed'
-    requires_when_unmet 'unzip.managed'
 
     met? {
       if type.to_sym == :zip

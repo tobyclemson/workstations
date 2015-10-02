@@ -6,11 +6,15 @@ meta "intellijplugin" do
   template {
     requires_when_unmet 'curl.managed'
 
+    def intellij_support_path
+      "~/Library/Application Support/IntelliJIdea14".p.cleanpath
+    end
+
     met? {
       if type.to_sym == :zip
-        "~/Library/Application Support/IntelliJIdea14/#{name}".p.exist?
+        "#{intellij_support_path}/#{name}".p.exist?
       elsif type.to_sym == :jar
-        "~/Library/Application Support/IntelliJIdea14/#{name}.jar".p.exist?
+        "#{intellij_support_path}/#{name}.jar".p.exist?
       else
         raise ArgumentError
       end
@@ -18,11 +22,11 @@ meta "intellijplugin" do
 
     meet {
       if type.to_sym == :zip
-        shell("curl #{url} -o ~/Library/Application\ Support/IntelliJIdea14/#{name}.zip")
-        shell("unzip ~/Library/Application\ Support/IntelliJIdea14/#{name}.zip -d ~/Library/Application\ Support/IntelliJIdea14/")
-        shell("rm ~/Library/Application\ Support/IntelliJIdea14/#{name}.zip")
+        shell("curl #{url} -o '#{intellij_support_path}/#{name}.zip'")
+        shell("unzip '#{intellij_support_path}/#{name}.zip' -d '#{intellij_support_path}'")
+        shell("rm  '#{intellij_support_path}/#{name}.zip'n")
       elsif type.to_sym == :jar
-        shell("curl #{url} -o ~/Library/Application\ Support/IntelliJIdea14/#{name}.jar")
+        shell("curl #{url} -o '#{intellij_support_path}/#{name}.jar'")
       else
         raise ArgumentError
       end

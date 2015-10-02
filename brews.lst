@@ -2,6 +2,7 @@ ack
 ansible
 antlr:antlr4
 awscli:aws
+curl
 direnv
 dpkg
 emacs
@@ -17,6 +18,7 @@ rpm
 ruby-build
 tmux
 tree
+unzip
 vim
 wget
 zsh

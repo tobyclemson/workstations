@@ -59,7 +59,7 @@ dep 'clojure.intellijplugin' do
   type :zip
 end
 
-dep 'anltr.intellijplugin' do
+dep 'antlr.intellijplugin' do
   name 'intellij-plugin-v4'
   url 'http://plugins.jetbrains.com/files/7358/20507/intellij-plugin-v4.zip'
   type :zip

@@ -47,7 +47,25 @@ dep 'markdown.intellijplugin' do
   type :zip
 end
 
-dep 'BashSupport.intellijplugin' do
+dep 'scala.intellijplugin' do
+  name 'scala'
+  url 'http://plugins.jetbrains.com/files/1347/21479/scala-intellij-bin-1.5.3.zip'
+  type :zip
+end
+
+dep 'clojure.intellijplugin' do
+  name 'clojure-plugin'
+  url 'http://plugins.jetbrains.com/files/4050/19265/clojure-intellij-bin-0.7.82.zip'
+  type :zip
+end
+
+dep 'anltr.intellijplugin' do
+  name 'intellij-plugin-v4'
+  url 'http://plugins.jetbrains.com/files/7358/20507/intellij-plugin-v4.zip'
+  type :zip
+end
+
+dep 'bash.intellijplugin' do
   name 'BashSupport'
   url 'http://plugins.jetbrains.com/files/4230/18873/BashSupport.jar'
   type :jar
@@ -59,7 +77,9 @@ dep 'intellij plugins' do
   requires 'python.intellijplugin'
   requires 'lombok.intellijplugin'
   requires 'markdown.intellijplugin'
-  requires 'BashSupport.intellijplugin'
+  requires 'bash.intellijplugin'
+  requires 'antlr.intellijplugin'
+  requires 'scala.intellijplugin'
 end
 
 dep 'intellij' do

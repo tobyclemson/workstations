@@ -18,7 +18,6 @@ rpm
 ruby-build
 tmux
 tree
-unzip
 vim
 wget
 zsh

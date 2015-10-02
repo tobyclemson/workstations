@@ -38,11 +38,11 @@ end
 dep 'lombok.intellijplugin' do
   name 'lombok'
   url 'http://plugins.jetbrains.com/files/6317/20465/lombok-plugin-0.9.6-14.jar'
-  type :zip
+  type :jar
 end
 
 dep 'markdown.intellijplugin' do
-  name 'markdown'
+  name 'idea-markdown'
   url 'http://plugins.jetbrains.com/files/5970/17320/idea-markdown.zip'
   type :zip
 end

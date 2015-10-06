@@ -13,6 +13,7 @@ git-crypt
 jq
 macvim:mvim
 openssl
+pip
 rbenv
 rpm
 ruby-build

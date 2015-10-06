@@ -48,7 +48,7 @@ dep 'markdown.intellijplugin' do
 end
 
 dep 'scala.intellijplugin' do
-  name 'scala'
+  name 'Scala'
   url 'http://plugins.jetbrains.com/files/1347/21479/scala-intellij-bin-1.5.3.zip'
   type :zip
 end

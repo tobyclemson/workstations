@@ -532,20 +532,21 @@ dep 'screensaver shuffle.defaults', :for => :osx do
   value true
 end
 
-dep 'wallpaper.link', :for => :osx do
-  source '/System/Library/CoreServices/DefaultDesktop.jpg'
-  target '/Library/Desktop Pictures/Death Valley.jpg'
-  use_sudo true
+# no longer works in El Capitan
+# dep 'wallpaper.link', :for => :osx do
+#   source '/System/Library/CoreServices/DefaultDesktop.jpg'
+#   target '/Library/Desktop Pictures/Death Valley.jpg'
+#   use_sudo true
 
-  before {
-    shell('rm -rf ~/Library/Application Support/Dock/desktoppicture.db')
-    shell('rm -rf /System/Library/CoreServices/DefaultDesktop.jpg', :sudo => true)
-  }
+#   before {
+#     shell('rm -rf ~/Library/Application Support/Dock/desktoppicture.db')
+#     shell('rm -rf /System/Library/CoreServices/DefaultDesktop.jpg', :sudo => true)
+#   }
 
-  after {
-    log('Restart required.')
-  }
-end
+#   after {
+#     log('Restart required.')
+#   }
+# end
 
 dep 'user picture', :for => :osx do
   met? {

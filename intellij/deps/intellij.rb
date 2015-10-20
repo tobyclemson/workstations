@@ -10,6 +10,11 @@ dep 'intellij license.file' do
   target '~/Library/Preferences/IntelliJIdea14/idea14.key'
 end
 
+dep 'intellij java file header.file' do
+  content ''
+  target '~/Library/Preferences/IntelliJIdea14/fileTemplates/includes/File\ Header.java'
+end
+
 dep 'intellij disabled plugins.file' do
   requires 'intellij-idea.cask'
 

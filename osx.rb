@@ -572,7 +572,7 @@ dep 'menuitems.defaults', :for => :osx do
 end
 
 dep 'personalisation settings' do
-  requires 'wallpaper.link'
+  # requires 'wallpaper.link'
   # requires 'user picture'
 end
 

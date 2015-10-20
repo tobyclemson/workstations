@@ -91,5 +91,6 @@ dep 'intellij' do
   requires 'intellij-idea.cask'
   requires 'intellij license.file'
   requires 'intellij disabled plugins.file'
+  requires 'intellij java file header.file'
   requires 'intellij plugins'
 end

@@ -13,7 +13,13 @@ end
 dep 'intellij vmoptions.file' do
   requires 'intellij-idea.cask'
   source "#{__FILE__.p.parent}/../files/idea.vmoptions"
-  target '~/Applications/IntelliJ IDEA 14.app/Contents/bin/idea.vmoptions'
+  target '~/Library/Preferences/IntelliJIdea14/idea.vmoptions'
+end
+
+dep 'intellij properties.file' do
+  requires 'intellij-idea.cask'
+  source "#{__FILE__.p.parent}/../files/idea.properties"
+  target '~/Library/Preferences/IntelliJIdea14/idea.properties'
 end
 
 dep 'intellij java file header.file' do
@@ -96,6 +102,7 @@ end
 dep 'intellij' do
   requires 'intellij-idea.cask'
   requires 'intellij vmoptions.file'
+  requires 'intellij properties.file'
   requires 'intellij license.file'
   requires 'intellij disabled plugins.file'
   requires 'intellij java file header.file'

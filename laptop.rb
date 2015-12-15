@@ -40,5 +40,6 @@ dep 'laptop' do
   requires 'omnigraffle'
   requires 'sizeup'
   requires 'terminal'
+  requires 'vagrant'
   requires 'zsh'
 end

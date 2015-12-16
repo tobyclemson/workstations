@@ -12,6 +12,7 @@ git
 git-crypt
 jq
 macvim:mvim
+nmap
 openssl
 python
 rbenv

@@ -7,7 +7,7 @@ meta "intellijplugin" do
     requires_when_unmet 'curl.managed'
 
     def intellij_support_path
-      "~/Library/Application Support/IntelliJIdea14".p.cleanpath
+      "~/Library/Application Support/IntelliJIdea15".p.cleanpath
     end
 
     met? {

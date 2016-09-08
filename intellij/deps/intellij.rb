@@ -7,31 +7,31 @@ dep 'intellij license.file' do
   end
 
   content license
-  target '~/Library/Preferences/IntelliJIdea14/idea14.key'
+  target '~/Library/Preferences/IntelliJIdea15/idea14.key'
 end
 
 dep 'intellij vmoptions.file' do
   requires 'intellij-idea.cask'
   source "#{__FILE__.p.parent}/../files/idea.vmoptions"
-  target '~/Library/Preferences/IntelliJIdea14/idea.vmoptions'
+  target '~/Library/Preferences/IntelliJIdea15/idea.vmoptions'
 end
 
 dep 'intellij properties.file' do
   requires 'intellij-idea.cask'
   source "#{__FILE__.p.parent}/../files/idea.properties"
-  target '~/Library/Preferences/IntelliJIdea14/idea.properties'
+  target '~/Library/Preferences/IntelliJIdea15/idea.properties'
 end
 
 dep 'intellij java file header.file' do
   content ''
-  target '~/Library/Preferences/IntelliJIdea14/fileTemplates/includes/File\ Header.java'
+  target '~/Library/Preferences/IntelliJIdea15/fileTemplates/includes/File\ Header.java'
 end
 
 dep 'intellij disabled plugins.file' do
   requires 'intellij-idea.cask'
 
   source "#{__FILE__.p.parent}/../files/disabled_plugins.txt"
-  target '~/Library/Preferences/IntelliJIdea14/disabled_plugins.txt'
+  target '~/Library/Preferences/IntelliJIdea15/disabled_plugins.txt'
 end
 
 dep 'ruby.intellijplugin' do

@@ -6,14 +6,9 @@ plugins=(ant autojump bundler brew emacs extract git gradle lein mvn osx rbenv r
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export MANPATH="/usr/local/man:$MANPATH"
+export EDITOR=vi
 
 source $ZSH/oh-my-zsh.sh
-
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='mvim'
-fi
 
 echo -e "Kernel Information: " `uname -smr`
 echo -e "`zsh --version`"

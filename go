@@ -4,10 +4,20 @@ set -e
 set -o pipefail
 
 INSTALL_ROOT="/usr/local"
+BIN_ROOT="${INSTALL_ROOT}/bin"
 BABUSHKA_ROOT="${INSTALL_ROOT}/babushka"
 
-
 echo "Converging workstation..."
+
+echo "-> Ensuring relevant parts of $INSTALL_ROOT exist, password may be required..."
+echo "--> Checking $BIN_ROOT..."
+if [ -d "$BIN_ROOT" ]; then
+    echo "--> $BIN_ROOT exists, continuing..."
+else
+    echo "--> $BIN_ROOT does not exist, creating..."
+    sudo mkdir "$BIN_ROOT"
+    sudo chown -R "$(whoami)" "$BIN_ROOT"
+fi
 
 echo "-> Ensuring $BABUSHKA_ROOT exists, password may be required..."
 if [ -d "$BABUSHKA_ROOT" ]; then

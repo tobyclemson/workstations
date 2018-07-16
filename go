@@ -8,21 +8,21 @@ INSTALL_ROOT="/usr/local"
 
 echo "Converging workstation..."
 
-echo "-> Ensuring $INSTALL_ROOT exists and is writable, password may be required..."
-if [ -d "$INSTALL_ROOT" ]; then
-    echo "--> $INSTALL_ROOT exists, continuing..."
-else
-    echo "--> Install root does not exist, creating..."
-    sudo mkdir "$INSTALL_ROOT"
-fi
-
-if [ -w "$INSTALL_ROOT" ]; then
-    echo "--> $INSTALL_ROOT is writable, continuing..."
-else
-    echo "--> $INSTALL_ROOT is not writable, changing group to 'admin' and making writable by group..."
-    sudo chgrp -R admin "$INSTALL_ROOT"
-    sudo chmod -R g+rwx "$INSTALL_ROOT"
-fi
+#echo "-> Ensuring $INSTALL_ROOT exists and is writable, password may be required..."
+#if [ -d "$INSTALL_ROOT" ]; then
+#    echo "--> $INSTALL_ROOT exists, continuing..."
+#else
+#    echo "--> Install root does not exist, creating..."
+#    sudo mkdir "$INSTALL_ROOT"
+#fi
+#
+#if [ -w "$INSTALL_ROOT" ]; then
+#    echo "--> $INSTALL_ROOT is writable, continuing..."
+#else
+#    echo "--> $INSTALL_ROOT is not writable, changing group to 'admin' and making writable by group..."
+#    sudo chgrp -R admin "$INSTALL_ROOT"
+#    sudo chmod -R g+rwx "$INSTALL_ROOT"
+#fi
 
 echo "-> Checking for babushka..."
 if  hash babushka 2>/dev/null; then

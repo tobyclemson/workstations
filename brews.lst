@@ -1,6 +1,4 @@
 ack
-ansible
-antlr:antlr4
 awscli:aws
 curl
 direnv
@@ -10,13 +8,15 @@ encfs:encfs:osxfuse.cask
 fish
 git
 git-crypt
+git-plus
+gnupg2
 jq
-macvim:mvim
 nmap
+nvm
 openssl
-python
+openvpn
+pyenv
 rbenv
-rpm
 ruby-build
 tmux
 tree

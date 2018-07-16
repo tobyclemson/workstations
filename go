@@ -4,17 +4,18 @@ set -e
 set -o pipefail
 
 INSTALL_ROOT="/usr/local"
+BABUSHKA_ROOT="${INSTALL_ROOT}/babushka"
 
 
 echo "Converging workstation..."
 
-#echo "-> Ensuring $INSTALL_ROOT exists and is writable, password may be required..."
-#if [ -d "$INSTALL_ROOT" ]; then
-#    echo "--> $INSTALL_ROOT exists, continuing..."
-#else
-#    echo "--> Install root does not exist, creating..."
-#    sudo mkdir "$INSTALL_ROOT"
-#fi
+echo "-> Ensuring $BABUSHKA_ROOT exists, password may be required..."
+if [ -d "$BABUSHKA_ROOT" ]; then
+    echo "--> $BABUSHKA_ROOT exists, continuing..."
+else
+    echo "--> Babushka root does not exist, creating..."
+    sudo mkdir "$BABUSHKA_ROOT"
+fi
 #
 #if [ -w "$INSTALL_ROOT" ]; then
 #    echo "--> $INSTALL_ROOT is writable, continuing..."

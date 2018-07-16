@@ -1,3 +1,5 @@
+require_relative '../helpers/cask_helper'
+
 # Installs a particular Homebrew Cask package
 #
 #   * installs: The list of cask names to install (optional, defaults

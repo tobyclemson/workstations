@@ -28,18 +28,17 @@ dep 'laptop' do
   requires 'all fonts'
   requires 'all projects'
   requires 'quicklook plugins'
-  requires 'computer name'.with('falkor', 'falkor')
 
   requires '1password'
   requires 'alfred'
   requires 'compulsion'
   requires 'dropbox'
   requires 'emacs'
-  requires 'intellij'
+  # requires 'intellij'
   requires 'karabiner'
   requires 'omnigraffle'
   requires 'sizeup'
   requires 'terminal'
-  requires 'vagrant'
+  # requires 'vagrant'
   requires 'zsh'
 end

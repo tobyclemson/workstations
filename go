@@ -14,7 +14,7 @@ if [ -d "$BABUSHKA_ROOT" ]; then
     echo "--> $BABUSHKA_ROOT exists, continuing..."
 else
     echo "--> Babushka root does not exist, creating..."
-    sudo mkdir "$BABUSHKA_ROOT"
+    mkdir "$BABUSHKA_ROOT"
 fi
 #
 #if [ -w "$INSTALL_ROOT" ]; then

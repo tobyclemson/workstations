@@ -11,6 +11,10 @@ class CaskHelper < Babushka::BrewHelper
       Babushka::BrewHelper.prefix
     end
 
+    def should_sudo?
+      false
+    end
+
     def all_versions_of pkg
       pkg_name = pkg.respond_to?(:name) ? pkg.name : pkg
       Dir[
@@ -64,11 +68,6 @@ class CaskHelper < Babushka::BrewHelper
       # Homebrew Cask packages get installed in the "caskroom"
       def installed_pkgs_path
         caskroom
-      end
-
-      # The path to Homebrew's "Taps" directory
-      def taps_path
-        prefix.p / 'Library' / 'Taps'
       end
 
       # The path where Cask formulae are kept

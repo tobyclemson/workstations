@@ -1,5 +1,4 @@
 meta :brew do
-  accepts_value_for :provides, :basename
   accepts_value_for :installs, :basename
   accepts_value_for :opts
 
@@ -7,7 +6,7 @@ meta :brew do
     requires Babushka::BrewHelper.manager_dep
 
     met? {
-      Babushka::BrewHelper.has?(provides)
+      Babushka::BrewHelper.has?(installs)
     }
 
     meet {

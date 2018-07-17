@@ -1,16 +1,5 @@
 dep "all fonts" do
-  requires "forza.otf",
-           "gothamc.otf",
-           "idlewild.otf",
-           "vitesse.otf",
-           "opensans.ttf",
-           "source sans.otf",
-           "sullivan.otf",
-           "crimson.otf",
-           "mensch.ttf",
-           "metropolis.otf",
-           "deconeue.ttf"
-
+  requires "source sans.otf"
 end
 
 dep "user font dir exists" do

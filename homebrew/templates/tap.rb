@@ -15,7 +15,7 @@ meta :tap do
     }
 
     meet {
-      log_block "Tapping Homebrew tap '#{tap_name}'" do
+      log_block "Tapping Homebrew tap '#{tap}'" do
         shell! 'brew', 'tap', tap.to_s
       end
     }

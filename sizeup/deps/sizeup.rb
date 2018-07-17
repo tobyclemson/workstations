@@ -1,6 +1,6 @@
 dep 'sizeup license.file' do
   requires 'sizeup.cask'
-  requires 'gpgtools.cask'
+  requires 'gnupg.brew'
 
   def license_plist
     GpgHelper.decrypt('sizeup/files/license.gpg')

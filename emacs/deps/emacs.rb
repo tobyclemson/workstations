@@ -20,8 +20,8 @@ dep 'prelude-personal-installed.repo' do
 end
 
 dep 'old-prelude-modules-cleanup' do
-  met? { File.symlink?('~/.emacs.d/prelude-modules.el') }
-  meet { File.delete('~/.emacs.d/prelude-modules.el') }
+  met? { !'~/.emacs.d/prelude-modules.el'.p.symlink? }
+  meet { '~/.emacs.d/prelude-modules.el'.p.delete }
 end
 
 dep 'prelude-modules.link' do

@@ -25,19 +25,19 @@ homebrew_dep_of_type = ->(type) {
 }
 
 brew_dep = homebrew_dep_of_type.('brew')
-# cask_dep = homebrew_dep_of_type.('cask')
+cask_dep = homebrew_dep_of_type.('cask')
 
 # taps = File.readlines(File.expand_path '../taps.lst', __FILE__).map(&parse)
 brews = File.readlines(File.expand_path '../brews.lst', __FILE__).map(&parse)
-# casks = File.readlines(File.expand_path '../casks.lst', __FILE__).map(&parse)
+casks = File.readlines(File.expand_path '../casks.lst', __FILE__).map(&parse)
 
 brews.each(&brew_dep)
-# casks.each(&cask_dep)
+casks.each(&cask_dep)
 
 dep 'laptop' do
   # taps.each {|tap| requires "homebrew tap".with(tap)}
   brews.each {|definition| requires "#{definition[:name]}.brew"}
-  # casks.each {|name, _| requires "#{name}.cask"}
+  casks.each {|definition| requires "#{definition[:name]}.cask"}
 
   # requires 'git config'
   #

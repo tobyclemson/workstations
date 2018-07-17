@@ -36,8 +36,8 @@ casks.each(&cask_dep)
 
 dep 'laptop' do
   # taps.each {|tap| requires "homebrew tap".with(tap)}
-  brews.each {|name, _| requires "#{name}.brew"}
-  casks.each {|name, _| requires "#{name}.cask"}
+  # brews.each {|name, _| requires "#{name}.brew"}
+  # casks.each {|name, _| requires "#{name}.cask"}
 
   # requires 'git config'
   #

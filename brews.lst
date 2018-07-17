@@ -17,6 +17,6 @@
 "rbenv"
 "tmux"
 "tree"
-"vim", options: ["with-override-system-vi"]
+"vim", options: ["--with-override-system-vi"]
 "wget"
 "zsh"

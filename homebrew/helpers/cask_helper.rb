@@ -1,28 +1,14 @@
-# A PkgHelper for managing Homebrew Cask packages
-# Copied from https://github.com/quad/osx/blob/master/homebrew/helpers/cask_helper.rb
 class CaskHelper < Babushka::BrewHelper
   class << self
+    def pkg_binary; 'brew' end
     def pkg_cmd; 'brew cask' end
-    def manager_dep; 'homebrew-cask' end
+    def manager_dep; 'homebrew' end
     def pkg_type; :cask end
     def manager_key; :cask end
-
-    # The default implementation uses "which pkg_binary" to check if
-    # this package manager is present. Since Homebrew Cask is an add-on
-    # to Homebrew, it's necessary to check if the relevant package is
-    # installed in Homebrew.
-    def present?
-      Babushka::BrewHelper.has? cask_package_name
-    end
 
     # Delegate prefix to Homebrew helper
     def prefix
       Babushka::BrewHelper.prefix
-    end
-
-    # The name of the Homebrew package to install Homebrew Cask itself
-    def cask_package_name
-      'brew-cask'
     end
 
     def all_versions_of pkg
@@ -34,23 +20,15 @@ class CaskHelper < Babushka::BrewHelper
       }.map(&:to_s)
     end
 
-    # The path where the brew-cask package has been installed
-    #
-    # e.g.: "/usr/local/Cellar/brew-cask/0.25.0"
-    def cask_prefix
-      Babushka::BrewHelper.brew_path_for cask_package_name
-    end
-
     # The place where Homebrew casks are installed.
     #
-    # Currently this uses the default caskroom for Homebrew Cask, which
-    # is "/opt/homebrew-cask/Caskroom".
+    # Currently this uses the default caskroom for Homebrew, which
+    # is "/usr/local/Caskroom".
     #
     # TODO: make this determine the real caskroom
     def caskroom
-      "/opt/homebrew-cask/Caskroom".p
+      "/usr/local/Caskroom".p
     end
-
 
     private
       # Don't check versions
@@ -98,7 +76,6 @@ class CaskHelper < Babushka::BrewHelper
       # e.g.: "/usr/local/Cellar/brew-cask/0.25.0/Casks"
       def formulas_paths
         [
-          cask_prefix / 'Casks',
           Dir[taps_path / '*' / 'Casks'].map(&:p),
         ].flatten
       end

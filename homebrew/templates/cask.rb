@@ -5,14 +5,14 @@ meta :cask do
   accepts_value_for :opts
 
   template {
-    requires Babushka::CaskHelper.manager_dep
+    requires CaskHelper.manager_dep
 
     met? {
-      Babushka::CaskHelper.has?(installs)
+      CaskHelper.has?(installs)
     }
 
     meet {
-      Babushka::CaskHelper.handle_install! installs, opts
+      CaskHelper.handle_install! installs, opts
     }
   }
 end

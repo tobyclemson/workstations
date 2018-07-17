@@ -13,7 +13,7 @@ end
 dep 'sizeup.loginitem' do
   name "SizeUp"
   hidden false
-  path "/opt/homebrew-cask/Caskroom/sizeup/latest/SizeUp.app"
+  path "/Applications/SizeUp.app"
 end
 
 dep 'sizeup' do

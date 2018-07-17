@@ -1,4 +1,4 @@
-require_relative '../../helpers/cask_helper'
+require_relative '../helpers/cask_helper'
 
 meta :cask do
   accepts_value_for :installs, :basename

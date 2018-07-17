@@ -3,9 +3,6 @@ parse = ->(line) {
   name = eval(name)
   parameters = parameters ? eval("{#{parameters}}") : {}
 
-  require 'pp'
-  pp [name, parameters]
-
   {name: name, parameters: parameters}
 }
 
@@ -13,9 +10,6 @@ homebrew_dep_of_type = ->(type) {
   ->(definition) {
     name = definition[:name]
     parameters = definition[:parameters]
-
-    require 'pp'
-    pp ["#{name}.#{type}", parameters]
 
     dep "#{name}.#{type}" do
       requires parameters[:requires] if parameters[:requires]
@@ -26,16 +20,25 @@ homebrew_dep_of_type = ->(type) {
 
 brew_dep = homebrew_dep_of_type.('brew')
 cask_dep = homebrew_dep_of_type.('cask')
+tap_dep = ->(definition) {
+  name = definition[:name]
+  parameters = definition[:parameters]
 
-# taps = File.readlines(File.expand_path '../taps.lst', __FILE__).map(&parse)
+  dep "#{name}.tap" do
+    tap parameters[:tap]
+  end
+}
+
+taps = File.readlines(File.expand_path '../taps.lst', __FILE__).map(&parse)
 brews = File.readlines(File.expand_path '../brews.lst', __FILE__).map(&parse)
 casks = File.readlines(File.expand_path '../casks.lst', __FILE__).map(&parse)
 
+taps.each(&tap_dep)
 brews.each(&brew_dep)
 casks.each(&cask_dep)
 
 dep 'laptop' do
-  # taps.each {|tap| requires "homebrew tap".with(tap)}
+  taps.each {|definition| requires "#{definition[:name]}.tap"}
   brews.each {|definition| requires "#{definition[:name]}.brew"}
   casks.each {|definition| requires "#{definition[:name]}.cask"}
 

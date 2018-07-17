@@ -1,8 +1,6 @@
 "ack"
-"awscli", provides: "aws"
 "curl"
 "direnv"
-"encfs", requires: ["osxfuse.cask"]
 "git"
 "git-crypt"
 "git-plus"
@@ -17,6 +15,5 @@
 "rbenv"
 "tmux"
 "tree"
-"vim", options: ["--with-override-system-vi"]
 "wget"
 "zsh"

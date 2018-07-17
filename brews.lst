@@ -6,7 +6,7 @@
 "git"
 "git-crypt"
 "git-plus"
-"gnupg2"
+"gnupg"
 "jq"
 "mas"
 "nmap"

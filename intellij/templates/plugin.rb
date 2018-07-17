@@ -4,7 +4,7 @@ meta :intellijplugin do
   accepts_value_for :type
 
   template {
-    requires_when_unmet 'curl.managed'
+    requires_when_unmet 'curl.brew'
 
     def intellij_support_path
       "~/Library/Application Support/IntelliJIdea15".p.cleanpath

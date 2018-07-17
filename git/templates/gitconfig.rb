@@ -3,7 +3,7 @@ meta :gitconfig do
   accepts_value_for :value
 
   template {
-    requires 'git.managed'
+    requires 'git.brew'
 
     met? {
       `git config --global --get "#{key}"`.chomp == value

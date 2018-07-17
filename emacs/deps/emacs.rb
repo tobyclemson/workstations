@@ -1,7 +1,7 @@
-dep 'aspell.managed'
+dep 'aspell.brew'
 
 dep 'prelude' do
-  requires 'aspell.managed'
+  requires 'aspell.brew'
 
   met? {
     '~/.emacs.d/.git'.p.exist?

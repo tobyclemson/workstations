@@ -44,7 +44,7 @@ dep 'github ssh access', :github_username, :github_password do
 end
 
 dep 'git config' do
-  requires 'git.managed'
+  requires 'git.brew'
   requires 'git user details'
   requires 'github ssh access'
 end

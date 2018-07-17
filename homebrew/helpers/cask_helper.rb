@@ -76,7 +76,7 @@ class CaskHelper < Babushka::BrewHelper
       # e.g.: "/usr/local/Cellar/brew-cask/0.25.0/Casks"
       def formulas_paths
         [
-          Dir[taps_path / '*' / 'Casks'].map(&:p),
+          Dir[taps_path / '**' / 'Casks'].map(&:p),
         ].flatten
       end
   end

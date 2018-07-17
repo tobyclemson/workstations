@@ -1,6 +1,6 @@
 dep 'alfred license file.plist' do
   requires 'alfred.cask'
-  requires 'gpgtools.cask'
+  requires 'gnupg.brew'
 
   def license_code
     GpgHelper.decrypt('alfred/files/license.gpg')

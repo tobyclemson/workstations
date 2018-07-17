@@ -1,3 +1,5 @@
+require_relative '../../gpg/helpers/gpg_helper'
+
 dep '1password license.file' do
   requires '1password.cask'
   requires 'gpgtools.cask'

@@ -14,7 +14,7 @@
 "google-drive-file-stream"
 "intellij-idea"
 "java"
-"java8"
+"java8", requires: ["cask-versions.tap"]
 "karabiner"
 "keka"
 "kindle"

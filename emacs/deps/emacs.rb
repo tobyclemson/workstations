@@ -23,7 +23,7 @@ end
 
 dep 'old-prelude-modules-cleanup' do
   met? { '~/.emacs.d/prelude-modules.el'.p.symlink? }
-  meet { FileUtils.rm_f('~/.emacs.d/prelude-modules.el'.p.cleanpath) }
+  meet { FileUtils.rm_f('~/.emacs.d/prelude-modules.el'.p.expand_path) }
 end
 
 dep 'prelude-modules.link' do

@@ -14,5 +14,5 @@ end
 
 dep '1password' do
   requires '1password.cask'
-  requires '1password license.file'
+  # requires '1password license.file'
 end

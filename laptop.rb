@@ -3,7 +3,8 @@ parse = ->(line) {
   name = eval(name)
   options = options ? eval("{#{options}}") : {}
 
-  puts name, options
+  require 'pp'
+  pp [name, options]
 
   [name, options]
 }

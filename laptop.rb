@@ -39,22 +39,22 @@ dep 'laptop' do
   brews.each {|definition| requires "#{definition[:name]}.brew"}
   casks.each {|definition| requires "#{definition[:name]}.cask"}
 
-  # requires 'git config'
-  #
-  # requires 'all settings'
-  # requires 'all fonts'
-  # requires 'all projects'
-  # requires 'quicklook plugins'
-  #
-  # requires '1password'
-  # requires 'alfred'
-  # requires 'dropbox'
-  # requires 'emacs'
-  # # requires 'intellij'
-  # requires 'karabiner'
-  # requires 'omnigraffle'
-  # requires 'sizeup'
-  # requires 'terminal'
-  # # requires 'vagrant'
-  # requires 'zsh'
+  requires 'git config'
+
+  requires 'all settings'
+  requires 'all fonts'
+  requires 'all projects'
+  requires 'quicklook plugins'
+
+  requires '1password'
+  requires 'alfred'
+  requires 'dropbox'
+  requires 'emacs'
+  # requires 'intellij'
+  requires 'karabiner'
+  requires 'omnigraffle'
+  requires 'sizeup'
+  requires 'terminal'
+  # requires 'vagrant'
+  requires 'zsh'
 end

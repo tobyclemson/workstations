@@ -1,4 +1,4 @@
-meta 'loginitem' do
+meta :loginitem do
   accepts_value_for :path
   accepts_value_for :hidden
   accepts_value_for :name

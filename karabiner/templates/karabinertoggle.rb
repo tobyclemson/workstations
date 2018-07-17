@@ -1,4 +1,4 @@
-meta 'karabinertoggle' do
+meta :karabinertoggle do
   accepts_value_for :setting
   accepts_value_for :enabled
 

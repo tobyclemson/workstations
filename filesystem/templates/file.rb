@@ -1,4 +1,4 @@
-meta "file" do
+meta :file do
   accepts_value_for :source
   accepts_value_for :content
   accepts_value_for :target

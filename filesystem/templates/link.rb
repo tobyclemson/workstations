@@ -1,4 +1,4 @@
-meta "link" do
+meta :link do
   accepts_value_for :source
   accepts_value_for :target
   accepts_value_for :use_sudo

@@ -1,25 +1,22 @@
-ack
-awscli:aws
-curl
-direnv
-dpkg
-emacs
-encfs:encfs:osxfuse.cask
-fish
-git
-git-crypt
-git-plus
-gnupg2
-jq
-nmap
-nvm
-openssl
-openvpn
-pyenv
-rbenv
-ruby-build
-tmux
-tree
-vim
-wget
-zsh
+"ack"
+"awscli", provides: "aws"
+"curl"
+"direnv"
+"encfs", requires: ["osxfuse.cask"]
+"git"
+"git-crypt"
+"git-plus"
+"gnupg2"
+"jq"
+"mas"
+"nmap"
+"nvm"
+"openssl"
+"pyenv"
+"pyenv-virtualenv"
+"rbenv"
+"tmux"
+"tree"
+"vim", options: ["with-override-system-vi"]
+"wget"
+"zsh"

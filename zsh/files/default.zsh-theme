@@ -9,7 +9,7 @@ zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{11}%r'
 zstyle ':vcs_info:*' enable git svn
 
 theme_precmd () {
-		if [ $? -eq 0 ]; then CARETCOLOR="white"; else CARETCOLOR="red"; fi
+    if [ $? -eq 0 ]; then CARETCOLOR="white"; else CARETCOLOR="red"; fi
 
     if [[ -z $(git ls-files --other --exclude-standard 2> /dev/null) ]] {
         zstyle ':vcs_info:*' formats ' (%b%F{black})%c%u'

@@ -1,4 +1,4 @@
-meta 'karabinersetting' do
+meta :karabinersetting do
   accepts_value_for :setting
   accepts_value_for :value
 

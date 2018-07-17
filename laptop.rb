@@ -1,44 +1,52 @@
 parse = ->(line) {
-  name, provide_name, require_name = line.strip.split(':')
+  name, options = line.strip.split(',')
+  name = eval(name)
+  options = options ? eval("{#{options}}") : {}
 
-  dep_builder = ->(type) do
-    dep "#{name}.#{type}" do
-      provides provide_name if provide_name
-      requires require_name if require_name
-    end
-  end
-  [name, dep_builder]
+  [name, options]
 }
 
-taps = File.readlines(File.expand_path '../taps.lst', __FILE__).map { |tap| tap.strip }
-brews = File.readlines(File.expand_path '../brews.lst', __FILE__).map(&parse)
-casks = File.readlines(File.expand_path '../casks.lst', __FILE__).map(&parse)
+homebrew_dep_of_type = ->(type) {
+  ->(name, options) {
+    dep "#{name}.#{type}" do
+      provides options[:provides] if options[:provides]
+      requires options[:requires] if options[:requires]
+      opts options.except(:provides, :requires)
+    end
+  }
+}
 
-brews.each { |name, dep_of_type| dep_of_type['managed'] }
-casks.each { |name, dep_of_type| dep_of_type['cask'] }
+brew_dep = homebrew_dep_of_type.('brew')
+cask_dep = homebrew_dep_of_type.('cask')
+
+# taps = File.readlines(File.expand_path '../taps.lst', __FILE__).map(&parse)
+brews = File.readlines(File.expand_path '../brews.lst', __FILE__).map(&parse)
+# casks = File.readlines(File.expand_path '../casks.lst', __FILE__).map(&parse)
+
+brews.each(&brew_dep)
+casks.each(&cask_dep)
 
 dep 'laptop' do
-  taps.each { |tap| requires "homebrew tap".with(tap) }
-  brews.each { |name, _| requires "#{name}.managed" }
-  casks.each { |name, _| requires "#{name}.cask" }
+  # taps.each {|tap| requires "homebrew tap".with(tap)}
+  brews.each {|name, _| requires "#{name}.brew"}
+  # casks.each {|name, _| requires "#{name}.cask"}
 
-  requires 'git config'
-
-  requires 'all settings'
-  requires 'all fonts'
-  requires 'all projects'
-  requires 'quicklook plugins'
-
-  requires '1password'
-  requires 'alfred'
-  requires 'compulsion'
-  requires 'dropbox'
-  requires 'emacs'
-  # requires 'intellij'
-  requires 'karabiner'
-  requires 'omnigraffle'
-  requires 'sizeup'
-  requires 'terminal'
-  # requires 'vagrant'
-  requires 'zsh'
+  # requires 'git config'
+  #
+  # requires 'all settings'
+  # requires 'all fonts'
+  # requires 'all projects'
+  # requires 'quicklook plugins'
+  #
+  # requires '1password'
+  # requires 'alfred'
+  # requires 'dropbox'
+  # requires 'emacs'
+  # # requires 'intellij'
+  # requires 'karabiner'
+  # requires 'omnigraffle'
+  # requires 'sizeup'
+  # requires 'terminal'
+  # # requires 'vagrant'
+  # requires 'zsh'
 end

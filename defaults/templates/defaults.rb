@@ -1,4 +1,4 @@
-meta "defaults" do
+meta :defaults do
   accepts_value_for :domain
   accepts_value_for :current_host
   accepts_value_for :key

@@ -86,7 +86,6 @@ dep 'prelude-personal-links' do
 end
 
 dep 'emacs' do
-  requires 'emacs.managed'
   requires 'emacs.cask'
   requires 'prelude'
   requires 'prelude-personal-installed.repo'

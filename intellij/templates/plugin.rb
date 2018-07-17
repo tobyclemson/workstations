@@ -1,4 +1,4 @@
-meta "intellijplugin" do
+meta :intellijplugin do
   accepts_value_for :name
   accepts_value_for :url
   accepts_value_for :type

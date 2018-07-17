@@ -55,7 +55,6 @@ class CaskHelper < Babushka::BrewHelper
       end
 
       def has_formula_for? pkg
-        puts existing_formulas
         existing_formulas.include? pkg.name
       end
 

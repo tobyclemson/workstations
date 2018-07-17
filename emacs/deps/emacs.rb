@@ -1,3 +1,5 @@
+require 'fileutils'
+
 dep 'aspell.brew'
 
 dep 'prelude' do

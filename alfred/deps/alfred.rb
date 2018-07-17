@@ -26,7 +26,7 @@ dep 'alfred.loginitem' do
 
   name "Alfred 3"
   hidden false
-  path shell("readlink '#{'/Applications/Alfred 3.app'.p.cleanpath}'")
+  path "/Applications/Alfred\ 3.app".p.cleanpath
 end
 
 dep 'alfred' do

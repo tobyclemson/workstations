@@ -16,7 +16,7 @@ homebrew_dep_of_type = ->(type) {
 
     require 'pp'
     pp ["#{name}.#{type}", parameters]
-    
+
     dep "#{name}.#{type}" do
       requires parameters[:requires] if parameters[:requires]
       opts parameters[:options] if parameters[:options]

@@ -27,14 +27,6 @@ else
     sudo mkdir "$BABUSHKA_ROOT"
     sudo chown -R "$(whoami)" "$BABUSHKA_ROOT"
 fi
-#
-#if [ -w "$INSTALL_ROOT" ]; then
-#    echo "--> $INSTALL_ROOT is writable, continuing..."
-#else
-#    echo "--> $INSTALL_ROOT is not writable, changing group to 'admin' and making writable by group..."
-#    sudo chgrp -R admin "$INSTALL_ROOT"
-#    sudo chmod -R g+rwx "$INSTALL_ROOT"
-#fi
 
 echo "-> Checking for babushka..."
 if  hash babushka 2>/dev/null; then
@@ -53,6 +45,6 @@ echo "-> Ensuring babushka sources are up to date..."
 babushka sources --update
 
 echo "-> Running default dep 'workstations:laptop'..."
-babushka -d workstations:laptop
+babushka workstations:laptop
 
 echo "-> Done."

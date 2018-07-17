@@ -45,6 +45,6 @@ echo "-> Ensuring babushka sources are up to date..."
 babushka sources --update
 
 echo "-> Running default dep 'workstations:laptop'..."
-babushka workstations:laptop
+babushka -d workstations:laptop
 
 echo "-> Done."

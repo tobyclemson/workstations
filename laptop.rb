@@ -7,14 +7,14 @@ parse = lambda do |line|
 
   pp [name, parameters]
 
-  {name: name, parametes: parameters}
+  {name: name, parameters: parameters}
 end
 
 homebrew_dep_of_type = lambda do |type|
   lambda do |definition|
     name = definition[:name]
     parameters = definition[:parameters]
-    
+
     pp ["#{name}.#{type}", parameters]
     dep "#{name}.#{type}" do
       requires parameters[:requires] if parameters[:requires]

@@ -1,25 +1,27 @@
-parse = ->(line) {
-  name, options = line.strip.split(',')
+require 'pp'
+
+parse = lambda do |line|
+  name, parameters = line.strip.split(',')
   name = eval(name)
-  options = options ? eval("{#{options}}") : {}
+  parameters = parameters ? eval("{#{parameters}}") : {}
 
-  require 'pp'
-  pp [name, options]
+  pp [name, parameters]
 
-  [name, options]
-}
+  [name, parameters]
+end
 
-homebrew_dep_of_type = ->(type) {
-  ->(name, options) {
+homebrew_dep_of_type = lambda do |type|
+  lambda do |name, options|
+    pp ["#{name}.#{type}", options]
     dep "#{name}.#{type}" do
       requires options[:requires] if options[:requires]
-      opts options.delete_if { |key| [:provides, :requires].include?(key) }
+      opts options[:options] if options[:options]
     end
-  }
-}
+  end
+end
 
-brew_dep = homebrew_dep_of_type.('brew')
-cask_dep = homebrew_dep_of_type.('cask')
+brew_dep = homebrew_dep_of_type.call('brew')
+cask_dep = homebrew_dep_of_type.call('cask')
 
 # taps = File.readlines(File.expand_path '../taps.lst', __FILE__).map(&parse)
 brews = File.readlines(File.expand_path '../brews.lst', __FILE__).map(&parse)

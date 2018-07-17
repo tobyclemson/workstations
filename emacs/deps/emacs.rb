@@ -88,7 +88,7 @@ dep 'prelude-personal-todochiku-icons.link' do
 end
 
 dep 'prelude-personal-links' do
-  requires 'prelude-modules.link'
+  # requires 'prelude-modules.link'
   requires 'prelude-personal-init.link'
   requires 'prelude-personal-custom.link'
   requires 'prelude-personal-modules.link'

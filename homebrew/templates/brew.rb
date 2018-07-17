@@ -10,7 +10,7 @@ meta :brew do
     }
 
     meet {
-      Babushka::BrewHelper.handle_install! installs, opts
+      Babushka::BrewHelper.handle_install!(installs, opts)
     }
   }
 end

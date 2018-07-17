@@ -12,7 +12,7 @@ meta :cask do
     }
 
     meet {
-      CaskHelper.handle_install! installs, opts
+      CaskHelper.handle_install!(installs, opts)
     }
   }
 end

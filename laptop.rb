@@ -11,7 +11,7 @@ homebrew_dep_of_type = ->(type) {
     dep "#{name}.#{type}" do
       provides options[:provides] if options[:provides]
       requires options[:requires] if options[:requires]
-      opts options.except(:provides, :requires)
+      opts options.delete_if { |key| [:provides, :requires].include?(key) }
     end
   }
 }

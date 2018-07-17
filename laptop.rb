@@ -24,7 +24,7 @@ brews = File.readlines(File.expand_path '../brews.lst', __FILE__).map(&parse)
 # casks = File.readlines(File.expand_path '../casks.lst', __FILE__).map(&parse)
 
 brews.each(&brew_dep)
-casks.each(&cask_dep)
+# casks.each(&cask_dep)
 
 dep 'laptop' do
   # taps.each {|tap| requires "homebrew tap".with(tap)}

@@ -605,8 +605,6 @@ dep "power settings" do
 end
 
 dep "input device settings" do
-  requires 'key repeat rate.defaults'
-  requires 'key repeat delay.defaults'
   requires 'press and hold.defaults'
   requires 'capslock to ctrl'
   requires 'internal trackpad tap to click defaults'

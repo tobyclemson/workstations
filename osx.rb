@@ -65,7 +65,7 @@ end
 dep 'key repeat rate.defaults' do
   domain 'NSGlobalDomain'
   key 'KeyRepeat'
-  value 3
+  value 2
 end
 
 dep 'key repeat delay.defaults' do

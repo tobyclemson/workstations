@@ -62,6 +62,18 @@ dep 'network .DS_Store.defaults', :for => :osx do
   value true
 end
 
+dep 'key repeat rate.defaults' do
+  domain 'NSGlobalDomain'
+  key 'KeyRepeat'
+  value 10
+end
+
+dep 'key repeat delay.defaults' do
+  domain 'NSGlobalDomain'
+  key 'InitialKeyRepeat'
+  value 50
+end
+
 dep 'external trackpad tap to click.defaults' do
   domain 'com.apple.driver.AppleBluetoothMultitouch.trackpad'
   key 'Clicking'
@@ -605,6 +617,8 @@ dep "power settings" do
 end
 
 dep "input device settings" do
+  requires 'key repeat rate.defaults'
+  requires 'key repeat delay.defaults'
   requires 'press and hold.defaults'
   requires 'capslock to ctrl'
   requires 'internal trackpad tap to click defaults'

@@ -15,7 +15,7 @@
 "intellij-idea"
 "java"
 "java8", requires: ["cask-versions.tap"]
-"karabiner"
+"karabiner-elements"
 "keka"
 "kindle"
 "omnigraffle"

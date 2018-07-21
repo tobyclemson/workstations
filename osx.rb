@@ -65,13 +65,13 @@ end
 dep 'key repeat rate.defaults' do
   domain 'NSGlobalDomain'
   key 'KeyRepeat'
-  value 10
+  value 3
 end
 
 dep 'key repeat delay.defaults' do
   domain 'NSGlobalDomain'
   key 'InitialKeyRepeat'
-  value 50
+  value 10
 end
 
 dep 'external trackpad tap to click.defaults' do

@@ -700,6 +700,6 @@ dep 'all settings' do
   requires 'power settings'
   requires 'menuitem settings'
   requires 'hot corner settings'
-  # requires 'screensaver settings'
+  requires 'screensaver settings'
   requires 'personalisation settings'
 end

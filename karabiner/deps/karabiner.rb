@@ -35,6 +35,6 @@ dep 'karabiner' do
   requires 'karabiner.cask'
   requires 'karabiner.loginitem'
   requires 'karabiner repeat wait.karabinersetting'
-  # requires 'karabiner repeat initial wait.karabinersetting'
+  requires 'karabiner repeat initial wait.karabinersetting'
   # requires 'karabiner remap uk keyboard to sane layout.karabinertoggle'
 end

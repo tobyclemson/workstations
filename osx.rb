@@ -62,18 +62,6 @@ dep 'network .DS_Store.defaults', :for => :osx do
   value true
 end
 
-dep 'key repeat rate.defaults' do
-  domain 'NSGlobalDomain'
-  key 'KeyRepeat'
-  value 0
-end
-
-dep 'key repeat delay.defaults' do
-  domain 'NSGlobalDomain'
-  key 'InitialKeyRepeat'
-  value 10
-end
-
 dep 'external trackpad tap to click.defaults' do
   domain 'com.apple.driver.AppleBluetoothMultitouch.trackpad'
   key 'Clicking'

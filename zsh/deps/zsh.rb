@@ -38,6 +38,7 @@ dep 'default zsh theme.file' do
 end
 
 dep 'zsh' do
+  requires 'jenv'
   requires 'zsh as default shell'
   requires 'oh my zsh.repo'
   requires 'zshrc.file'

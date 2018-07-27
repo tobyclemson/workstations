@@ -2,9 +2,9 @@ export ZSH=$HOME/.oh-my-zsh
 
 ZSH_THEME="default"
 
-plugins=(ant autojump bundler brew emacs extract git gradle lein mvn osx rbenv rsync svn terminalapp textmate urltools vagrant)
+plugins=(autojump bundler brew emacs extract git gradle lein mvn osx rbenv rsync svn terminalapp textmate urltools)
 
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH="$HOME/bin:/usr/local/bin:$PATH"
 export MANPATH="/usr/local/man:$MANPATH"
 export EDITOR=vi
 
@@ -23,3 +23,7 @@ alias ber="nocorrect be rspec"
 fpath=($HOME/.zsh-completions $fpath)
 autoload -U compinit
 compinit
+
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
+

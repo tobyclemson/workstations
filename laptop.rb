@@ -59,5 +59,6 @@ dep 'laptop' do
   requires 'sizeup'
   requires 'terminal'
   # requires 'vagrant'
+  requires 'java'
   requires 'zsh'
 end

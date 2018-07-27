@@ -99,13 +99,20 @@ dep 'internal trackpad light touch first click.defaults' do
   value 0
 end
 
-  dep 'internal trackpad light touch second click.defaults' do
+dep 'internal trackpad light touch second click.defaults' do
   domain 'com.apple.AppleMultitouchTrackpad'
   key 'SecondClickThreshold'
   value 0
 end
 
+dep 'internal trackpad tap to click enabled.defaults' do
+  domain 'com.apple.AppleMultitouchTrackpad'
+  key 'Clicking'
+  value true
+end
+
 dep 'internal trackpad tap to click defaults' do
+  requires 'internal trackpad tap to click enabled.defaults'
   requires 'internal trackpad local tap to click.defaults'
   requires 'internal trackpad global tap to click.defaults'
   requires 'internal trackpad light touch first click.defaults'

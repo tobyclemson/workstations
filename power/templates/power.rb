@@ -3,10 +3,6 @@ meta "power" do
   accepts_value_for :property
   accepts_value_for :value
 
-  name_for = 
-
-  switch_for = 
-
   template {
     def name_for type
       {:ac => "AC Power", :battery => "Battery Power"}[type]

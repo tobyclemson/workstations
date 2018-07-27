@@ -1,13 +1,18 @@
-dep 'karabiner.loginitem' do
-  requires 'karabiner.cask'
+dep 'karabiner-elements.loginitem' do
+  requires 'karabiner-elements.cask'
 
-  name "Karabiner"
+  name "Karabiner Elements"
   hidden false
-  path "/Applications/Karabiner.app"
+  path "/Applications/Karabiner-Elements.app"
 end
 
-dep 'karabiner' do
-  requires 'karabiner.cask'
-  requires 'karabiner.loginitem'
-  # requires 'karabiner remap uk keyboard to sane layout.karabinertoggle'
+dep 'karabiner-config.file' do
+  source "#{__FILE__.p.parent}/../files/karabiner.json"
+  target '~/.config/karabiner/karabiner.json'
+end
+
+dep 'karabiner-elements' do
+  requires 'karabiner-elements.cask'
+  requires 'karabiner-elements.loginitem'
+  requires 'karabiner-config.file'
 end

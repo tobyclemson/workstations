@@ -54,7 +54,7 @@ dep 'laptop' do
   requires 'dropbox'
   requires 'emacs'
   # requires 'intellij'
-  # requires 'karabiner'
+  requires 'karabiner-elements'
   requires 'omnigraffle'
   requires 'sizeup'
   requires 'terminal'

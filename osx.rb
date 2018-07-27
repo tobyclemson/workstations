@@ -326,33 +326,6 @@ dep 'bottom left no modifier.defaults' do
   value 0
 end
 
-dep 'capslock to ctrl' do
-  def vendor_and_product_id
-    keyboard_info = shell("ioreg -n IOHIDKeyboard -r")
-    vendor_id = keyboard_info.scan(/"VendorID" = (\d+)/).flatten.first
-    product_id = keyboard_info.scan(/"ProductID" = (\d+)/).flatten.first
-
-    [vendor_id, product_id]
-  end
-
-  met? {
-    vendor_id, product_id = vendor_and_product_id
-    cmd = "defaults -currentHost read -g com.apple.keyboard.modifiermapping.#{vendor_id}-#{product_id}-0"
-    shell?(cmd) && shell(cmd) ==
-                   %Q{(
-        {
-        HIDKeyboardModifierMappingDst = 2;
-        HIDKeyboardModifierMappingSrc = 0;
-    }
-)}
-  }
-
-  meet {
-    vendor_id, product_id = vendor_and_product_id
-    shell("defaults -currentHost write -g com.apple.keyboard.modifiermapping.#{vendor_id}-#{product_id}-0 -array '<dict><key>HIDKeyboardModifierMappingSrc</key><integer>0</integer><key>HIDKeyboardModifierMappingDst</key><integer>2</integer></dict>'")
-  }
-end
-
 dep "user library visibility" do
   met? {
     shell?("! ls -lO ~/ | grep -s 'Library' | grep -s 'hidden'")
@@ -620,7 +593,6 @@ dep "input device settings" do
   requires 'key repeat rate.defaults'
   requires 'key repeat delay.defaults'
   requires 'press and hold.defaults'
-  requires 'capslock to ctrl'
   requires 'internal trackpad tap to click defaults'
   requires 'external trackpad tap to click.defaults'
 end

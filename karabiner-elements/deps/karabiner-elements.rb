@@ -1,7 +1,7 @@
 dep 'karabiner-elements.loginitem' do
   requires 'karabiner-elements.cask'
 
-  name "Karabiner Elements"
+  name "Karabiner-Elements"
   hidden false
   path "/Applications/Karabiner-Elements.app"
 end

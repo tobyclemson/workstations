@@ -1,13 +1,14 @@
 meta :javaversion do
-  accepts_value_for :path
+  accepts_value_for :version
 
   template {
     met? {
-      shell("osascript -e 'tell application \"System Events\" to get every login item whose name is \"#{name}\"'") =~ /#{name}/
+      shell?("jenv versions | grep #{version}")
     }
 
     meet {
-      shell("osascript -e 'tell application \"System Events\" to make login item at end with properties {path:\"#{path}\", hidden:#{hidden}, name:\"#{name}\"}'")
+      base_path = shell("find /Library/Java/JavaVirtualMachines -type d -name '*#{version}*'")
+      shell("jenv add #{base_path}/Contents/Home")
     }
   }
 end

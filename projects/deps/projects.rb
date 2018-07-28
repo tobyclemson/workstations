@@ -1,18 +1,3 @@
-dep 'all projects' do
-  requires 'open source'
-  requires 'presentations'
-  requires 'other'
-end
-
-dep 'open source' do
-  requires 'funk.repo'
-  requires 'matchbox.repo'
-  requires 'referee.repo'
-  requires 'dataschemer.repo'
-  requires 'glot.repo'
-  requires 'rosetta-jvm.repo'
-end
-
 dep 'funk.repo' do
   source 'git@github.com:javafunk/funk'
   path '~/Code/funk'
@@ -28,9 +13,24 @@ dep 'referee.repo' do
   path '~/Code/referee'
 end
 
+dep 'configurati.repo' do
+  source 'git@github.com:tobyclemson/configurati.git'
+  path '~/Code/configurati'
+end
+
+dep 'confidante.repo' do
+  source 'git@github.com:tobyclemson/confidante.git'
+  path '~/Code/confidante'
+end
+
 dep 'dataschemer.repo' do
   source 'git@github.com:tobyclemson/dataschemer.git'
   path '~/Code/dataschemer'
+end
+
+dep 'exegesis.repo' do
+  source 'git@github.com:tobyclemson/exegesis.git'
+  path '~/Code/exegesis'
 end
 
 dep 'glot.repo' do
@@ -38,19 +38,27 @@ dep 'glot.repo' do
   path '~/Code/glot'
 end
 
+dep 'lino.repo' do
+  source 'git@github.com:tobyclemson/lino.git'
+  path '~/Code/lino'
+end
+
 dep 'rosetta-jvm.repo' do
   source 'git@github.com:tobyclemson/rosetta-jvm'
   path '~/Code/rosetta-jvm'
 end
 
-dep 'presentations' do
-  requires 'builder-pattern-presentation.repo'
-  requires 'testing-micro-service-architecture-presentation.repo'
-  requires 'deployment-as-a-service-presentation.repo'
-  requires 'scala-full-stack-dev-presentation.repo'
-  requires 'test-data-generation-and-verification-presentation.repo'
-  requires 'tor-presentation.repo'
-  requires 'net-neutrality-presentation.repo'
+dep 'open source' do
+  requires 'funk.repo'
+  requires 'matchbox.repo'
+  requires 'referee.repo'
+  requires 'configurati.repo'
+  requires 'confidante.repo'
+  requires 'dataschemer.repo'
+  requires 'exegesis.repo'
+  requires 'glot.repo'
+  requires 'lino.repo'
+  requires 'rosetta-jvm.repo'
 end
 
 dep 'builder-pattern-presentation.repo' do
@@ -88,10 +96,14 @@ dep 'net-neutrality-presentation.repo' do
   path '~/Code/presentations/net-neutrality-presentation'
 end
 
-dep 'other' do
-  requires 'mfcom-dev.repo'
-  requires 'prelude-personal.repo'
-  requires 'language-implementation-patterns.repo'
+dep 'presentations' do
+  requires 'builder-pattern-presentation.repo'
+  requires 'testing-micro-service-architecture-presentation.repo'
+  requires 'deployment-as-a-service-presentation.repo'
+  requires 'scala-full-stack-dev-presentation.repo'
+  requires 'test-data-generation-and-verification-presentation.repo'
+  requires 'tor-presentation.repo'
+  requires 'net-neutrality-presentation.repo'
 end
 
 dep 'mfcom-dev.repo' do
@@ -108,3 +120,152 @@ dep 'language-implementation-patterns.repo' do
   source 'git@github.com:tobyclemson/language-implementation-patterns.git'
   path '~/Code/language-implementation-patterns'
 end
+
+dep 'other' do
+  requires 'mfcom-dev.repo'
+  requires 'prelude-personal.repo'
+  requires 'language-implementation-patterns.repo'
+end
+
+dep 'infrablocks.io.repo' do
+  source 'git@github.com:infrablocks/infrablocks.io.git'
+  path '~/Code/infrablocks/infrablocks.io'
+end
+
+dep 'end-to-end-concourse-ci.repo' do
+  source 'git@github.com:infrablocks/end-to-end-concourse-ci.git'
+  path '~/Code/infrablocks/end-to-end-concourse-ci'
+end
+
+dep 'concourse.js.repo' do
+  source 'git@github.com:infrablocks/concourse.js.git'
+  path '~/Code/infrablocks/concourse.js'
+end
+
+dep 'rake-dependencies.repo' do
+  source 'git@github.com:infrablocks/rake_dependencies.git'
+  path '~/Code/infrablocks/rake-dependencies'
+end
+
+dep 'rake-docker.repo' do
+  source 'git@github.com:infrablocks/rake_docker.git'
+  path '~/Code/infrablocks/rake-docker'
+end
+
+dep 'rake-fly.repo' do
+  source 'git@github.com:infrablocks/rake_fly.git'
+  path '~/Code/infrablocks/rake-fly'
+end
+
+dep 'ruby-fly.repo' do
+  source 'git@github.com:infrablocks/ruby_fly.git'
+  path '~/Code/infrablocks/ruby-fly'
+end
+
+dep 'rake-terraform.repo' do
+  source 'git@github.com:infrablocks/rake_terraform.git'
+  path '~/Code/infrablocks/rake-terraform'
+end
+
+dep 'ruby-terraform.repo' do
+  source 'git@github.com:infrablocks/ruby_terraform.git'
+  path '~/Code/infrablocks/ruby-terraform'
+end
+
+dep 'terraform-aws-base-networking.repo' do
+  source 'git@github.com:infrablocks/terraform-aws-base-networking.git'
+  path '~/Code/infrablocks/terraform-aws-base-networking'
+end
+
+dep 'terraform-aws-bastion.repo' do
+  source 'git@github.com:infrablocks/terraform-aws-bastion.git'
+  path '~/Code/infrablocks/terraform-aws-bastion'
+end
+
+dep 'terraform-aws-classic-load-balancer.repo' do
+  source 'git@github.com:infrablocks/terraform-aws-classic-load-balancer.git'
+  path '~/Code/infrablocks/terraform-aws-classic-load-balancer'
+end
+
+dep 'terraform-aws-dns-zones.repo' do
+  source 'git@github.com:infrablocks/terraform-aws-dns-zones.git'
+  path '~/Code/infrablocks/terraform-aws-dns-zones'
+end
+
+dep 'terraform-aws-ecr-repository.repo' do
+  source 'git@github.com:infrablocks/terraform-aws-ecr-repository.git'
+  path '~/Code/infrablocks/terraform-aws-ecr-repository'
+end
+
+dep 'terraform-aws-ecs-cluster.repo' do
+  source 'git@github.com:infrablocks/terraform-aws-ecs-cluster.git'
+  path '~/Code/infrablocks/terraform-aws-ecs-cluster'
+end
+
+dep 'terraform-aws-ecs-route53-registration.repo' do
+  source 'git@github.com:infrablocks/terraform-aws-ecs-route53-registration.git'
+  path '~/Code/infrablocks/terraform-aws-ecs-route53-registration'
+end
+
+dep 'terraform-aws-ecs-service.repo' do
+  source 'git@github.com:infrablocks/terraform-aws-ecs-service.git'
+  path '~/Code/infrablocks/terraform-aws-ecs-service'
+end
+
+dep 'terraform-aws-ecs-load-balancer.repo' do
+  source 'git@github.com:infrablocks/terraform-aws-ecs-load-balancer.git'
+  path '~/Code/infrablocks/terraform-aws-ecs-load-balancer'
+end
+
+dep 'terraform-aws-encrypted-bucket.repo' do
+  source 'git@github.com:infrablocks/terraform-aws-encrypted-bucket.git'
+  path '~/Code/infrablocks/terraform-aws-encrypted-bucket'
+end
+
+dep 'terraform-aws-infrastructure-events.repo' do
+  source 'git@github.com:infrablocks/terraform-aws-infrastructure-events.git'
+  path '~/Code/infrablocks/terraform-aws-infrastructure-events'
+end
+
+dep 'terraform-aws-rds-postgres.repo' do
+  source 'git@github.com:infrablocks/terraform-aws-rds-postgres.git'
+  path '~/Code/infrablocks/terraform-aws-rds-postgres'
+end
+
+dep 'terraform-aws-vpc-auto-peering.repo' do
+  source 'git@github.com:infrablocks/terraform-aws-vpc-auto-peering.git'
+  path '~/Code/infrablocks/terraform-aws-vpc-auto-peering'
+end
+
+dep 'infrablocks' do
+  requires 'infrablocks.io.repo'
+  requires 'end-to-end-concourse-ci.repo'
+  requires 'concourse.js.repo'
+  requires 'rake-dependencies.repo'
+  requires 'rake-docker.repo'
+  requires 'rake-fly.repo'
+  requires 'ruby-fly.repo'
+  requires 'rake-terraform.repo'
+  requires 'ruby-terraform.repo'
+  requires 'terraform-aws-base-networking.repo'
+  requires 'terraform-aws-bastion.repo'
+  requires 'terraform-aws-classic-load-balancer.repo'
+  requires 'terraform-aws-dns-zones.repo'
+  requires 'terraform-aws-ecr-repository.repo'
+  requires 'terraform-aws-ecs-cluster.repo'
+  requires 'terraform-aws-ecs-route53-registration.repo'
+  requires 'terraform-aws-ecs-service.repo'
+  requires 'terraform-aws-ecs-load-balancer.repo'
+  requires 'terraform-aws-encrypted-bucket.repo'
+  requires 'terraform-aws-infrastructure-events.repo'
+  requires 'terraform-aws-rds-postgres.repo'
+  requires 'terraform-aws-vpc-auto-peering.repo'
+end
+
+dep 'all projects' do
+  requires 'infrablocks'
+  requires 'open source'
+  requires 'presentations'
+  requires 'other'
+end
+

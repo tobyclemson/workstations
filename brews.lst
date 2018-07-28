@@ -1,4 +1,5 @@
 "ack"
+"autojump"
 "awscli", provides: "aws"
 "curl"
 "direnv"

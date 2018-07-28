@@ -39,6 +39,7 @@ end
 
 dep 'zsh' do
   requires 'jenv.brew'
+  requires 'nvm.brew'
   requires 'rbenv.brew'
   requires 'pyenv.brew'
   requires 'direnv.brew'

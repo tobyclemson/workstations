@@ -39,6 +39,9 @@ end
 
 dep 'zsh' do
   requires 'jenv.brew'
+  requires 'rbenv.brew'
+  requires 'pyenv.brew'
+  requires 'direnv.brew'
   requires 'zsh as default shell'
   requires 'oh my zsh.repo'
   requires 'zshrc.file'

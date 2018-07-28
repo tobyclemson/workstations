@@ -262,8 +262,54 @@ dep 'infrablocks' do
   requires 'terraform-aws-vpc-auto-peering.repo'
 end
 
+dep 'aws-ardor-node.repo' do
+  source 'git@github.com:clemkor/aws-ardor-node.git'
+  path '~/Code/clemkor/aws-ardor-node'
+end
+
+dep 'aws-cert-manager-image.repo' do
+  source 'git@github.com:clemkor/aws-cert-manager-image.git'
+  path '~/Code/clemkor/aws-cert-manager-image'
+end
+
+dep 'aws-environment.repo' do
+  source 'git@github.com:clemkor/aws-environment.git'
+  path '~/Code/clemkor/aws-environment'
+end
+
+dep 'aws-global.repo' do
+  source 'git@github.com:clemkor/aws-global.git'
+  path '~/Code/clemkor/aws-global'
+end
+
+dep 'aws-neo-node.repo' do
+  source 'git@github.com:clemkor/aws-neo-node.git'
+  path '~/Code/clemkor/aws-neo-node'
+end
+
+dep 'aws-nxt-node.repo' do
+  source 'git@github.com:clemkor/aws-nxt-node.git'
+  path '~/Code/clemkor/aws-nxt-node'
+end
+
+dep 'aws-price-calculator.repo' do
+  source 'git@github.com:clemkor/aws-price-calculator.git'
+  path '~/Code/clemkor/aws-price-calculator'
+end
+
+dep 'clemkor' do
+  requires 'aws-ardor-node.repo'
+  requires 'aws-cert-manager-image.repo'
+  requires 'aws-environment.repo'
+  requires 'aws-global.repo'
+  requires 'aws-neo-node.repo'
+  requires 'aws-nxt-node.repo'
+  requires 'aws-price-calculator.repo'
+end
+
 dep 'all projects' do
   requires 'infrablocks'
+  requires 'clemkor'
   requires 'open source'
   requires 'presentations'
   requires 'other'

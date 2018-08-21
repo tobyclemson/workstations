@@ -11,6 +11,9 @@
 "emacs"
 "firefox"
 "flux"
+"font-lato", requires: ["cask-fonts.tap"]
+"font-open-sans", requires: ["cask-fonts.tap"]
+"font-roboto", requires: ["cask-fonts.tap"]
 "google-chrome"
 "google-drive-file-stream"
 "intellij-idea"

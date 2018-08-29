@@ -492,7 +492,7 @@ dep 'screensaver type.plist', :for => :osx do
   entries [
     {
       :path => ":'moduleDict':'type'",
-      :type => 'int',
+      :type => 'integer',
       :value => 0
     }
   ]

@@ -1,4 +1,6 @@
 "1password"
+"adoptopenjdk8", requires: ["adoptopenjdk.tap"]
+"adoptopenjdk11", requires: ["adoptopenjdk.tap"]
 "alfred"
 "amazon-workspaces"
 "android-studio"

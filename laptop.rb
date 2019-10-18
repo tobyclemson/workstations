@@ -11,7 +11,7 @@ homebrew_dep_of_type = ->(type) {
     name = definition[:name]
     parameters = definition[:parameters]
 
-    dep "#{name}.#{type}" do
+    dep "#{name.gsub("/", "_")}.#{type}" do
       requires parameters[:requires] if parameters[:requires]
       opts parameters[:options] if parameters[:options]
     end

@@ -11,7 +11,7 @@ meta :tap do
     end
 
     met? {
-      taps.include? tap.to_s
+      taps.include? tap.to_s.downcase
     }
 
     meet {

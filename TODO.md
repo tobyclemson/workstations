@@ -9,5 +9,7 @@
 * Investigate problem with brews not installing
 * Add lock button to touch bar
 * Increase mouse tracking speed
-* Automatically mark certain apps as unquarantined (e.g., Caffeine)
+* Automatically mark certain apps as unquarantined (e.g., Caffeine),
   via `xattr -dr com.apple.quarantine "unidentified_thirdparty.app"`
+* Allow kernel extensions for certain team IDs, 
+  e.g., for karabiner and virtualbox, via spctl.

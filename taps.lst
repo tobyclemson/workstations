@@ -1,2 +1,3 @@
+"cask", tap: "homebrew/cask"
 "cask-versions", tap: "homebrew/cask-versions"
 "cask-fonts", tap: "homebrew/cask-fonts"

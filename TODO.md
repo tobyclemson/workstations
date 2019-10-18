@@ -9,3 +9,5 @@
 * Investigate problem with brews not installing
 * Add lock button to touch bar
 * Increase mouse tracking speed
+* Automatically mark certain apps as unquarantined (e.g., Caffeine)
+  via `xattr -dr com.apple.quarantine "unidentified_thirdparty.app"`

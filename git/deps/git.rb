@@ -13,7 +13,7 @@ dep 'name.gitconfig' do
   value 'Toby Clemson'
 end
 
-dep 'github ssh access', :github_personal_access_token, :github_otp_code do
+dep 'github ssh access', :github_username, :github_pat, :github_otp do
   requires 'ssh key'
 
   def github_api
@@ -33,15 +33,16 @@ dep 'github ssh access', :github_personal_access_token, :github_otp_code do
   }
 
   meet {
-    github_personal_access_token.ask('What is your github personal access token')
-    github_otp_code.ask('What is your github OTP code')
+    github_username.ask('What is your github username')
+    github_pat.ask('What is your github personal access token')
+    github_otp.ask('What is your github OTP code')
 
     args = "{\"title\": \"#{hostname}\", \"key\": \"#{public_key}\"}"
 
     shell("curl -X POST " +
-        "-H 'authorization: Basic: #{github_personal_access_token}' " +
+        "-u '#{github_username}:#{github_pat}' " +
         "-H 'content-type: application/json' " +
-        "-H 'x-github-otp: #{github_otp_code}' " +
+        "-H 'x-github-otp: #{github_otp}' " +
         "-d '#{args}' #{github_api}/user/keys")
   }
 end

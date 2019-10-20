@@ -15,6 +15,7 @@
 "nmap"
 "nvm"
 "openssl"
+"pinentry-mac"
 "pyenv"
 "pyenv-virtualenv"
 "rbenv"

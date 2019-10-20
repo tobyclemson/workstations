@@ -3,6 +3,7 @@
 "alfred"
 "amazon-workspaces"
 "android-studio"
+"atom"
 "aws-vault"
 "caffeine"
 "cyberduck"
@@ -23,6 +24,7 @@
 "karabiner-elements"
 "keka"
 "kindle"
+"notion"
 "omnigraffle"
 "osxfuse", requires: ["cask.tap"]
 "postman"
@@ -33,7 +35,6 @@
 "skype"
 "slack"
 "spotify"
-"sublime-text"
 "tunnelblick"
 "virtualbox"
 "vlc"

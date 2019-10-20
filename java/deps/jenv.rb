@@ -6,7 +6,7 @@ dep 'java-8.javaversion' do
   version '8'
 end
 
-dep 'java-10.javaversion' do
+dep 'java-11.javaversion' do
   version '10'
 end
 
@@ -16,5 +16,5 @@ dep 'java' do
   requires 'jenv.brew'
   requires 'jenv-versions.directory'
   requires 'java-8.javaversion'
-  requires 'java-10.javaversion'
+  requires 'java-11.javaversion'
 end

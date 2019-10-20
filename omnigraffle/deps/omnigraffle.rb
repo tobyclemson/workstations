@@ -1,3 +1,5 @@
+require_relative '../../gpg/helpers/gpg_helper'
+
 dep 'omnigraffle license file.plist' do
   requires 'omnigraffle.cask'
 

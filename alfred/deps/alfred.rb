@@ -6,7 +6,7 @@ dep 'alfred license file.plist' do
     GpgHelper.decrypt('alfred/files/license.gpg')
   end
 
-  target "~/Library/Application Support/Alfred 4/license.plist"
+  target "~/Library/Application Support/Alfred/license.plist"
   entries [
     {
       :path => ":'email'",

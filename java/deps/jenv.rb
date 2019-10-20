@@ -7,7 +7,7 @@ dep 'java-8.javaversion' do
 end
 
 dep 'java-11.javaversion' do
-  version '10'
+  version '11'
 end
 
 dep 'java' do

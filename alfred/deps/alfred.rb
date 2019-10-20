@@ -6,7 +6,7 @@ dep 'alfred license file.plist' do
     GpgHelper.decrypt('alfred/files/license.gpg')
   end
 
-  target "~/Library/Application Support/Alfred 3/license.plist"
+  target "~/Library/Application Support/Alfred 4/license.plist"
   entries [
     {
       :path => ":'email'",
@@ -24,9 +24,9 @@ end
 dep 'alfred.loginitem' do
   requires 'alfred.cask'
 
-  name "Alfred 3"
+  name "Alfred 4"
   hidden false
-  path "/Applications/Alfred\ 3.app".p.cleanpath
+  path "/Applications/Alfred\ 4.app".p.cleanpath
 end
 
 dep 'alfred' do

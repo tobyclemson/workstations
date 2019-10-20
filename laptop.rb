@@ -6,16 +6,12 @@ parse = ->(line) {
   {name: name, parameters: parameters}
 }
 
-legal_dep_name = ->(dep_name) {
-  dep_name.gsub("/", "_")
-}
-
 homebrew_dep_of_type = ->(type) {
   ->(definition) {
     name = definition[:name]
     parameters = definition[:parameters]
 
-    dep "#{legal_dep_name.call(name)}.#{type}" do
+    dep "#{name}.#{type}" do
       requires parameters[:requires] if parameters[:requires]
       opts parameters[:options] if parameters[:options]
     end
@@ -42,15 +38,9 @@ brews.each(&brew_dep)
 casks.each(&cask_dep)
 
 dep 'laptop' do
-  taps.each do |definition|
-    requires "#{legal_dep_name.call(definition[:name])}.tap"
-  end
-  brews.each do |definition|
-    requires "#{legal_dep_name.call(definition[:name])}.brew"
-  end
-  casks.each do |definition|
-    requires "#{legal_dep_name.call(definition[:name])}.cask"
-  end
+  taps.each {|definition| requires "#{definition[:name]}.tap"}
+  brews.each {|definition| requires "#{definition[:name]}.brew"}
+  casks.each {|definition| requires "#{definition[:name]}.cask"}
 
   requires 'git config'
 

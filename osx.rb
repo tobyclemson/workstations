@@ -699,6 +699,7 @@ dep 'hot corner settings' do
 end
 
 dep 'all settings' do
+  requires 'computer name'.with(computer_name: 'Bastian')
   requires 'osx settings'
   requires 'input device settings'
   requires 'finder settings'

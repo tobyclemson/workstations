@@ -14,4 +14,9 @@
 * Allow kernel extensions for certain team IDs, 
   e.g., for karabiner and virtualbox, via spctl.
 * Change spotlight shortcuts to ^-SPACE and ^-OPT-SPACE via
-  com.apple.symbolichotkeys.plist 
+  com.apple.symbolichotkeys.plist
+* Set hostname via
+  sudo scutil --set HostName <new host name>
+  sudo scutil --set LocalHostName <new host name>
+  sudo scutil --set ComputerName <new name>
+  dscacheutil -flushcache

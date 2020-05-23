@@ -35,6 +35,9 @@ export EDITOR=vi
 
 export AUTHORS="@tobyclemson"
 
+ssh-add -K &> /dev/null
+ssh-add -A &> /dev/null
+
 source $ZSH/oh-my-zsh.sh
 
 echo -e "Kernel Information: " `uname -smr`

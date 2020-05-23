@@ -48,3 +48,7 @@ dep 'github ssh access' do
         "-d '#{args}' #{github_api}/user/keys")
   }
 end
+
+dep 'git config' do
+  requires 'github ssh access'
+end

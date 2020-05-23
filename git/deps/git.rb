@@ -16,5 +16,4 @@ end
 dep 'git config' do
   requires 'git.brew'
   requires 'git user details'
-  requires 'github ssh access'
 end

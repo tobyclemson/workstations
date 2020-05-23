@@ -40,8 +40,6 @@ dep 'github ssh access' do
   }
 
   meet {
-    github_pat.ask('What is your github personal access token')
-
     args = "{\"title\": \"#{hostname}\", \"key\": \"#{public_key}\"}"
 
     shell("curl -X POST " +

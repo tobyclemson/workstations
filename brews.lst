@@ -11,6 +11,7 @@
 "goenv"
 "gorgon", requires: ["utils.tap"]
 "graphviz"
+"jenv"
 "jq"
 "leiningen"
 "mas"

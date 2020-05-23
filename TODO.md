@@ -13,3 +13,5 @@
   via `xattr -dr com.apple.quarantine "unidentified_thirdparty.app"`
 * Allow kernel extensions for certain team IDs, 
   e.g., for karabiner and virtualbox, via spctl.
+* Change spotlight shortcuts to ^-SPACE and ^-OPT-SPACE via
+  com.apple.symbolichotkeys.plist 

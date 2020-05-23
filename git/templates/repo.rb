@@ -2,7 +2,7 @@ meta :repo do
   accepts_value_for :source
   accepts_value_for :path
 
-  template {
+  template do
     def repo
       @repo ||= Babushka::GitRepo.new(path).tap do |r|
         r.repo_shell('git fetch') if r.exists?
@@ -19,5 +19,5 @@ meta :repo do
       end
     end
     met? { repo.exists? && !repo.behind? }
-  }
+  end
 end

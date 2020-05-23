@@ -38,13 +38,15 @@ brews.each(&brew_dep)
 casks.each(&cask_dep)
 
 dep 'laptop' do
+  requires 'all settings'
+
   taps.each {|definition| requires "#{definition[:name]}.tap"}
   brews.each {|definition| requires "#{definition[:name]}.brew"}
   casks.each {|definition| requires "#{definition[:name]}.cask"}
 
   requires 'git config'
+  requires 'github config'
 
-  requires 'all settings'
   requires 'all fonts'
   requires 'all projects'
   requires 'quicklook plugins'

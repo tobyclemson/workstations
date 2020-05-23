@@ -33,6 +33,8 @@ export PATH="$HOME/bin:/usr/local/bin:$PATH"
 export MANPATH="/usr/local/man:$MANPATH"
 export EDITOR=vi
 
+export AUTHORS="@tobyclemson"
+
 source $ZSH/oh-my-zsh.sh
 
 echo -e "Kernel Information: " `uname -smr`
@@ -54,9 +56,14 @@ eval "$(jenv init -)"
 
 eval "$(direnv hook zsh)"
 
-export NVM_DIR="$HOME/.nvm"
-source "/usr/local/opt/nvm/nvm.sh"
-
 export GOENV_ROOT="$HOME/.goenv"
 export PATH="$GOENV_ROOT/bin:$PATH"
 eval "$(goenv init -)"
+
+export ANDROID_SDK="$HOME/Library/Android/sdk"
+export ANDROID_HOME="$ANDROID_SDK"
+export PATH="$ANDROID_SDK/tools:$ANDROID_SDK/platform-tools:$PATH"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"

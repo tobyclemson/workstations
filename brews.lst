@@ -9,6 +9,7 @@
 "git-plus"
 "gnupg"
 "goenv"
+"gorgon", requires: ["utils.tap"]
 "graphviz"
 "jenv"
 "jq"

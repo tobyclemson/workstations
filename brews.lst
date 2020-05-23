@@ -17,7 +17,7 @@
 "mas"
 "nmap"
 "nvm"
-"openssl"
+"openssl@1.1"
 "pinentry-mac"
 "pyenv"
 "pyenv-virtualenv"

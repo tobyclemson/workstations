@@ -54,9 +54,6 @@ fpath=($HOME/.zsh-completions $fpath)
 autoload -U compinit
 compinit
 
-export PATH="$HOME/.jenv/bin:$PATH"
-eval "$(jenv init -)"
-
 eval "$(direnv hook zsh)"
 
 export GOENV_ROOT="$HOME/.goenv"
@@ -70,3 +67,6 @@ export PATH="$ANDROID_SDK/tools:$ANDROID_SDK/platform-tools:$PATH"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

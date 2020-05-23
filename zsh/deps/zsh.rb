@@ -38,12 +38,12 @@ dep 'default zsh theme.file' do
 end
 
 dep 'zsh' do
-  requires 'jenv.brew'
   requires 'nvm.brew'
   requires 'goenv.brew'
   requires 'rbenv.brew'
   requires 'pyenv.brew'
   requires 'direnv.brew'
+  requires 'sdkman'
   requires 'zsh as default shell'
   requires 'oh my zsh.repo'
   requires 'zshrc.file'

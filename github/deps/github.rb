@@ -49,6 +49,6 @@ dep 'github ssh access' do
   }
 end
 
-dep 'git config' do
+dep 'github config' do
   requires 'github ssh access'
 end

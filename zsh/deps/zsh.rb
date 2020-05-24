@@ -44,6 +44,7 @@ dep 'zsh' do
   requires 'pyenv.brew'
   requires 'direnv.brew'
   requires 'sdkman'
+  requires 'phpbrew'
   requires 'zsh as default shell'
   requires 'oh my zsh.repo'
   requires 'zshrc.file'

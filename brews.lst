@@ -3,6 +3,7 @@
 "autojump"
 "awscli", provides: "aws"
 "bzip2"
+"composer"
 "curl"
 "direnv"
 "encfs", requires: ["osxfuse.cask"]

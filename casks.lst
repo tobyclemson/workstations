@@ -25,6 +25,7 @@
 "keka"
 "kindle"
 "notion"
+"nvm"
 "omnigraffle"
 "osxfuse", requires: ["cask.tap"]
 "postman"

@@ -7,7 +7,7 @@ dep 'phpbrew' do
 
   meet {
     shell("sudo curl -L " +
-              '"https://github.com/phpbrew/phpbrew/raw/master/phpbrew"' +
+              '"https://github.com/phpbrew/phpbrew/raw/master/phpbrew" ' +
               "-o /usr/local/bin/phpbrew")
     shell("sudo chmod +x /usr/local/bin/phpbrew")
     shell("phpbrew init")

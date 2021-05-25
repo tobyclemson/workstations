@@ -603,7 +603,7 @@ dep "power settings" do
   requires 'ac display sleep delay.power'
   requires 'ac disk sleep delay.power'
   requires 'ac wake on network access.power'
-  requires 'ac wake on lid open.power'
+  # requires 'ac wake on lid open.power'
   requires 'battery computer sleep delay.power'
   requires 'battery display sleep delay.power'
   requires 'battery disk sleep delay.power'

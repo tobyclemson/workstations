@@ -700,8 +700,8 @@ end
 
 dep 'all settings' do
   requires 'computer name'.with(
-      computer_name: 'Bastian',
-      local_hostname: 'bastian')
+      computer_name: ENV['WORKSTATION_NAME'],
+      local_hostname: ENV['WORKSTATION_NAME'].downcase)
   requires 'osx settings'
   requires 'input device settings'
   requires 'finder settings'

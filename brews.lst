@@ -14,6 +14,7 @@
 "goenv"
 "gorgon", requires: ["utils.tap"]
 "graphviz"
+"handbrake"
 "jenv"
 "jq"
 "leiningen"
@@ -30,6 +31,7 @@
 "pyenv"
 "pyenv-virtualenv"
 "rbenv"
+"telnet"
 "tmux"
 "tree"
 "vim"

@@ -1,4 +1,5 @@
 "1password"
+"adobe-creative-cloud"
 "adoptopenjdk8", requires: ["cask-versions.tap"]
 "alfred"
 "amazon-workspaces"
@@ -11,25 +12,38 @@
 "docker"
 "dropbox"
 "emacs"
+"fantastical"
+"figma"
 "firefox"
 "flux"
+"font-bebas-neue", requires: ["cask-fonts.tap"]
+"font-fira-sans", requires: ["cask-fonts.tap"]
+"font-fira-sans-condensed", requires: ["cask-fonts.tap"]
+"font-fira-sans-extra-condensed", requires: ["cask-fonts.tap"]
+"font-inter", requires: ["cask-fonts.tap"]
+"font-josefin-sans", requires: ["cask-fonts.tap"]
+"font-josefin-sans-std-light", requires: ["cask-fonts.tap"]
+"font-josefin-slab", requires: ["cask-fonts.tap"]
 "font-lato", requires: ["cask-fonts.tap"]
 "font-open-sans", requires: ["cask-fonts.tap"]
 "font-roboto", requires: ["cask-fonts.tap"]
 "google-chrome"
 "google-drive-file-stream"
-"intellij-idea"
 "java"
 "java11", requires: ["cask-versions.tap"]
+"jetbrains-toolbox"
 "karabiner-elements"
 "keka"
 "kindle"
+"miro"
 "notion"
 "omnigraffle"
 "osxfuse", requires: ["cask.tap"]
 "postman"
 "react-native-debugger"
+"reactotron"
 "sequel-pro"
+"signal"
 "sizeup"
 "sketch"
 "skype"
@@ -37,4 +51,6 @@
 "spotify"
 "tunnelblick"
 "virtualbox"
+"visual-studio-code"
 "vlc"
+"zoomus"

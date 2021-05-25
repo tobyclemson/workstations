@@ -607,7 +607,7 @@ dep "power settings" do
   requires 'battery computer sleep delay.power'
   requires 'battery display sleep delay.power'
   requires 'battery disk sleep delay.power'
-  requires 'battery wake on lid open.power'
+  # requires 'battery wake on lid open.power'
 end
 
 dep "input device settings" do

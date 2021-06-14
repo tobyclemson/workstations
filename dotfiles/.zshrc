@@ -31,12 +31,7 @@ plugins=(
 
 export PATH="$HOME/bin:/usr/local/bin:$PATH"
 export MANPATH="/usr/local/man:$MANPATH"
-
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='mvim'
-fi
+export EDITOR='vim'
 
 export AUTHORS="@tobyclemson"
 

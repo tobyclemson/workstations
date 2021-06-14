@@ -11,6 +11,21 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # Install all taps, brews, casks
 brew bundle
 
+# Fix some things
+sudo xattr -r -d com.apple.quarantine /Applications/Emacs.app
+
+# Install oh-my-zsh
+if [ ! -d "$HOME/.oh-my-zsh/" ]; then
+  sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+fi
+
+# Setup oh-my-zsh
+cp ./dotfiles/.zprofile ~
+cp ./dotfiles/.zshrc ~
+cp \
+  ./dotfiles/.oh-my-zsh/custom/themes/default.zsh-theme \
+  ~/.oh-my-zsh/custom/themes
+
 # Setup git
 if ! git config --global --get user.name | grep -q "$USER_NAME"; then
   git config --global user.name "$USER_NAME"

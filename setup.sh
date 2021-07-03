@@ -3,10 +3,13 @@
 USER_NAME=${USER_NAME:-Toby Clemson}
 USER_EMAIL=${USER_EMAIL:-tobyclemson@gmail.com}
 
-# Install Homebrew
-# /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-# echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/tobyclemson/.zprofile
-eval "$(/opt/homebrew/bin/brew shellenv)"
+# Install or update Homebrew
+if ! which -s brew; then
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+else
+  brew update
+fi
 
 # Install all taps, brews, casks
 brew bundle

@@ -5,27 +5,35 @@ ZSH_THEME="default"
 plugins=(
   autojump
   aws
-  bundler
   brew
+  bundler
+  direnv
   docker
   emacs
   extract
   gem
   git
+  github
   gradle
+  jenv
   lein
   node
   npm
+  nvm
   osx
+  pip
   pyenv
   rake
   rbenv
   react-native
   rsync
   ruby
+  sdk
+  ssh-agent
   terraform
   tmux
   urltools
+  virtualenv
   xcode
 )
 
@@ -35,8 +43,8 @@ export EDITOR='vim'
 
 export AUTHORS="@tobyclemson"
 
-ssh-add -K &> /dev/null
-ssh-add -A &> /dev/null
+# ssh-add -K &> /dev/null
+# ssh-add -A &> /dev/null
 
 source $ZSH/oh-my-zsh.sh
 
@@ -54,24 +62,12 @@ fpath=($HOME/.zsh-completions $fpath)
 autoload -U compinit
 compinit
 
-eval "$(direnv hook zsh)"
-
 export GOENV_ROOT="$HOME/.goenv"
 export PATH="$GOENV_ROOT/bin:$PATH"
 eval "$(goenv init -)"
-
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home/
 
 export ANDROID_SDK="$HOME/Library/Android/sdk"
 export ANDROID_HOME="$ANDROID_SDK"
 export PATH="$ANDROID_SDK/tools:$ANDROID_SDK/platform-tools:$PATH"
 
-export NVM_DIR="$HOME/.nvm"
-mkdir -p "$NVM_DIR"
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"
-[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"
-
 [[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
-
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

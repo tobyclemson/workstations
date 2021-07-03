@@ -36,3 +36,8 @@ fi
 
 # Setup karabiner
 cp -R ./dotfiles/.config ~
+
+# Setup jenv
+for java in /Library/Java/JavaVirtualMachines/*; do
+  jenv add "$java/Contents/Home"
+done

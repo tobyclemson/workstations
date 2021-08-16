@@ -43,6 +43,9 @@ export EDITOR='vim'
 
 export AUTHORS="@tobyclemson"
 
+export NVM_HOMEBREW="/opt/homebrew/opt/nvm/"
+export NVM_AUTOLOAD="1"
+
 # ssh-add -K &> /dev/null
 # ssh-add -A &> /dev/null
 

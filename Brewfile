@@ -99,3 +99,5 @@ cask "visual-studio-code"
 cask "vlc"
 cask "whatsapp"
 cask "zoom"
+
+mas "Trello", id: 1278508951

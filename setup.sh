@@ -9,7 +9,7 @@ WORKSTATIONS_USER_EMAIL=${USER_EMAIL:-tobyclemson@gmail.com}
 # Install or update Homebrew
 if ! which -s brew; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  eval "$(/opt/homebrew/bin/brew shellenv)"
+  eval "$(brew shellenv)"
 else
   brew update
 fi

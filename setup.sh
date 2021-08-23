@@ -1,5 +1,8 @@
 #! /usr/bin/env bash
 
+set -e
+set -o pipefail
+
 USER_NAME=${USER_NAME:-Toby Clemson}
 USER_EMAIL=${USER_EMAIL:-tobyclemson@gmail.com}
 
@@ -12,7 +15,7 @@ else
 fi
 
 # Install all taps, brews, casks
-brew bundle
+brew bundle --verbose
 
 # Fix some things
 sudo xattr -r -d com.apple.quarantine /Applications/Emacs.app

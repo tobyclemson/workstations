@@ -3,8 +3,8 @@
 set -e
 set -o pipefail
 
-USER_NAME=${USER_NAME:-Toby Clemson}
-USER_EMAIL=${USER_EMAIL:-tobyclemson@gmail.com}
+WORKSTATIONS_USER_NAME=${USER_NAME:-Toby Clemson}
+WORKSTATIONS_USER_EMAIL=${USER_EMAIL:-tobyclemson@gmail.com}
 
 # Install or update Homebrew
 if ! which -s brew; then

@@ -1,0 +1,10 @@
+brew "encfs"
+brew "handbrake"
+brew "kafkacat"
+
+cask "adobe-creative-cloud"
+cask "google-drive-file-stream"
+cask "now-tv-player"
+cask "osxfuse"
+
+mas "Trello", id: 1278508951

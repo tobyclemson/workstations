@@ -15,7 +15,15 @@ else
 fi
 
 # Install all taps, brews, casks
-brew bundle --verbose
+brew bundle --verbose --file Brewfile.common --no-lock
+
+if [[ "${WORKSTATIONS_PERSONAL}" == "yes" ]]; then
+  brew bundle --verbose --file Brewfile.personal --no-lock
+fi
+
+if [[ "${WORKSTATIONS_BABYLON}" == "yes" ]]; then
+  brew bundle --verbose --file Brewfile.babylon --no-lock
+fi
 
 # Fix some things
 sudo xattr -r -d com.apple.quarantine /Applications/Emacs.app

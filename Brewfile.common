@@ -66,7 +66,7 @@ cask "font-josefin-slab"
 cask "font-lato"
 cask "font-open-sans"
 cask "font-roboto"
-cask "google-chrome"
+# cask "google-chrome"
 cask "jetbrains-toolbox"
 cask "karabiner-elements"
 cask "keka"
@@ -90,22 +90,3 @@ cask "visual-studio-code"
 cask "vlc"
 cask "whatsapp"
 cask "zoom"
-
-if ENV["WORKSTATIONS_PERSONAL"] == "yes"
-  brew "encfs"
-  brew "handbrake"
-  brew "kafkacat"
-
-  cask "adobe-creative-cloud"
-  cask "google-drive-file-stream"
-  cask "now-tv-player"
-  cask "osxfuse"
-
-  mas "Trello", id: 1278508951
-end
-
-if ENV["WORKSTATIONS_BABYLON"] == "yes"
-  tap "babylonhealth/babylon", "git@github.com:babylonhealth/homebrew-babylon.git"
-
-  brew "shipcat"
-end

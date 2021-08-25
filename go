@@ -6,10 +6,17 @@ set -o pipefail
 WORKSTATIONS_USER_NAME=${USER_NAME:-Toby Clemson}
 WORKSTATIONS_USER_EMAIL=${USER_EMAIL:-tobyclemson@gmail.com}
 
+UNAME_MACHINE="$(/usr/bin/uname -m)"
+if [[ "$UNAME_MACHINE" == "arm64" ]]; then
+  HOMEBREW_PREFIX="/opt/homebrew"
+else
+  HOMEBREW_PREFIX="/usr/local"
+fi
+
 # Install or update Homebrew
 if ! which -s brew; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  eval "$(brew shellenv)"
+  eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
 else
   brew update
 fi

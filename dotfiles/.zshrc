@@ -74,3 +74,7 @@ export ANDROID_HOME="$ANDROID_SDK"
 export PATH="$ANDROID_SDK/tools:$ANDROID_SDK/platform-tools:$PATH"
 
 [[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
+
+for config_file ($HOME/.zshrc.d/*.zsh); do
+  source $config_file
+done

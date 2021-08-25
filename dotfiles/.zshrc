@@ -75,7 +75,10 @@ export PATH="$ANDROID_SDK/tools:$ANDROID_SDK/platform-tools:$PATH"
 
 [[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
 
-eval "$(op signin my)"
+op-signin () {
+  eval "$(op signin my)"
+}
+op-signin
 
 for config_file ($HOME/.zshrc.d/*.zsh); do
   source $config_file

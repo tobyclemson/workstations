@@ -75,6 +75,8 @@ export PATH="$ANDROID_SDK/tools:$ANDROID_SDK/platform-tools:$PATH"
 
 [[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
 
+source "$HOME/.sdkman/bin/sdkman-init.sh"
+
 op-signin () {
   eval "$(op signin my)"
 }

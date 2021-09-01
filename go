@@ -32,6 +32,11 @@ if [[ "${WORKSTATIONS_BABYLON}" == "yes" ]]; then
   brew bundle --verbose --file Brewfile.babylon --no-lock
 fi
 
+# Install SDKMAN!
+if ! which -s sdk; then
+  curl -s "https://get.sdkman.io" | bash
+fi
+
 # Fix some things
 sudo xattr -r -d com.apple.quarantine /Applications/Emacs.app
 

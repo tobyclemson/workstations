@@ -1,50 +1,57 @@
-#!/bin/bash
+#! /usr/bin/env bash
 
 set -e
 set -o pipefail
 
-INSTALL_ROOT="/usr/local"
-BIN_ROOT="${INSTALL_ROOT}/bin"
-BABUSHKA_ROOT="${INSTALL_ROOT}/babushka"
+WORKSTATIONS_USER_NAME=${USER_NAME:-Toby Clemson}
+WORKSTATIONS_USER_EMAIL=${USER_EMAIL:-tobyclemson@gmail.com}
 
-echo "Converging workstation..."
-
-echo "-> Ensuring relevant parts of $INSTALL_ROOT exist, password may be required..."
-echo "--> Checking $BIN_ROOT..."
-if [ -d "$BIN_ROOT" ]; then
-    echo "--> $BIN_ROOT exists, continuing..."
+# Install or update Homebrew
+if ! which -s brew; then
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  eval "$(brew shellenv)"
 else
-    echo "--> $BIN_ROOT does not exist, creating..."
-    sudo mkdir "$BIN_ROOT"
-    sudo chown -R "$(whoami)" "$BIN_ROOT"
+  brew update
 fi
 
-echo "-> Ensuring $BABUSHKA_ROOT exists, password may be required..."
-if [ -d "$BABUSHKA_ROOT" ]; then
-    echo "--> $BABUSHKA_ROOT exists, continuing..."
-else
-    echo "--> Babushka root does not exist, creating..."
-    sudo mkdir "$BABUSHKA_ROOT"
-    sudo chown -R "$(whoami)" "$BABUSHKA_ROOT"
+# Install all taps, brews, casks
+brew bundle --verbose --file Brewfile.common --no-lock
+
+if [[ "${WORKSTATIONS_PERSONAL}" == "yes" ]]; then
+  brew bundle --verbose --file Brewfile.personal --no-lock
 fi
 
-echo "-> Checking for babushka..."
-if  hash babushka 2>/dev/null; then
-    echo "--> Babushka found, continuing..."
-else
-    echo "--> Babushka missing, installing..."
-    sh -c "`curl https://babushka.me/up`" </dev/null
+if [[ "${WORKSTATIONS_BABYLON}" == "yes" ]]; then
+  brew bundle --verbose --file Brewfile.babylon --no-lock
 fi
 
-echo "-> Adding repository as babushka source..."
-if ! babushka sources --list | grep workstations > /dev/null; then
-    babushka sources --add workstations https://github.com/tobyclemson/workstations
+# Fix some things
+sudo xattr -r -d com.apple.quarantine /Applications/Emacs.app
+
+# Install oh-my-zsh
+if [ ! -d "$HOME/.oh-my-zsh/" ]; then
+  sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
-echo "-> Ensuring babushka sources are up to date..."
-babushka sources --update
+# Setup oh-my-zsh
+cp ./dotfiles/.zprofile ~
+cp ./dotfiles/.zshrc ~
+cp \
+  ./dotfiles/.oh-my-zsh/custom/themes/default.zsh-theme \
+  ~/.oh-my-zsh/custom/themes
 
-echo "-> Running default dep 'workstations:laptop'..."
-babushka -d workstations:laptop
+# Setup git
+if ! git config --global --get user.name | grep -q "$USER_NAME"; then
+  git config --global user.name "$USER_NAME"
+fi
+if ! git config --global --get user.email | grep -q "$USER_EMAIL"; then
+  git config --global user.email "$USER_EMAIL"
+fi
 
-echo "-> Done."
+# Setup karabiner
+cp -R ./dotfiles/.config ~
+
+# Setup jenv
+for java in /Library/Java/JavaVirtualMachines/*; do
+  jenv add "$java/Contents/Home"
+done

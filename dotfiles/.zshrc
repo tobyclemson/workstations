@@ -60,6 +60,9 @@ export NVM_AUTOLOAD="1"
 export ZSH_COLORIZE_CHROMA_FORMATTER="terminal256"
 export ZSH_COLORIZE_STYLE="monokai"
 
+export LDFLAGS="-L/usr/local/opt/zlib/lib -L/usr/local/opt/bzip2/lib"
+export CPPFLAGS="-I/usr/local/opt/zlib/include -I/usr/local/opt/bzip2/include"
+
 source $ZSH/oh-my-zsh.sh
 
 echo -e "Kernel Information: " `uname -smr`

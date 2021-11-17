@@ -48,7 +48,8 @@ plugins=(
 zstyle ':omz:update' frequency 7
 zstyle ':omz:plugins:keychain' agents 'gpg,ssh'
 
-export PATH="$HOME/bin:/usr/local/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
+
 export MANPATH="/usr/local/man:$MANPATH"
 export EDITOR='vim'
 

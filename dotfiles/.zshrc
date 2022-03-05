@@ -17,10 +17,10 @@ plugins=(
   gradle
   jenv
   lein
+  macos
   node
   npm
   nvm
-  osx
   pip
   pyenv
   rake
@@ -31,7 +31,6 @@ plugins=(
   sdk
   ssh-agent
   terraform
-  tmux
   urltools
   virtualenv
   xcode
@@ -65,9 +64,9 @@ fpath=($HOME/.zsh-completions $fpath)
 autoload -U compinit
 compinit
 
-export GOENV_ROOT="$HOME/.goenv"
-export PATH="$GOENV_ROOT/bin:$PATH"
-eval "$(goenv init -)"
+# export GOENV_ROOT="$HOME/.goenv"
+# export PATH="$GOENV_ROOT/bin:$PATH"
+# eval "$(goenv init -)"
 
 export ANDROID_SDK="$HOME/Library/Android/sdk"
 export ANDROID_HOME="$ANDROID_SDK"
@@ -80,8 +79,9 @@ source "$HOME/.sdkman/bin/sdkman-init.sh"
 op-signin () {
   eval "$(op signin my)"
 }
-op-signin
 
-for config_file ($HOME/.zshrc.d/*.zsh); do
-  source $config_file
-done
+if [[ -d "$HOME/.zshrc.d" && "$(ls -A $HOME/.zshrc.d/)" ]]; then
+  for config_file ($HOME/.zshrc.d/*.zsh); do
+    source $config_file
+  done
+fi

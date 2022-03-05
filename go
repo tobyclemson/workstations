@@ -7,13 +7,19 @@ WORKSTATIONS_USER_NAME=${USER_NAME:-Toby Clemson}
 WORKSTATIONS_USER_EMAIL=${USER_EMAIL:-tobyclemson@gmail.com}
 
 UNAME_MACHINE="$(/usr/bin/uname -m)"
+
+# Install Homebrew prerequisites
+softwareupdate --all --install --force
+if [[ "$UNAME_MACHINE" == "arm64" && ! -e /Library/Apple/usr/share/rosetta/rosetta ]]; then
+  softwareupdate --install-rosetta --agree-to-license
+fi
+
+# Install or update Homebrew
 if [[ "$UNAME_MACHINE" == "arm64" ]]; then
   HOMEBREW_PREFIX="/opt/homebrew"
 else
   HOMEBREW_PREFIX="/usr/local"
 fi
-
-# Install or update Homebrew
 if ! which -s brew; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
@@ -53,11 +59,11 @@ cp \
   ~/.oh-my-zsh/custom/themes
 
 # Setup git
-if ! git config --global --get user.name | grep -q "$USER_NAME"; then
-  git config --global user.name "$USER_NAME"
+if [[ $(git config --global --get user.name) != *"$WORKSTATIONS_USER_NAME"* ]]; then
+  git config --global user.name "$WORKSTATIONS_USER_NAME"
 fi
-if ! git config --global --get user.email | grep -q "$USER_EMAIL"; then
-  git config --global user.email "$USER_EMAIL"
+if [[ $(git config --global --get user.email) != *"$WORKSTATIONS_USER_EMAIL"* ]]; then
+  git config --global user.email "$WORKSTATIONS_USER_EMAIL"
 fi
 
 # Setup karabiner

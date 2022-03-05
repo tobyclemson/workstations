@@ -1,10 +1,8 @@
-brew "encfs"
 brew "handbrake"
 brew "kcat"
 
 cask "adobe-creative-cloud"
 cask "google-drive"
-cask "macfuse"
 cask "now-tv-player"
 
 mas "Clockify Desktop", id: 1364502317

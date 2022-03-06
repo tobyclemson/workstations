@@ -7,6 +7,9 @@ plugins=(
   aws
   brew
   bundler
+  colored-man-pages
+  colorize
+  command-not-found
   direnv
   docker
   emacs
@@ -14,8 +17,12 @@ plugins=(
   gem
   git
   github
+  gnu-utils
+  gpg-agent
   gradle
+  history
   jenv
+  keychain
   lein
   macos
   node
@@ -23,6 +30,7 @@ plugins=(
   nvm
   pip
   pyenv
+  python
   rake
   rbenv
   react-native
@@ -33,8 +41,12 @@ plugins=(
   terraform
   urltools
   virtualenv
+  web-search
   xcode
 )
+
+zstyle ':omz:update' frequency 7
+zstyle ':omz:plugins:keychain' agents 'gpg,ssh'
 
 export PATH="$HOME/bin:/usr/local/bin:$PATH"
 export MANPATH="/usr/local/man:$MANPATH"
@@ -45,8 +57,8 @@ export AUTHORS="@tobyclemson"
 export NVM_HOMEBREW="/opt/homebrew/opt/nvm/"
 export NVM_AUTOLOAD="1"
 
-# ssh-add -K &> /dev/null
-# ssh-add -A &> /dev/null
+export ZSH_COLORIZE_CHROMA_FORMATTER="terminal256"
+export ZSH_COLORIZE_STYLE="monokai"
 
 source $ZSH/oh-my-zsh.sh
 

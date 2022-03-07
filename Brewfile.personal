@@ -2,6 +2,9 @@ brew "handbrake"
 brew "kcat"
 
 cask "adobe-creative-cloud"
+cask "docker"
+cask "firefox"
+cask "google-chrome"
 cask "google-drive"
 cask "now-tv-player"
 

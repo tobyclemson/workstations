@@ -56,6 +56,9 @@ if [[ "${WORKSTATIONS_BABYLON}" == "yes" ]]; then
   brew bundle --verbose --file Brewfile.babylon --no-lock
 fi
 
+# Clean up
+brew cleanup
+
 # Un-quarantine casks
 sudo xattr -r -d com.apple.quarantine /Applications/Emacs.app
 sudo xattr -r -d com.apple.quarantine /Applications/QLMarkdown.app
@@ -71,6 +74,11 @@ fi
 # Install oh-my-zsh
 if [ ! -d "$HOME/.oh-my-zsh/" ]; then
   sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+fi
+
+# Install prelude
+if [ ! -d "$HOME/.emacs.d/" ]; then
+  curl -L https://git.io/epre | sh
 fi
 
 # Copy initialisation dotfiles

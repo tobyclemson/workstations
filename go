@@ -91,6 +91,10 @@ cp \
   ./dotfiles/.oh-my-zsh/custom/themes/default.zsh-theme \
   ~/.oh-my-zsh/custom/themes
 
+# Setup prelude
+rm -rf ~/.emacs.d/personal
+cp -R ./dotfiles/.emacs.d/personal ~/.emacs.d/
+
 # Setup git
 if [[ $(git config --global --get user.name) != *"$WORKSTATIONS_USER_NAME"* ]]; then
   git config --global user.name "$WORKSTATIONS_USER_NAME"

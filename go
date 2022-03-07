@@ -64,7 +64,7 @@ sudo xattr -r -d com.apple.quarantine /Applications/QLMarkdown.app
 qlmanage -r
 
 # Install SDKMAN!
-if which -s sdk | grep -q "sdk not found"; then
+if [ ! -e "$HOME/.sdkman/bin/sdkman-init.sh" ]; then
   curl -s "https://get.sdkman.io" | bash
 fi
 

@@ -128,6 +128,34 @@ function add_application_preferences {
   affected_applications+=("$@")
 }
 
+function list_open_affected_applications {
+  local open_applications=()
+
+  # Store the open apps in an array
+  for app in "${affected_applications[@]}"; do
+    (( $(osascript -e "tell app \"System Events\" to count processes whose name is \"${app}\"") > 0 )) \
+      && open_applications+=("$app")
+  done
+
+  echo "The following open applications will be affected:"
+  printf -- '%s\n' "${open_applications[@]}" | column -x
+}
+
+function quit_applications {
+  for app in "${affected_applications[@]}"; do
+    case "$app" in
+      'Quick Look')
+        # Restart Quick Look
+        qlmanage -r
+        ;;
+      *)
+        killall "$app" &>/dev/null
+        # osascript -e "tell application \"${app}\" to quit"
+        ;;
+    esac
+  done
+}
+
 # Add system preferences
 system_preferences=(
   general
@@ -199,43 +227,10 @@ add_application_preferences "textedit" "TextEdit"
 add_application_preferences "adobe"
 add_application_preferences "dropbox" "Dropbox"
 add_application_preferences "google-chrome" "Google Chrome"
+add_application_preferences "iterm2"
 add_application_preferences "sizeup" "SizeUp"
 
-#
-## Third Party Apps
-#set_prefs bartender "Bartender"
-#set_prefs byword "Byword"
-#set_prefs divvy "Divvy"
-#set_prefs forklift "Forklift"
-#set_prefs itsycal "Itsycal"
-#set_prefs marked2 "Marked 2"
-#set_prefs qlcolorcode "Quick Look"
-#set_prefs sublime-text "Sublime Text"
-#set_prefs transmission "Transmission"
-
 # Source all preference scripts
+list_open_affected_applications
 source_preferences
-
-###############################################################################
-# iTerm 2                                                          #
-###############################################################################
-
-# Install the IR_Black theme for iTerm
-open "${HOME}/.init/IR_Black.itermcolors"
-
-# Don’t display the annoying prompt when quitting iTerm
-defaults write com.googlecode.iterm2 PromptOnQuit -bool false
-
-###############################################################################
-# Kill affected applications                                                  #
-###############################################################################
-
-for app in "Activity Monitor" \
-	"cfprefsd" \
-	"Dock" \
-	"Finder" \
-	"Messages" \
-	"Photos" \
-	"SystemUIServer"; do
-	killall "${app}" &> /dev/null
-done
+quit_applications

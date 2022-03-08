@@ -114,6 +114,7 @@ ensure-loginitem "1Password 7" "/Applications/1Password 7.app"
 cp -R ./dotfiles/.config ~
 
 # Setup jenv
+mkdir -p "$HOME/.jenv/versions"
 for java in /Library/Java/JavaVirtualMachines/*; do
   jenv add "$java/Contents/Home"
 done

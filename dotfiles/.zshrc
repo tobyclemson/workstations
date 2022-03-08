@@ -1,7 +1,5 @@
 export ZSH=$HOME/.oh-my-zsh
 
-ZSH_THEME="default"
-
 plugins=(
   autojump
   aws
@@ -55,16 +53,29 @@ export EDITOR='vim'
 
 export AUTHORS="@tobyclemson"
 
-export NVM_HOMEBREW="/opt/homebrew/opt/nvm/"
+export NVM_HOMEBREW="$HOMEBREW_PREFIX/opt/nvm/"
 export NVM_AUTOLOAD="1"
 
 export ZSH_COLORIZE_CHROMA_FORMATTER="terminal256"
 export ZSH_COLORIZE_STYLE="monokai"
 
-export LDFLAGS="-L/usr/local/opt/zlib/lib -L/usr/local/opt/bzip2/lib"
-export CPPFLAGS="-I/usr/local/opt/zlib/include -I/usr/local/opt/bzip2/include"
-
 source $ZSH/oh-my-zsh.sh
+
+LDFLAGS="$LDFLAGS -L$HOMEBREW_PREFIX/opt/zlib/lib"
+LDFLAGS="$LDFLAGS -L$HOMEBREW_PREFIX/opt/bzip2/lib"
+LDFLAGS="$LDFLAGS -L$HOMEBREW_PREFIX/opt/libedit/lib"
+
+CPPFLAGS="$CPPFLAGS -I$HOMEBREW_PREFIX/opt/zlib/include"
+CPPFLAGS="$CPPFLAGS -I$HOMEBREW_PREFIX/opt/bzip2/include"
+CPPFLAGS="$CPPFLAGS -I$HOMEBREW_PREFIX/opt/libedit/include"
+
+PKG_CONFIG_PATH="$HOMEBREW_PREFIX/opt/libedit/lib/pkgconfig"
+
+export LDFLAGS
+export CPPFLAGS
+export PKG_CONFIG_PATH
+
+eval "$(starship init zsh)"
 
 echo -e "Kernel Information: " `uname -smr`
 echo -e "`zsh --version`"

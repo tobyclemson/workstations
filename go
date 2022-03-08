@@ -87,9 +87,6 @@ cp -R ./dotfiles/.init ~
 # Setup oh-my-zsh
 cp ./dotfiles/.zprofile ~
 cp ./dotfiles/.zshrc ~
-cp \
-  ./dotfiles/.oh-my-zsh/custom/themes/default.zsh-theme \
-  ~/.oh-my-zsh/custom/themes
 
 # Setup prelude
 rm -rf ~/.emacs.d/personal

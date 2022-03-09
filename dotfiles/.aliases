@@ -1,0 +1,74 @@
+# Shortcuts
+alias d="cd ~/Documents"
+alias dl="cd ~/Downloads"
+alias dt="cd ~/Desktop"
+alias c="cd ~/Code"
+
+# List all files colourised in long, humanised format
+alias l="ls -lahF --color"
+
+# List all files colourised in long, humanised format, excluding . and ..
+alias la="ls -lAhF --color"
+
+# List only directories in long, humanised format
+alias lsd="ls -lhF --color | grep --color=never '^d'"
+
+# Always use colour output for `ls`
+alias ls="command ls --color"
+
+# Get macOS Software Updates, and update Homebrew and its installed packages
+alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup'
+
+# Reprovision workstation
+alias provision='cd ~/Code/workstations && ./go && reload'
+
+# Browsers
+alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
+alias firefox='/Applications/Firefox.app/Contents/MacOS/firefox'
+
+# IP addresses
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias localip="ipconfig getifaddr en0"
+alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, ""); print }'"
+
+# Show active network interfaces
+alias ifactive="ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active'"
+
+# Flush Directory Service cache
+alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"
+
+# Clean up LaunchServices to remove duplicates in the “Open With” menu
+alias lscleanup="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user && killall Finder"
+
+# Recursively delete `.DS_Store` files
+alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
+
+# Show/hide hidden files in Finder
+alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
+alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
+
+# Merge PDF files, preserving hyperlinks
+# Usage: `mergepdf input{1,2,3}.pdf`
+alias mergepdf='gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=_merged.pdf'
+
+# Disable Spotlight
+alias spotoff="sudo mdutil -a -i off"
+# Enable Spotlight
+alias spoton="sudo mdutil -a -i on"
+
+# PlistBuddy alias, because sometimes `defaults` just doesn’t cut it
+alias plistbuddy="/usr/libexec/PlistBuddy"
+
+# Airport CLI alias
+alias airport='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport'
+
+# Intuitive map function
+# For example, to list all directories that contain a certain file:
+# find . -name .gitattributes | map dirname
+alias map="xargs -n1"
+
+# Reload the shell (i.e. invoke as a login shell)
+alias reload='exec ${SHELL} -l'
+
+# Print each PATH entry on a separate line
+alias path='echo -e ${PATH//:/\\n}'

@@ -85,14 +85,25 @@ fi
 cp -R ./dotfiles/.init ~
 
 # Setup oh-my-zsh
+cp ./dotfiles/.aliases ~
+cp ./dotfiles/.functions ~
 cp ./dotfiles/.zprofile ~
 cp ./dotfiles/.zshrc ~
+
+# Store workstation environment variables
+if [[ -f "$HOME/.workstation" ]]; then
+  rm "$HOME/.workstation"
+fi
+for var in "${!WORKSTATIONS_@}"; do
+    printf 'export %s=%s\n' "$var" "${!var}" >> "$HOME/.workstation"
+done
 
 # Setup prelude
 rm -rf ~/.emacs.d/personal
 cp -R ./dotfiles/.emacs.d/personal ~/.emacs.d/
 
 # Setup git
+cp ./dotfiles/.gitconfig ~
 if [[ $(git config --global --get user.name) != *"$WORKSTATIONS_USER_NAME"* ]]; then
   git config --global user.name "$WORKSTATIONS_USER_NAME"
 fi

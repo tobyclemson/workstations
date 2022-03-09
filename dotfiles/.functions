@@ -1,3 +1,11 @@
+# Reprovision workstation
+function provision() {
+  cd "$HOME/Code/workstations" || exit
+  ./go
+  cd - || exit
+  exec "${SHELL}" -l
+}
+
 # Create a new directory and enter it
 function mkd() {
 	mkdir -p "$@" && cd "$_" || exit;

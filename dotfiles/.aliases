@@ -19,9 +19,6 @@ alias ls="command ls --color"
 # Get macOS Software Updates, and update Homebrew and its installed packages
 alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup'
 
-# Reprovision workstation
-alias provision='cd ~/Code/workstations && ./go && reload'
-
 # Browsers
 alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
 alias firefox='/Applications/Firefox.app/Contents/MacOS/firefox'

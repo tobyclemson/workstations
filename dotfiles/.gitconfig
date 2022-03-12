@@ -9,6 +9,8 @@
   navigate = true
   side-by-side = true
   syntax-theme = Monokai Extended
+[multi]
+  groupbyoutput = 1
 [merge]
   conflictstyle = diff3
 [diff]

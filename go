@@ -10,6 +10,8 @@ source ./lib/loginitems.sh
 
 WORKSTATIONS_NAME=${WORKSTATIONS_NAME:-falkor}
 
+WORKSTATIONS_RUN_SOFTWARE_UPDATE=${WORKSTATIONS_RUN_SOFTWARE_UPDATE:-yes}
+
 WORKSTATIONS_USER_NAME=${WORKSTATIONS_USER_NAME:-Toby Clemson}
 WORKSTATIONS_USER_EMAIL=${WORKSTATIONS_USER_EMAIL:-tobyclemson@gmail.com}
 
@@ -24,9 +26,11 @@ sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 # Install Homebrew prerequisites
-softwareupdate --all --install --force
-if [[ "$uname_machine" == "arm64" && ! -e /Library/Apple/usr/share/rosetta/rosetta ]]; then
-  softwareupdate --install-rosetta --agree-to-license
+if [[ "$WORKSTATIONS_RUN_SOFTWARE_UPDATE" != "no" ]]; then
+  softwareupdate --all --install --force
+  if [[ "$uname_machine" == "arm64" && ! -e /Library/Apple/usr/share/rosetta/rosetta ]]; then
+    softwareupdate --install-rosetta --agree-to-license
+  fi
 fi
 
 # Install or update Homebrew

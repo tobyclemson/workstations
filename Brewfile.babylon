@@ -5,3 +5,4 @@ brew "babylonhealth/babylon/teleport@4"
 brew "librdkafka"
 
 cask "google-cloud-sdk"
+cask "rancher"

@@ -36,5 +36,5 @@ function tre() {
 
 # Sign in to 1Password
 op-signin () {
-  eval "$(op signin my)"
+  eval "$(op signin --account my.1password.com)"
 }

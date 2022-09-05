@@ -1,0 +1,14 @@
+#! /usr/bin/env bash
+
+set -e
+set -o pipefail
+set -x
+
+source ./lib/loginitems.sh
+
+# Install personal taps, brews and casks
+brew bundle --verbose --file Brewfile.personal --no-lock
+
+# Add personal loginitems
+ensure-loginitem "Dropbox" "/Applications/Dropbox.app"
+ensure-loginitem "Karabiner-Elements" "/Applications/Karabiner-Elements.app"

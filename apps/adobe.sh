@@ -12,10 +12,21 @@ set -o pipefail
 #open -a "$app_path"
 
 # Hide crufty Application folders
-#sudo chflags -v hidden /Applications/Adobe
-#sudo chflags -v hidden /Applications/Adobe*/Configuration
-#sudo chflags -v hidden /Applications/Adobe*/Resources
-sudo chflags -v hidden /Applications/Utilities/Adobe*
+while IFS= read -r -d '' dir; do
+  sudo chflags -v hidden "$dir"
+
+  if [[ -e "${dir}/Configuration" ]]; then
+    sudo chflags -v hidden "${dir}/Configuration"
+  fi
+
+  if [[ -e "${dir}/Resources" ]]; then
+    sudo chflags -v hidden "${dir}/Resources"
+  fi
+done < <(find /Applications/ -maxdepth 1 -type d -name 'Adobe*' -print0)
+
+while IFS= read -r -d '' dir; do
+  sudo chflags -v hidden "$dir"
+done < <(find /Applications/Utilities/ -maxdepth 1 -type d -name 'Adobe*' -print0)
 
 # Remove Legal cruft
 #rm -rf /Applications/Adobe*/Legal* 2>/dev/null

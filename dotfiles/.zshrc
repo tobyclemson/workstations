@@ -46,6 +46,10 @@ plugins=(
 zstyle ':omz:update' frequency 7
 zstyle ':omz:plugins:keychain' agents 'gpg,ssh'
 
+mkdir -p "$HOME/.ssh"
+keys=($(find "$HOME/.ssh" -name 'id*' | grep -v ".pub"))
+zstyle ':omz:plugins:ssh-agent' identities $keys
+
 export PATH="$HOME/bin:$PATH"
 
 export MANPATH="/usr/local/man:$MANPATH"

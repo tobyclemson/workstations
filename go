@@ -12,7 +12,7 @@ WORKSTATIONS_NAME=${WORKSTATIONS_NAME:-falkor}
 
 WORKSTATIONS_RUN_SOFTWARE_UPDATE=${WORKSTATIONS_RUN_SOFTWARE_UPDATE:-yes}
 
-WORKSTATIONS_USER_NAME=${WORKSTATIONS_USER_NAME:-Toby Clemson}
+WORKSTATIONS_USER_NAME=${WORKSTATIONS_USER_NAME:-"Toby Clemson"}
 WORKSTATIONS_USER_EMAIL=${WORKSTATIONS_USER_EMAIL:-tobyclemson@gmail.com}
 
 uname_machine="$(/usr/bin/uname -m)"
@@ -52,12 +52,14 @@ brew upgrade
 # Install all taps, brews and casks
 brew bundle --verbose --file Brewfile.common --no-lock
 
+# Perform optional personal workstation setup
 if [[ "${WORKSTATIONS_PERSONAL}" == "yes" ]]; then
-  brew bundle --verbose --file Brewfile.personal --no-lock
+  ./go_personal
 fi
 
+# Perform optional babylon workstation setup
 if [[ "${WORKSTATIONS_BABYLON}" == "yes" ]]; then
-  brew bundle --verbose --file Brewfile.babylon --no-lock
+  ./go_babylon
 fi
 
 # Clean up
@@ -94,12 +96,15 @@ cp ./dotfiles/.functions ~
 cp ./dotfiles/.zprofile ~
 cp ./dotfiles/.zshrc ~
 
+mkdir -p ~/.zshrc.d
+cp -R ./dotfiles/.zshrc.d/common/* ~/.zshrc.d/
+
 # Store workstation environment variables
 if [[ -f "$HOME/.workstation" ]]; then
   rm "$HOME/.workstation"
 fi
 for var in "${!WORKSTATIONS_@}"; do
-    printf 'export %s=%s\n' "$var" "${!var}" >> "$HOME/.workstation"
+  printf 'export %s="%s"\n' "$var" "${!var}" >> "$HOME/.workstation"
 done
 
 # Setup prelude
@@ -116,10 +121,10 @@ if [[ $(git config --global --get user.email) != *"$WORKSTATIONS_USER_EMAIL"* ]]
 fi
 
 # Add loginitems
-ensure-loginitem "Alfred 4" "/Applications/Alfred 4.app"
-ensure-loginitem "SizeUp" "/Applications/SizeUp.app"
 ensure-loginitem "Dropbox" "/Applications/Dropbox.app"
 ensure-loginitem "Karabiner-Elements" "/Applications/Karabiner-Elements.app"
+ensure-loginitem "Alfred 4" "/Applications/Alfred 4.app"
+ensure-loginitem "SizeUp" "/Applications/SizeUp.app"
 ensure-loginitem "1Password 7" "/Applications/1Password 7.app"
 ensure-loginitem "Bartender 4" "/Applications/Bartender 4.app"
 

@@ -7,6 +7,8 @@ cask "firefox"
 cask "google-chrome"
 cask "google-drive"
 cask "now-tv-player"
+cask "slack"
+cask "zoom"
 
 mas "Clockify Desktop", id: 1364502317
 mas "GarageBand", id: 682658836

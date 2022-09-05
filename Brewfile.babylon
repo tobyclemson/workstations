@@ -1,7 +1,8 @@
-tap "babylonhealth/babylon", "git@github.com:babylonhealth/homebrew-babylon.git"
+tap "babylonhealth/babylon", "git@babylon-github:babylonhealth/homebrew-babylon.git"
 
 brew "shipcat"
 brew "babylonhealth/babylon/teleport@4"
+brew "dpfctl"
 brew "librdkafka"
 
 cask "google-cloud-sdk"

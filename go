@@ -66,7 +66,7 @@ fi
 brew cleanup
 
 # Un-quarantine casks
-sudo xattr -r -d com.apple.quarantine /Applications/Emacs.app
+# sudo xattr -r -d com.apple.quarantine /Applications/Emacs.app
 sudo xattr -r -d com.apple.quarantine /Applications/QLMarkdown.app
 
 # Reset Quicklook server

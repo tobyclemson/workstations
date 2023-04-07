@@ -57,11 +57,6 @@ if [[ "${WORKSTATIONS_PERSONAL}" == "yes" ]]; then
   ./go_personal
 fi
 
-# Perform optional babylon workstation setup
-if [[ "${WORKSTATIONS_BABYLON}" == "yes" ]]; then
-  ./go_babylon
-fi
-
 # Clean up
 brew cleanup
 
@@ -142,24 +137,24 @@ done
 osascript -e "tell application \"System Preferences\" to quit"
 
 # Configure system and app preferences
-function source_preferences {
+source_preferences () {
   for file in "${preference_files[@]}"; do
     # shellcheck disable=SC1090
     [ -r "$file" ] && [ -f "$file" ] && source "$file"
   done
 }
 
-function add_system_preferences {
+add_system_preferences () {
   preference_files+=("system/$1.sh")
 }
 
-function add_application_preferences {
+add_application_preferences () {
   preference_files+=("apps/$1.sh")
   shift
   affected_applications+=("$@")
 }
 
-function list_open_affected_applications {
+list_open_affected_applications () {
   local open_applications=()
 
   # Store the open apps in an array
@@ -172,7 +167,7 @@ function list_open_affected_applications {
   printf -- '%s\n' "${open_applications[@]}" | column -x
 }
 
-function quit_applications {
+quit_applications () {
   for app in "${affected_applications[@]}"; do
     case "$app" in
       'Quick Look')

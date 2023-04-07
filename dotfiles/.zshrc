@@ -60,6 +60,8 @@ export AUTHORS="@tobyclemson"
 export NVM_HOMEBREW="$HOMEBREW_PREFIX/opt/nvm/"
 export NVM_AUTOLOAD="1"
 
+export CLOUDSDK_HOME="$HOMEBREW_PREFIX/share/google-cloud-sdk/"
+
 export ZSH_COLORIZE_CHROMA_FORMATTER="terminal256"
 export ZSH_COLORIZE_STYLE="monokai"
 

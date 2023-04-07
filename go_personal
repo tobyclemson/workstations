@@ -12,3 +12,7 @@ brew bundle --verbose --file Brewfile.personal --no-lock
 # Add personal loginitems
 ensure-loginitem "Dropbox" "/Applications/Dropbox.app"
 ensure-loginitem "Karabiner-Elements" "/Applications/Karabiner-Elements.app"
+
+# Setup specific personal zsh configuration
+mkdir -p ~/.zshrc.d
+cp -R dotfiles/.zshrc.d/personal/* ~/.zshrc.d/

@@ -31,11 +31,11 @@ defaults write com.apple.spaces spans-displays -bool false
 #find "${HOME}/Library/Application Support/Dock" -name "*-*.db" -maxdepth 1 -delete
 
 # Add iOS Simulator to Launchpad
-if [ -e "/Applications/Xcode.app/Contents/Developer/Applications/Simulator.app" ]; then
-    sudo ln -sf \
-      "/Applications/Xcode.app/Contents/Developer/Applications/Simulator.app" \
-      "/Applications/Simulator.app"
-fi
+#if [ -e "/Applications/Xcode.app/Contents/Developer/Applications/Simulator.app" ]; then
+#    sudo ln -sf \
+#      "/Applications/Xcode.app/Contents/Developer/Applications/Simulator.app" \
+#      "/Applications/Simulator.app"
+#fi
 
 # Hot corners
 # Possible values:

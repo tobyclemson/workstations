@@ -11,6 +11,8 @@ source ./lib/loginitems.sh
 WORKSTATIONS_NAME=${WORKSTATIONS_NAME:-falkor}
 
 WORKSTATIONS_RUN_SOFTWARE_UPDATE=${WORKSTATIONS_RUN_SOFTWARE_UPDATE:-yes}
+WORKSTATIONS_CONFIGURE_SYSTEM=${WORKSTATIONS_CONFIGURE_SYSTEM:-yes}
+WORKSTATIONS_CONFIGURE_APPS=${WORKSTATIONS_CONFIGURE_APPS:-yes}
 
 WORKSTATIONS_USER_NAME=${WORKSTATIONS_USER_NAME:-"Toby Clemson"}
 WORKSTATIONS_USER_EMAIL=${WORKSTATIONS_USER_EMAIL:-tobyclemson@gmail.com}
@@ -183,80 +185,84 @@ quit_applications () {
 }
 
 # Add system preferences
-system_preferences=(
-  general
-  desktop-screen-saver
-  dock
-  mission-control
-  language-region
-  security-privacy
-  spotlight
-  notifications
+if [[ "$WORKSTATIONS_CONFIGURE_SYSTEM" != "no" ]]; then
+  system_preferences=(
+    general
+    desktop-screen-saver
+    dock
+    mission-control
+    language-region
+    security-privacy
+    spotlight
+    notifications
 
-  displays
-  energy-saver
-  keyboard
-  # mouse
-  trackpad
-  printers-scanners
-  sound
-  # startup-disk
+    displays
+    energy-saver
+    keyboard
+    # mouse
+    trackpad
+    printers-scanners
+    sound
+    # startup-disk
 
-  icloud
-  # internet-accounts
-  extensions
-  app-store
-  network
-  bluetooth
-  sharing
+    icloud
+    # internet-accounts
+    extensions
+    app-store
+    network
+    bluetooth
+    sharing
 
-  users-groups
-  # parental-controls
-  siri
-  date-time
-  time-machine
-  accessibility
+    users-groups
+    # parental-controls
+    siri
+    date-time
+    time-machine
+    accessibility
 
-  other
-  dashboard
-  cds-dvds
-  ssd
-)
+    other
+    dashboard
+    cds-dvds
+    ssd
+  )
 
-for preference_pane in "${system_preferences[@]}"; do
-  add_system_preferences "$preference_pane"
-done
+  for preference_pane in "${system_preferences[@]}"; do
+    add_system_preferences "$preference_pane"
+  done
+fi
 
-for app in "cfprefsd" "SystemUIServer" "Dock" "SpeechSynthesisServer"; do
-  affected_applications+=("$app")
-done
+if [[ "$WORKSTATIONS_CONFIGURE_APPS" != "no" ]]; then
+  for app in "cfprefsd" "SystemUIServer" "Dock" "SpeechSynthesisServer"; do
+    affected_applications+=("$app")
+  done
 
-# Add Apple application preferences
-add_application_preferences "activity-monitor" "Activity Monitor"
-add_application_preferences "app-store" "App Store"
-add_application_preferences "calendar" "Calendar"
-add_application_preferences "contacts" "Contacts"
-add_application_preferences "disk-utility" "Disk Utility"
-add_application_preferences "finder" "Finder"
-add_application_preferences "font-book" "Font Book"
-add_application_preferences "iwork" "Keynote" "Numbers" "Pages"
-add_application_preferences "mail" "Mail"
-add_application_preferences "messages" "Messages"
-add_application_preferences "photos" "Photos"
-add_application_preferences "quicktime" "QuickTime Player"
-add_application_preferences "safari" "Safari" "WebKit"
-add_application_preferences "screenshot"
-add_application_preferences "terminal"
-add_application_preferences "textedit" "TextEdit"
+  # Add Apple application preferences
+  add_application_preferences "activity-monitor" "Activity Monitor"
+  add_application_preferences "app-store" "App Store"
+  add_application_preferences "calendar" "Calendar"
+  add_application_preferences "contacts" "Contacts"
+  add_application_preferences "disk-utility" "Disk Utility"
+  add_application_preferences "finder" "Finder"
+  add_application_preferences "font-book" "Font Book"
+  add_application_preferences "iwork" "Keynote" "Numbers" "Pages"
+  add_application_preferences "mail" "Mail"
+  add_application_preferences "messages" "Messages"
+  add_application_preferences "photos" "Photos"
+  add_application_preferences "quicktime" "QuickTime Player"
+  add_application_preferences "safari" "Safari" "WebKit"
+  add_application_preferences "screenshot"
+  add_application_preferences "terminal"
+  add_application_preferences "textedit" "TextEdit"
 
-# Add 3rd party application preferences
-add_application_preferences "adobe"
-add_application_preferences "dropbox" "Dropbox"
-add_application_preferences "google-chrome" "Google Chrome"
-add_application_preferences "iterm2"
-add_application_preferences "sizeup" "SizeUp"
+  # Add 3rd party application preferences
+  add_application_preferences "adobe"
+  add_application_preferences "dropbox" "Dropbox"
+  add_application_preferences "google-chrome" "Google Chrome"
+  add_application_preferences "iterm2"
+  add_application_preferences "sizeup" "SizeUp"
 
-# Source all preference scripts
-list_open_affected_applications
-source_preferences
-quit_applications
+  # Source all preference scripts
+  list_open_affected_applications
+  source_preferences
+  quit_applications
+fi

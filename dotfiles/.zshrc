@@ -20,18 +20,14 @@ plugins=(
   gpg-agent
   gradle
   history
-  jenv
   keychain
   lein
   macos
   node
   npm
-  nvm
   pip
-  pyenv
   python
   rake
-  rbenv
   react-native
   rsync
   ruby
@@ -127,8 +123,6 @@ export PATH="$ANDROID_SDK/tools:$ANDROID_SDK/platform-tools:$PATH"
 export PATH="$HOMEBREW_PREFIX/opt/gnupg@2.2/bin:$PATH"
 
 [[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
-
-source "$HOMEBREW_PREFIX/opt/asdf/libexec/asdf.sh"
 
 for file ($HOME/.{aliases,functions,workstation}); do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";

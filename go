@@ -69,6 +69,10 @@ sudo xattr -r -d com.apple.quarantine /Applications/QLMarkdown.app
 # Reset Quicklook server
 qlmanage -r
 
+# Install asdf plugins
+asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git
+asdf plugin add java https://github.com/halcyon/asdf-java.git
+
 # Install oh-my-zsh
 if [ ! -d "$HOME/.oh-my-zsh/" ]; then
   sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"

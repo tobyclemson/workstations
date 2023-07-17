@@ -1,6 +1,7 @@
 export ZSH=$HOME/.oh-my-zsh
 
 plugins=(
+  asdf
   autojump
   aws
   brew
@@ -34,7 +35,6 @@ plugins=(
   react-native
   rsync
   ruby
-  sdk
   ssh-agent
   terraform
   urltools
@@ -120,10 +120,6 @@ fpath=($HOME/.zsh-completions $fpath)
 autoload -U compinit
 compinit
 
-# export GOENV_ROOT="$HOME/.goenv"
-# export PATH="$GOENV_ROOT/bin:$PATH"
-# eval "$(goenv init -)"
-
 export ANDROID_SDK="$HOME/Library/Android/sdk"
 export ANDROID_HOME="$ANDROID_SDK"
 export PATH="$ANDROID_SDK/tools:$ANDROID_SDK/platform-tools:$PATH"
@@ -132,7 +128,7 @@ export PATH="$HOMEBREW_PREFIX/opt/gnupg@2.2/bin:$PATH"
 
 [[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
 
-source "$HOME/.sdkman/bin/sdkman-init.sh"
+source "$HOMEBREW_PREFIX/opt/asdf/libexec/asdf.sh"
 
 for file ($HOME/.{aliases,functions,workstation}); do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";

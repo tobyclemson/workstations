@@ -69,11 +69,6 @@ sudo xattr -r -d com.apple.quarantine /Applications/QLMarkdown.app
 # Reset Quicklook server
 qlmanage -r
 
-# Install SDKMAN!
-if [ ! -e "$HOME/.sdkman/bin/sdkman-init.sh" ]; then
-  curl -s "https://get.sdkman.io" | bash
-fi
-
 # Install oh-my-zsh
 if [ ! -d "$HOME/.oh-my-zsh/" ]; then
   sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"

@@ -128,6 +128,8 @@ export ANDROID_SDK="$HOME/Library/Android/sdk"
 export ANDROID_HOME="$ANDROID_SDK"
 export PATH="$ANDROID_SDK/tools:$ANDROID_SDK/platform-tools:$PATH"
 
+export PATH="$HOMEBREW_PREFIX/opt/gnupg@2.2/bin:$PATH"
+
 [[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
 
 source "$HOME/.sdkman/bin/sdkman-init.sh"

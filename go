@@ -1,8 +1,8 @@
 #! /usr/bin/env bash
 
+[ "$TRACE" = "yes" ] && set -x
 set -e
 set -o pipefail
-set -x
 
 source ./lib/loginitems.sh
 
@@ -80,7 +80,6 @@ function ensure-asdf-plugin() {
 }
 
 ensure-asdf-plugin "ruby" "https://github.com/asdf-vm/asdf-ruby.git"
-ensure-asdf-plugin "bundler" "https://github.com/jonathanmorley/asdf-bundler"
 ensure-asdf-plugin "java" "https://github.com/halcyon/asdf-java.git"
 ensure-asdf-plugin "python" "https://github.com/asdf-community/asdf-python"
 ensure-asdf-plugin "php" "https://github.com/asdf-community/asdf-php.git"

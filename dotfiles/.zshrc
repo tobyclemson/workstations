@@ -53,9 +53,6 @@ export EDITOR='vim'
 
 export AUTHORS="@tobyclemson"
 
-export NVM_HOMEBREW="$HOMEBREW_PREFIX/opt/nvm/"
-export NVM_AUTOLOAD="1"
-
 export CLOUDSDK_HOME="$HOMEBREW_PREFIX/share/google-cloud-sdk/"
 
 export ZSH_COLORIZE_CHROMA_FORMATTER="terminal256"
@@ -121,8 +118,6 @@ export ANDROID_HOME="$ANDROID_SDK"
 export PATH="$ANDROID_SDK/tools:$ANDROID_SDK/platform-tools:$PATH"
 
 export PATH="$HOMEBREW_PREFIX/opt/gnupg@2.2/bin:$PATH"
-
-[[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
 
 for file ($HOME/.{aliases,functions,workstation}); do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";

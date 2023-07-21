@@ -3,7 +3,6 @@ brew "handbrake"
 brew "kcat"
 brew "libdvdcss"
 brew "libzip"
-brew "phpbrew"
 
 cask "adobe-creative-cloud"
 cask "arduino"

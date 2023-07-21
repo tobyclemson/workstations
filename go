@@ -70,7 +70,7 @@ sudo xattr -r -d com.apple.quarantine /Applications/QLMarkdown.app
 qlmanage -r
 
 # Install asdf plugins
-function ensure_asdf_plugin() {
+function ensure-asdf-plugin() {
   local name="$1"
   local repo="$2"
 
@@ -79,11 +79,12 @@ function ensure_asdf_plugin() {
   fi
 }
 
-ensure_asdf_plugin "ruby" "https://github.com/asdf-vm/asdf-ruby.git"
-ensure_asdf_plugin "java" "https://github.com/halcyon/asdf-java.git"
-ensure_asdf_plugin "python" "https://github.com/asdf-community/asdf-python"
-ensure_asdf_plugin "php" "https://github.com/asdf-community/asdf-php.git"
-ensure_asdf_plugin "nodejs" "https://github.com/asdf-vm/asdf-nodejs.git"
+ensure-asdf-plugin "ruby" "https://github.com/asdf-vm/asdf-ruby.git"
+ensure-asdf-plugin "bundler" "https://github.com/jonathanmorley/asdf-bundler"
+ensure-asdf-plugin "java" "https://github.com/halcyon/asdf-java.git"
+ensure-asdf-plugin "python" "https://github.com/asdf-community/asdf-python"
+ensure-asdf-plugin "php" "https://github.com/asdf-community/asdf-php.git"
+ensure-asdf-plugin "nodejs" "https://github.com/asdf-vm/asdf-nodejs.git"
 
 # Install oh-my-zsh
 if [ ! -d "$HOME/.oh-my-zsh/" ]; then

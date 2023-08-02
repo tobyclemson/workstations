@@ -81,7 +81,8 @@ function ensure-asdf-plugin() {
 
 ensure-asdf-plugin "ruby" "https://github.com/asdf-vm/asdf-ruby.git"
 ensure-asdf-plugin "java" "https://github.com/halcyon/asdf-java.git"
-ensure-asdf-plugin "python" "https://github.com/asdf-community/asdf-python"
+ensure-asdf-plugin "python" "https://github.com/asdf-community/asdf-python.git"
+ensure-asdf-plugin "pipenv" "https://github.com/and-semakin/asdf-pipenv.git"
 ensure-asdf-plugin "php" "https://github.com/asdf-community/asdf-php.git"
 ensure-asdf-plugin "nodejs" "https://github.com/asdf-vm/asdf-nodejs.git"
 

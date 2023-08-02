@@ -1,17 +1,20 @@
 github-list-org() {
   local org_name="$1"
+  local visibility="$2"
 
-  echo "Retrieving repository list for $org_name"
-  gh repo list "$org_name" --limit 4000 | cut -d$'\t' -f 1 | sort > "${org_name}-repo-list"
-  cat "${org_name}-repo-list"
+  echo "Retrieving repository list for $org_name for visibility $visibility"
+  gh repo list "$org_name" --limit 4000 --visibility "$visibility" | \
+    cut -d$'\t' -f 1 | sort > "${org_name}-${visibility}-repo-list"
+  cat "${org_name}-${visibility}-repo-list"
 }
 
 github-sync-org() {
   local org_name="$1"
+  local visibility="$2"
   local repo_name
 
   # shellcheck disable=SC2002
-  cat "${org_name}-repo-list" | while read -r repo _; do
+  cat "${org_name}-${visibility}-repo-list" | while read -r repo _; do
     repo_name=$(echo "$repo" | cut -d '/' -f 2)
     echo "Checking $repo with name $repo_name"
 
@@ -26,8 +29,8 @@ github-sync-org() {
       # Handle case where local checkout is on a non-main/master branch
       # - ignore checkout errors because some repos may have zero commits,
       # so no main or master
-      git checkout -q main 2>/dev/null || true
       git checkout -q master 2>/dev/null || true
+      git checkout -q main 2>/dev/null || true
 
       git pull
 

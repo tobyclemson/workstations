@@ -59,12 +59,43 @@ if [[ "${WORKSTATIONS_PERSONAL}" == "yes" ]]; then
   ./go_personal
 fi
 
+# Setup docker
+mkdir -p ~/.docker/cli-plugins
+ln -sfn "$HOMEBREW_PREFIX/opt/docker-buildx/bin/docker-buildx" ~/.docker/cli-plugins/docker-buildx
+ln -sfn "$HOMEBREW_PREFIX/opt/docker-compose/bin/docker-compose" ~/.docker/cli-plugins/docker-compose
+if ! brew services list | grep started | grep colima; then
+  brew services start colima
+fi
+
+# Setup clamav
+if [ ! -f "$HOMEBREW_PREFIX/etc/clamav/clamd.conf" ]; then
+  cp \
+    "$HOMEBREW_PREFIX/etc/clamav/clamd.conf.sample" \
+    "$HOMEBREW_PREFIX/etc/clamav/clamd.conf"
+  sed -ie \
+    's/^Example/#Example/g' \
+    "$HOMEBREW_PREFIX/etc/clamav/clamd.conf"
+  sed -ie \
+    's/^#LocalSocket \/tmp/LocalSocket \/tmp/g' \
+    "$HOMEBREW_PREFIX/etc/clamav/clamd.conf"
+fi
+if [ ! -f "$HOMEBREW_PREFIX/etc/clamav/freshclam.conf" ]; then
+  cp \
+    "$HOMEBREW_PREFIX/etc/clamav/freshclam.conf.sample" \
+    "$HOMEBREW_PREFIX/etc/clamav/freshclam.conf"
+  sed -ie 's/^Example/#Example/g' "$HOMEBREW_PREFIX/etc/clamav/freshclam.conf"
+fi
+if ! brew services list | grep started | grep clamav; then
+  sudo brew services start clamav
+fi
+
 # Clean up
 brew cleanup
 
 # Un-quarantine casks
 # sudo xattr -r -d com.apple.quarantine /Applications/Emacs.app
 sudo xattr -r -d com.apple.quarantine /Applications/QLMarkdown.app
+sudo xattr -r -d com.apple.quarantine /Applications/Spotify.app
 
 # Reset Quicklook server
 qlmanage -r
@@ -85,6 +116,7 @@ ensure-asdf-plugin "python" "https://github.com/asdf-community/asdf-python.git"
 ensure-asdf-plugin "pipenv" "https://github.com/and-semakin/asdf-pipenv.git"
 ensure-asdf-plugin "php" "https://github.com/asdf-community/asdf-php.git"
 ensure-asdf-plugin "nodejs" "https://github.com/asdf-vm/asdf-nodejs.git"
+ensure-asdf-plugin "haskell" "https://github.com/vic/asdf-haskell.git"
 
 # Install oh-my-zsh
 if [ ! -d "$HOME/.oh-my-zsh/" ]; then
@@ -107,6 +139,9 @@ cp ./dotfiles/.zshrc ~
 
 mkdir -p ~/.zshrc.d
 cp -R ./dotfiles/.zshrc.d/common/* ~/.zshrc.d/
+
+mkdir -p ~/.zsh-completions
+poetry completions zsh > ~/.zsh-completions/_poetry
 
 # Store workstation environment variables
 if [[ -f "$HOME/.workstation" ]]; then

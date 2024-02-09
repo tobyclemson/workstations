@@ -172,7 +172,7 @@ ensure-loginitem "SizeUp" "/Applications/SizeUp.app"
 ensure-loginitem "1Password 7" "/Applications/1Password 7.app"
 ensure-loginitem "Bartender 4" "/Applications/Bartender 4.app"
 
-# Setup karabiner
+# Add tool specific config files
 cp -R ./dotfiles/.config ~
 
 # Close any open System Preferences panes, to prevent them from overriding

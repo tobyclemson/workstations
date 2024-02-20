@@ -117,6 +117,11 @@ ensure-asdf-plugin "pipenv" "https://github.com/and-semakin/asdf-pipenv.git"
 ensure-asdf-plugin "php" "https://github.com/asdf-community/asdf-php.git"
 ensure-asdf-plugin "nodejs" "https://github.com/asdf-vm/asdf-nodejs.git"
 ensure-asdf-plugin "haskell" "https://github.com/vic/asdf-haskell.git"
+ensure-asdf-plugin "golang" "https://github.com/asdf-community/asdf-golang.git"
+
+# ZSH Go integration requires at least one asdf managed version of Go
+asdf install golang 1.22.0
+asdf global golang 1.22.0
 
 # Install oh-my-zsh
 if [ ! -d "$HOME/.oh-my-zsh/" ]; then

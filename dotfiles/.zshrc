@@ -120,6 +120,8 @@ export PATH="$ANDROID_SDK/tools:$ANDROID_SDK/platform-tools:$PATH"
 export PATH="$HOMEBREW_PREFIX/opt/gnupg@2.2/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
+source "$HOME/.asdf/plugins/golang/set-env.zsh"
+
 for file ($HOME/.{aliases,functions,workstation}); do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;

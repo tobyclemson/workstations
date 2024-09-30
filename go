@@ -75,6 +75,7 @@ fi
 
 # Setup docker
 mkdir -p ~/.docker/cli-plugins
+cp ./dotfiles/.docker/config.json ~/.docker/config.json
 ln -sfn "$HOMEBREW_PREFIX/opt/docker-buildx/bin/docker-buildx" ~/.docker/cli-plugins/docker-buildx
 ln -sfn "$HOMEBREW_PREFIX/opt/docker-compose/bin/docker-compose" ~/.docker/cli-plugins/docker-compose
 if ! brew services list | grep started | grep colima; then

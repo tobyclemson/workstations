@@ -57,6 +57,9 @@ brew upgrade
 # Install all taps, brews and casks
 brew bundle --verbose --file Brewfile.common --no-lock
 
+# Clean up before subsequent steps set up ZSH
+rm -rf ~/.zshrc.d
+
 # Perform optional personal workstation setup
 if [[ "${WORKSTATIONS_PERSONAL}" == "yes" ]]; then
   ./go_personal
@@ -143,7 +146,6 @@ cp ./dotfiles/.functions ~
 cp ./dotfiles/.zprofile ~
 cp ./dotfiles/.zshrc ~
 
-rm -rf ~/.zshrc.d
 mkdir -p ~/.zshrc.d
 cp -R ./dotfiles/.zshrc.d/common/* ~/.zshrc.d/
 

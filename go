@@ -78,28 +78,6 @@ if ! brew services list | grep started | grep colima; then
   brew services start colima
 fi
 
-# Setup clamav
-if [ ! -f "$HOMEBREW_PREFIX/etc/clamav/clamd.conf" ]; then
-  cp \
-    "$HOMEBREW_PREFIX/etc/clamav/clamd.conf.sample" \
-    "$HOMEBREW_PREFIX/etc/clamav/clamd.conf"
-  sed -ie \
-    's/^Example/#Example/g' \
-    "$HOMEBREW_PREFIX/etc/clamav/clamd.conf"
-  sed -ie \
-    's/^#LocalSocket \/tmp/LocalSocket \/tmp/g' \
-    "$HOMEBREW_PREFIX/etc/clamav/clamd.conf"
-fi
-if [ ! -f "$HOMEBREW_PREFIX/etc/clamav/freshclam.conf" ]; then
-  cp \
-    "$HOMEBREW_PREFIX/etc/clamav/freshclam.conf.sample" \
-    "$HOMEBREW_PREFIX/etc/clamav/freshclam.conf"
-  sed -ie 's/^Example/#Example/g' "$HOMEBREW_PREFIX/etc/clamav/freshclam.conf"
-fi
-if ! brew services list | grep started | grep clamav; then
-  sudo brew services start clamav
-fi
-
 # Clean up
 brew cleanup
 

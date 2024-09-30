@@ -165,6 +165,7 @@ cp ./dotfiles/.functions ~
 cp ./dotfiles/.zprofile ~
 cp ./dotfiles/.zshrc ~
 
+rm -rf ~/.zshrc.d
 mkdir -p ~/.zshrc.d
 cp -R ./dotfiles/.zshrc.d/common/* ~/.zshrc.d/
 

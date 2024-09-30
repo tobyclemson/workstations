@@ -14,6 +14,9 @@ WORKSTATIONS_RUN_SOFTWARE_UPDATE=${WORKSTATIONS_RUN_SOFTWARE_UPDATE:-yes}
 WORKSTATIONS_CONFIGURE_SYSTEM=${WORKSTATIONS_CONFIGURE_SYSTEM:-yes}
 WORKSTATIONS_CONFIGURE_APPS=${WORKSTATIONS_CONFIGURE_APPS:-yes}
 
+WORKSTATIONS_PERSONAL=${WORKSTATIONS_PERSONAL:-yes}
+WORKSTATIONS_EBURY=${WORKSTATIONS_EBURY:-yes}
+
 WORKSTATIONS_USER_NAME=${WORKSTATIONS_USER_NAME:-"Toby Clemson"}
 WORKSTATIONS_USER_EMAIL=${WORKSTATIONS_USER_EMAIL:-tobyclemson@gmail.com}
 
@@ -57,6 +60,14 @@ brew bundle --verbose --file Brewfile.common --no-lock
 # Perform optional personal workstation setup
 if [[ "${WORKSTATIONS_PERSONAL}" == "yes" ]]; then
   ./go_personal
+fi
+
+# Perform optional context specific workstation setup
+if [[ "${WORKSTATIONS_PERSONAL}" == "yes" ]]; then
+  ./go_personal
+fi
+if [[ "${WORKSTATIONS_EBURY}" == "yes" ]]; then
+  ./go_ebury
 fi
 
 # Setup docker

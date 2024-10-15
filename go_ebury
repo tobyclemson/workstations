@@ -1,9 +1,0 @@
-#! /usr/bin/env bash
-
-set -e
-set -o pipefail
-set -x
-
-# Setup specific personal zsh configuration
-mkdir -p ~/.zshrc.d
-cp -R dotfiles/.zshrc.d/ebury/* ~/.zshrc.d/

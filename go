@@ -15,7 +15,6 @@ WORKSTATIONS_CONFIGURE_SYSTEM=${WORKSTATIONS_CONFIGURE_SYSTEM:-yes}
 WORKSTATIONS_CONFIGURE_APPS=${WORKSTATIONS_CONFIGURE_APPS:-yes}
 
 WORKSTATIONS_PERSONAL=${WORKSTATIONS_PERSONAL:-yes}
-WORKSTATIONS_EBURY=${WORKSTATIONS_EBURY:-yes}
 
 WORKSTATIONS_USER_NAME=${WORKSTATIONS_USER_NAME:-"Toby Clemson"}
 WORKSTATIONS_USER_EMAIL=${WORKSTATIONS_USER_EMAIL:-tobyclemson@gmail.com}
@@ -68,9 +67,6 @@ fi
 # Perform optional context specific workstation setup
 if [[ "${WORKSTATIONS_PERSONAL}" == "yes" ]]; then
   ./go_personal
-fi
-if [[ "${WORKSTATIONS_EBURY}" == "yes" ]]; then
-  ./go_ebury
 fi
 
 # Setup docker
@@ -152,6 +148,19 @@ cp -R ./dotfiles/.zshrc.d/common/* ~/.zshrc.d/
 
 mkdir -p ~/.zsh-completions
 poetry completions zsh > ~/.zsh-completions/_poetry
+
+# Setup dnsmasq
+if [ ! -f "$HOMEBREW_PREFIX/etc/dnsmasq.conf.bak" ]; then
+  cp \
+    "$HOMEBREW_PREFIX/etc/dnsmasq.conf" \
+    "$HOMEBREW_PREFIX/etc/dnsmasq.conf.bak"
+fi
+
+cp ./files/etc/dnsmasq.conf "$HOMEBREW_PREFIX/etc/dnsmasq.conf"
+cp ./files/etc/dnsmasq.d/localhost.conf \
+  "$HOMEBREW_PREFIX/etc/dnsmasq.d/localhost.conf"
+
+sudo brew services restart dnsmasq
 
 # Store workstation environment variables
 if [[ -f "$HOME/.workstation" ]]; then

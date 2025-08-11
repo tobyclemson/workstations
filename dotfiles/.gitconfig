@@ -3,6 +3,10 @@
   pager = delta
 [branch]
   sort = -committerdate
+[tag]
+  sort = version:refname
+[column]
+  ui = auto
 [init]
   defaultBranch = main
 [delta]
@@ -14,7 +18,10 @@
 [merge]
   conflictstyle = diff3
 [diff]
-  colorMoved = default
+  algorithm = histogram
+  colorMoved = plain
+  mnemonicPrefix = true
+  renames true
 [interactive]
   diffFilter = delta --color-only
 [color]

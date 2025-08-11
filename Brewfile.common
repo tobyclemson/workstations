@@ -1,5 +1,6 @@
 tap "homebrew/cask-versions"
 tap "homebrew/cask-fonts"
+tap "homebrew/command-not-found"
 tap "tobyclemson/utils"
 
 brew "ack"

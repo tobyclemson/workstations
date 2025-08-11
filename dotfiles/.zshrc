@@ -1,6 +1,7 @@
 export ZSH=$HOME/.oh-my-zsh
 
 plugins=(
+  1password
   asdf
   autojump
   aws
@@ -39,12 +40,18 @@ plugins=(
   xcode
 )
 
+zstyle ':omz:update' mode auto
 zstyle ':omz:update' frequency 7
+
 zstyle ':omz:plugins:keychain' agents 'gpg,ssh'
 
 mkdir -p "$HOME/.ssh"
 keys=($(find "$HOME/.ssh" -name 'id*' | grep -v ".pub"))
 zstyle ':omz:plugins:ssh-agent' identities $keys
+zstyle ':omz:plugins:ssh-agent' ssh-add-args --apple-load-keychain
+
+zstyle ':completion:*:*:docker:*' option-stacking yes
+zstyle ':completion:*:*:docker-*:*' option-stacking yes
 
 export PATH="$HOME/bin:$PATH"
 
@@ -65,6 +72,7 @@ source $ZSH/oh-my-zsh.sh
 CPATH="$HOMEBREW_PREFIX/include"
 LIBRARY_PATH="$HOMEBREW_PREFIX/lib"
 
+LDFLAGS="$LDFLAGS -L$HOMEBREW_PREFIX/lib"
 LDFLAGS="$LDFLAGS -L$HOMEBREW_PREFIX/opt/bzip2/lib"
 LDFLAGS="$LDFLAGS -L$HOMEBREW_PREFIX/opt/gcc/lib"
 LDFLAGS="$LDFLAGS -L$HOMEBREW_PREFIX/opt/gettext/lib"
@@ -72,10 +80,10 @@ LDFLAGS="$LDFLAGS -L$HOMEBREW_PREFIX/opt/icu4c/lib"
 LDFLAGS="$LDFLAGS -L$HOMEBREW_PREFIX/opt/imap-uw/lib"
 LDFLAGS="$LDFLAGS -L$HOMEBREW_PREFIX/opt/libedit/lib"
 LDFLAGS="$LDFLAGS -L$HOMEBREW_PREFIX/opt/openldap/lib"
-LDFLAGS="$LDFLAGS -L$HOMEBREW_PREFIX/opt/openssl@1.1/lib"
 LDFLAGS="$LDFLAGS -L$HOMEBREW_PREFIX/opt/tidy-html5/lib"
 LDFLAGS="$LDFLAGS -L$HOMEBREW_PREFIX/opt/zlib/lib"
 
+CPPFLAGS="$CPPFLAGS -I$HOMEBREW_PREFIX/include"
 CPPFLAGS="$CPPFLAGS -I$HOMEBREW_PREFIX/opt/bzip2/include"
 CPPFLAGS="$CPPFLAGS -I$HOMEBREW_PREFIX/opt/gcc/include"
 CPPFLAGS="$CPPFLAGS -I$HOMEBREW_PREFIX/opt/gettext/include"
@@ -83,14 +91,12 @@ CPPFLAGS="$CPPFLAGS -I$HOMEBREW_PREFIX/opt/icu4c/include"
 CPPFLAGS="$CPPFLAGS -I$HOMEBREW_PREFIX/opt/imap-uw/include"
 CPPFLAGS="$CPPFLAGS -I$HOMEBREW_PREFIX/opt/libedit/include"
 CPPFLAGS="$CPPFLAGS -I$HOMEBREW_PREFIX/opt/openldap/include"
-CPPFLAGS="$CPPFLAGS -I$HOMEBREW_PREFIX/opt/openssl@1.1/include"
 CPPFLAGS="$CPPFLAGS -I$HOMEBREW_PREFIX/opt/tidy-html5/include"
 CPPFLAGS="$CPPFLAGS -I$HOMEBREW_PREFIX/opt/zlib/include"
 
 PKG_CONFIG_PATH="$PKG_CONFIG_PATH:$HOMEBREW_PREFIX/opt/icu4c/lib/pkgconfig"
 PKG_CONFIG_PATH="$PKG_CONFIG_PATH:$HOMEBREW_PREFIX/opt/libedit/lib/pkgconfig"
 PKG_CONFIG_PATH="$PKG_CONFIG_PATH:$HOMEBREW_PREFIX/opt/openldap/lib/pkgconfig"
-PKG_CONFIG_PATH="$PKG_CONFIG_PATH:$HOMEBREW_PREFIX/opt/openssl@1.1/lib/pkgconfig"
 PKG_CONFIG_PATH="$PKG_CONFIG_PATH:$HOMEBREW_PREFIX/opt/tidy-html5/lib/pkgconfig"
 PKG_CONFIG_PATH="$PKG_CONFIG_PATH:$HOMEBREW_PREFIX/opt/zlib/lib/pkgconfig"
 

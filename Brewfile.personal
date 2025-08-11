@@ -6,7 +6,6 @@ brew "libzip"
 
 cask "ableton-live-lite"
 cask "adobe-creative-cloud"
-cask "arduino"
 cask "arduino-ide"
 cask "dash"
 cask "firefox"

@@ -21,11 +21,11 @@
   algorithm = histogram
   colorMoved = plain
   mnemonicPrefix = true
-  renames true
+  renames = true
 [interactive]
   diffFilter = delta --color-only
 [color]
-	ui = auto
+  ui = auto
 [url "git@github.com:"]
   insteadOf = "gh:"
   pushInsteadOf = "github:"

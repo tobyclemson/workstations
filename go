@@ -147,7 +147,7 @@ mkdir -p ~/.zshrc.d
 cp -R ./dotfiles/.zshrc.d/common/* ~/.zshrc.d/
 
 mkdir -p ~/.zsh-completions
-poetry completions zsh > ~/.zsh-completions/_poetry
+# poetry completions zsh > ~/.zsh-completions/_poetry
 
 # Setup dnsmasq
 if [ ! -f "$HOMEBREW_PREFIX/etc/dnsmasq.conf.bak" ]; then
@@ -187,9 +187,7 @@ fi
 ensure-loginitem "Dropbox" "/Applications/Dropbox.app"
 ensure-loginitem "Karabiner-Elements" "/Applications/Karabiner-Elements.app"
 ensure-loginitem "Alfred 4" "/Applications/Alfred 4.app"
-ensure-loginitem "SizeUp" "/Applications/SizeUp.app"
 ensure-loginitem "1Password 7" "/Applications/1Password 7.app"
-ensure-loginitem "Bartender 4" "/Applications/Bartender 4.app"
 
 # Add tool specific config files
 cp -R ./dotfiles/.config ~
@@ -319,7 +317,6 @@ if [[ "$WORKSTATIONS_CONFIGURE_APPS" != "no" ]]; then
   add_application_preferences "dropbox" "Dropbox"
   add_application_preferences "google-chrome" "Google Chrome"
   add_application_preferences "iterm2"
-  add_application_preferences "sizeup" "SizeUp"
 
   # Source all preference scripts
   list_open_affected_applications

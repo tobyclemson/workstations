@@ -15,7 +15,6 @@ cask "google-drive"
 cask "handbrake"
 cask "now-tv-player"
 cask "openemu"
-cask "origin"
 cask "raspberry-pi-imager"
 cask "slack"
 cask "steam"
@@ -25,13 +24,12 @@ cask "zoom"
 mas "Clockify Desktop", id: 1364502317
 mas "GarageBand", id: 682658836
 mas "iMovie", id: 408981434
-mas "iStat Menus", id: 1319778037
+mas "iStat Menus 7", id: 6499559693
 mas "Keynote", id: 409183694
 mas "Microsoft Excel", id: 462058435
 mas "Microsoft PowerPoint", id: 462062816
 mas "Microsoft Word", id: 462054704
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
-mas "Reeder", id: 1449412482
 mas "Todoist", id: 585829637
 mas "Trello", id: 1278508951

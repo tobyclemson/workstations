@@ -54,7 +54,7 @@ fi
 brew upgrade
 
 # Install all taps, brews and casks
-brew bundle --verbose --file Brewfile.common --no-lock
+brew bundle --verbose --file Brewfile.common
 
 # Clean up before subsequent steps set up ZSH
 rm -rf ~/.zshrc.d

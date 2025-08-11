@@ -118,7 +118,7 @@ ensure-asdf-plugin "cmake" "https://github.com/asdf-community/asdf-cmake.git"
 
 # ZSH Go integration requires at least one asdf managed version of Go
 asdf install golang 1.22.0
-asdf global golang 1.22.0
+asdf set -u golang 1.22.0
 
 # Install oh-my-zsh
 if [ ! -d "$HOME/.oh-my-zsh/" ]; then

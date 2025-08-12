@@ -15,7 +15,7 @@ defaults write com.apple.screensaver askForPasswordDelay -int 0
 defaults write com.apple.LaunchServices LSQuarantine -bool false
 
 # Allow applications downloaded from anywhere
-sudo spctl --master-disable
+# sudo spctl --global-disable
 
 # Turn on firewall
 sudo defaults write /Library/Preferences/com.apple.alf globalstate -int 1

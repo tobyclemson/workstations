@@ -14,7 +14,7 @@ sudo pmset -a standbydelay 86400
 
 # Power management settings
 # `man pmset` for a full list of settings
-IS_LAPTOP=`/usr/sbin/system_profiler SPHardwareDataType 2>/dev/null | grep "Model Identifier" | grep "Book"`
+IS_LAPTOP=`/usr/sbin/system_profiler SPHardwareDataType 2>/dev/null | grep "Model Name" | grep "Book"`
 if [[ "$IS_LAPTOP" != "" ]]; then
 
     # Notebook: Battery

@@ -192,9 +192,9 @@ ensure-loginitem "1Password 7" "/Applications/1Password 7.app"
 # Add tool specific config files
 cp -R ./dotfiles/.config ~
 
-# Close any open System Preferences panes, to prevent them from overriding
+# Close any open System Settings panes, to prevent them from overriding
 # settings we’re about to change
-osascript -e "tell application \"System Preferences\" to quit"
+osascript -e "tell application \"System Settings\" to quit"
 
 # Configure system and app preferences
 source_preferences () {

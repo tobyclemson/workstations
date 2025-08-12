@@ -8,7 +8,7 @@ set -o pipefail
 ###############################################################################
 
 # Install the IR_Black theme for iTerm
-if ! defaults read com.googlecode.iterm2 "Custom Color Presets" | grep -q "IR_Black"; then
+if ! defaults read com.googlecode.iterm2 'Custom Color Presets' | grep -q "IR_Black"; then
   open "${HOME}/.init/IR_Black.itermcolors"
 fi
 

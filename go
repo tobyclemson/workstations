@@ -156,6 +156,14 @@ cp ./files/etc/dnsmasq.d/localhost.conf \
 
 sudo brew services restart dnsmasq
 
+# Setup ghostty
+cp ./files/home/Library/Application\ Support/com.mitchellh.ghostty/config \
+  "$HOME/Library/Application Support/com.mitchellh.ghostty/config"
+
+# Setup Rectangle
+cp ./files/home/Library/Preferences/com.knollsoft.Rectangle.plist \
+  "$HOME/Library/Preferences/com.knollsoft.Rectangle.plist"
+
 # Store workstation environment variables
 if [[ -f "$HOME/.workstation" ]]; then
   rm "$HOME/.workstation"

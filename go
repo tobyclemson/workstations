@@ -131,6 +131,9 @@ cp ./dotfiles/.functions ~
 cp ./dotfiles/.zprofile ~
 cp ./dotfiles/.zshrc ~
 
+# Setup AWS CLI/SDKs
+co ./dotfiles/.aws ~
+
 mkdir -p ~/.zshrc.d
 cp -R ./dotfiles/.zshrc.d/common/* ~/.zshrc.d/
 
@@ -139,7 +142,6 @@ mkdir -p ~/.zshrc.d
 cp -R dotfiles/.zshrc.d/personal/* ~/.zshrc.d/
 
 mkdir -p ~/.zsh-completions
-# poetry completions zsh > ~/.zsh-completions/_poetry
 
 # Setup dnsmasq
 if [ ! -f "$HOMEBREW_PREFIX/etc/dnsmasq.conf.bak" ]; then

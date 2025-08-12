@@ -132,7 +132,7 @@ cp ./dotfiles/.zprofile ~
 cp ./dotfiles/.zshrc ~
 
 # Setup AWS CLI/SDKs
-co ./dotfiles/.aws ~
+cp ./dotfiles/.aws ~
 
 mkdir -p ~/.zshrc.d
 cp -R ./dotfiles/.zshrc.d/common/* ~/.zshrc.d/

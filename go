@@ -14,8 +14,6 @@ WORKSTATIONS_RUN_SOFTWARE_UPDATE=${WORKSTATIONS_RUN_SOFTWARE_UPDATE:-yes}
 WORKSTATIONS_CONFIGURE_SYSTEM=${WORKSTATIONS_CONFIGURE_SYSTEM:-yes}
 WORKSTATIONS_CONFIGURE_APPS=${WORKSTATIONS_CONFIGURE_APPS:-yes}
 
-WORKSTATIONS_PERSONAL=${WORKSTATIONS_PERSONAL:-yes}
-
 WORKSTATIONS_USER_NAME=${WORKSTATIONS_USER_NAME:-"Toby Clemson"}
 WORKSTATIONS_USER_EMAIL=${WORKSTATIONS_USER_EMAIL:-tobyclemson@gmail.com}
 
@@ -54,20 +52,10 @@ fi
 brew upgrade
 
 # Install all taps, brews and casks
-brew bundle --verbose --file Brewfile.common
+brew bundle --verbose --file Brewfile
 
 # Clean up before subsequent steps set up ZSH
 rm -rf ~/.zshrc.d
-
-# Perform optional personal workstation setup
-if [[ "${WORKSTATIONS_PERSONAL}" == "yes" ]]; then
-  ./go_personal
-fi
-
-# Perform optional context specific workstation setup
-if [[ "${WORKSTATIONS_PERSONAL}" == "yes" ]]; then
-  ./go_personal
-fi
 
 # Setup docker
 mkdir -p ~/.docker/cli-plugins
@@ -145,6 +133,10 @@ cp ./dotfiles/.zshrc ~
 
 mkdir -p ~/.zshrc.d
 cp -R ./dotfiles/.zshrc.d/common/* ~/.zshrc.d/
+
+# Setup specific personal zsh configuration
+mkdir -p ~/.zshrc.d
+cp -R dotfiles/.zshrc.d/personal/* ~/.zshrc.d/
 
 mkdir -p ~/.zsh-completions
 # poetry completions zsh > ~/.zsh-completions/_poetry

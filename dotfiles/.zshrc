@@ -23,6 +23,7 @@ plugins=(
   keychain
   lein
   macos
+  mise
   node
   npm
   pip
